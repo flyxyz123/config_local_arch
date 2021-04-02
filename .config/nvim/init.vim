@@ -58,3 +58,6 @@ nnoremap j gj
 " disable auto line break (tc) and insert comment (cro)
 filetype plugin on  " seems nvim needs this for next line of code to work? 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=t
+
+" always use system for ALL instead of use + and * operator?
+set clipboard+=unnamedplus
