@@ -23,12 +23,12 @@ set noundofile
 set autochdir
 
 " vim-plug
-" call plug#begin()
-" Plug 'preservim/nerdtree'
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
-" Plug 'vim-airline/vim-airline' 
-" call plug#end()
+"call plug#begin()
+"Plug 'preservim/nerdtree'
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
+"Plug 'vim-airline/vim-airline' 
+"call plug#end()
 
 " map ctrl+h/j/k/l to move between split windows
 map <C-h> <C-w>h
@@ -60,4 +60,4 @@ filetype plugin on  " seems nvim needs this for next line of code to work?
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=t
 
 " always use system for ALL instead of use + and * operator?
-set clipboard+=unnamedplus
+"set clipboard+=unnamedplus
