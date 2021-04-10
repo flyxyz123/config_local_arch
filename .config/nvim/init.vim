@@ -9,8 +9,8 @@ set softtabstop=4   " number of spaces in tab when editing
 set shiftwidth=4    " number of spaces to use for autoindent
 " set expandtab       " tabs are space
 
-" read chinese characters, first line might not work, added the 2nd line might work
-" both line needed for the task, 2nd line seems is default to neovim but not vim 
+" read chinese characters, first line might not work, added the last line might work
+" both line needed for the task, last line seems is default to neovim but not vim 
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set encoding=utf-8
 
