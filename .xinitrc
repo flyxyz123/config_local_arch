@@ -32,6 +32,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+fcitx5 &
 $HOME/programs/my_scripts/set_dwm_status_bar.sh &
 xwallpaper --maximize $XDG_CONFIG_HOME/wallpaper.png
 redshift &
