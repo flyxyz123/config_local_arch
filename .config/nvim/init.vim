@@ -1,3 +1,16 @@
+" if without, nvim with no file will give error because it's not defined?
+let fenc_bef = "none" 
+
+function Autocmd_set_fenc()
+	let fenc_bef = &fileencoding
+	if &fileencoding != "utf-8"
+		setlocal fileencoding=utf-8
+		unsilent echom ":w to rewrite as utf-8"
+	endif
+	return fenc_bef
+endfunction
+
+" en_US intro
 language en_US
 
 " hybrid number numbers
@@ -7,12 +20,17 @@ set number relativenumber
 set tabstop=4       " number of visual spaces per TAB
 set softtabstop=4   " number of spaces in tab when editing
 set shiftwidth=4    " number of spaces to use for autoindent
-" set expandtab       " tabs are space
+"set expandtab       " tabs are space
 
-" read chinese characters, first line might not work, added the last line might work
-" both line needed for the task, last line seems is default to neovim but not vim 
+" https://www.zhihu.com/question/22363620/answer/21199296
+" last line seems is default to neovim but not vim 
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set encoding=utf-8
+
+" some file on win10 display as unix but is dos
+if has("win32")
+	set fileformats=dos
+endif
 
 " don't generate those three types of files
 set nobackup
@@ -46,7 +64,9 @@ set statusline+=%f          " %F or 1CTRL+G to show full path
 set statusline+=\ %m
 set statusline+=%=
 set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+"set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+"set statusline+=\ %{&fileencoding}
+set statusline+=\ %{fenc_bef}
 set statusline+=\ \[%{&fileformat}\]
 set statusline+=\ %-10.(%l,%c%V%)
 set statusline+=\ %P
@@ -55,9 +75,11 @@ set statusline+=\ %P
 nnoremap k gk
 nnoremap j gj
 
+filetype plugin on  " seems needs this for autocmd FileType * to work? 
 " disable auto line break (tc) and insert comment (cro)
-filetype plugin on  " seems nvim needs this for next line of code to work? 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=t
+" auto rewrite as utf-8 if not when :w
+autocmd FileType * let fenc_bef = Autocmd_set_fenc()
 
 " always use system for ALL instead of use + and * operator?
 "set clipboard+=unnamedplus
