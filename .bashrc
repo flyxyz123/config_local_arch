@@ -10,3 +10,5 @@ PS1='[\u@\h \W]\$ '
 
 alias cfgc='/usr/bin/git --git-dir=$HOME/.mycfg_cross_platform/ --work-tree=$HOME'
 alias cfgl='/usr/bin/git --git-dir=$HOME/.mycfg_local/ --work-tree=$HOME'
+
+eval "$(zoxide init bash)"
