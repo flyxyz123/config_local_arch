@@ -10,8 +10,23 @@ function Autocmd_set_fenc()
 	return fenc_bef
 endfunction
 
+" seems needs this for autocmd FileType * to work? 
+filetype plugin on
+
+" disable auto line break (tc) and insert comment (cro)
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=t
+
+" auto rewrite as utf-8 if not when :w
+autocmd FileType * let fenc_bef = Autocmd_set_fenc()
+
 language en_US
 set number relativenumber
+
+" set dir to current editing file's dir 
+set autochdir
+
+" always use system for ALL instead of use + and * operator?
+"set clipboard+=unnamedplus
 
 " Spaces & Tabs
 set tabstop=4       " number of visual spaces per TAB
@@ -34,9 +49,6 @@ set nobackup
 set noswapfile
 set noundofile
 
-" set dir to current editing file's dir 
-set autochdir
-
 "call plug#begin()
 "Plug 'preservim/nerdtree'
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -55,6 +67,10 @@ map <C-l> <C-w>l
 set ignorecase
 set smartcase
 
+" moving in long line
+nnoremap k gk
+nnoremap j gj
+
 " default statusline:set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set statusline+=%<
 set statusline+=%f          " %F or 1CTRL+G to show full path
@@ -67,19 +83,3 @@ set statusline+=\ %{fenc_bef?fenc_bef:&fileencoding}
 set statusline+=\ \[%{&fileformat}\]
 set statusline+=\ %-10.(%l,%c%V%)
 set statusline+=\ %P
-
-" moving in long line
-nnoremap k gk
-nnoremap j gj
-
-" always use system for ALL instead of use + and * operator?
-"set clipboard+=unnamedplus
-
-" seems needs this for autocmd FileType * to work? 
-filetype plugin on
-
-" disable auto line break (tc) and insert comment (cro)
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=t
-
-" auto rewrite as utf-8 if not when :w
-autocmd FileType * let fenc_bef = Autocmd_set_fenc()

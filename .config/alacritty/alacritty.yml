@@ -1,3 +1,7 @@
+# when set TERM use following code on windows, syntax is very bad
+#env:
+#    TERM: alacritty
+
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Import additional configuration files
