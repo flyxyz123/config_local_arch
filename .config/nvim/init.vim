@@ -10,10 +10,7 @@ function Autocmd_set_fenc()
 	return fenc_bef
 endfunction
 
-" en_US locale?
 language en_US
-
-" hybrid number numbers
 set number relativenumber
 
 " Spaces & Tabs
@@ -40,13 +37,13 @@ set noundofile
 " set dir to current editing file's dir 
 set autochdir
 
-call plug#begin()
+"call plug#begin()
 "Plug 'preservim/nerdtree'
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Plug 'junegunn/fzf.vim'
 "Plug 'vim-airline/vim-airline' 
-Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
-call plug#end()
+"Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
+"call plug#end()
 
 " map ctrl+h/j/k/l to move between split windows
 map <C-h> <C-w>h
@@ -78,7 +75,8 @@ nnoremap j gj
 " always use system for ALL instead of use + and * operator?
 "set clipboard+=unnamedplus
 
-filetype plugin on  " seems needs this for autocmd FileType * to work? 
+" seems needs this for autocmd FileType * to work? 
+filetype plugin on
 
 " disable auto line break (tc) and insert comment (cro)
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=t
