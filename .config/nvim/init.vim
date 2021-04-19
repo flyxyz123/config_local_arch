@@ -1,5 +1,5 @@
 " if without, nvim with no file will give error because it's not defined?
-let fenc_bef = "none" 
+let fenc_bef = 0
 
 function Autocmd_set_fenc()
 	let fenc_bef = &fileencoding
@@ -10,7 +10,7 @@ function Autocmd_set_fenc()
 	return fenc_bef
 endfunction
 
-" en_US intro
+" en_US locale?
 language en_US
 
 " hybrid number numbers
@@ -40,13 +40,13 @@ set noundofile
 " set dir to current editing file's dir 
 set autochdir
 
-" vim-plug
-"call plug#begin()
+call plug#begin()
 "Plug 'preservim/nerdtree'
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Plug 'junegunn/fzf.vim'
 "Plug 'vim-airline/vim-airline' 
-"call plug#end()
+Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
+call plug#end()
 
 " map ctrl+h/j/k/l to move between split windows
 map <C-h> <C-w>h
@@ -66,7 +66,7 @@ set statusline+=%=
 set statusline+=\ %y
 "set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 "set statusline+=\ %{&fileencoding}
-set statusline+=\ %{fenc_bef}
+set statusline+=\ %{fenc_bef?fenc_bef:&fileencoding}
 set statusline+=\ \[%{&fileformat}\]
 set statusline+=\ %-10.(%l,%c%V%)
 set statusline+=\ %P
@@ -75,11 +75,13 @@ set statusline+=\ %P
 nnoremap k gk
 nnoremap j gj
 
-filetype plugin on  " seems needs this for autocmd FileType * to work? 
-" disable auto line break (tc) and insert comment (cro)
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=t
-" auto rewrite as utf-8 if not when :w
-autocmd FileType * let fenc_bef = Autocmd_set_fenc()
-
 " always use system for ALL instead of use + and * operator?
 "set clipboard+=unnamedplus
+
+filetype plugin on  " seems needs this for autocmd FileType * to work? 
+
+" disable auto line break (tc) and insert comment (cro)
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=t
+
+" auto rewrite as utf-8 if not when :w
+autocmd FileType * let fenc_bef = Autocmd_set_fenc()
