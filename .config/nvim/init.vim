@@ -57,19 +57,22 @@ set noundofile
 "Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 "call plug#end()
 
+" search case sensitive only if have uppercase
+set ignorecase
+set smartcase
+
 " map ctrl+h/j/k/l to move between split windows
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" search case sensitive only if have uppercase
-set ignorecase
-set smartcase
-
 " moving in long line
 nnoremap k gk
 nnoremap j gj
+
+nnoremap o o<Esc>
+nnoremap O O<Esc>
 
 " default statusline:set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set statusline+=%<
