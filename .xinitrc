@@ -36,8 +36,9 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+sxhkd &
 fcitx5 &
 $HOME/programs/my_scripts/set_dwm_status_bar.sh &
-xwallpaper --maximize $XDG_CONFIG_HOME/wallpaper.png
+xwallpaper --maximize $HOME/pictures/wallpaper.png
 redshift &
 exec dwm
