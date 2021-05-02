@@ -13,7 +13,7 @@ export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 #export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_STYLE_OVERRIDE=kvantum
 
-# startx when login, should be put after environmental variables so .xinitrc can use them 
+# startx when login, should be put after environmental variables for .xinitrc to use
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec startx
+	exec startx
 fi
