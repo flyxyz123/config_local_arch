@@ -1,5 +1,19 @@
-# https://github.com/LukeSmithxyz/voidrice/blob/2440ad83e9e9cf2f927efbaef618513e0df3cbda/.config/shell/inputrc
 $include /etc/inputrc
+
+# from archwiki realine
+# Color files by types
+# Note that this may cause completion text blink in some terminals (e.g. xterm).
+set colored-stats On
+# Append char to indicate type
+set visible-stats On
+# Mark symlinked directories
+set mark-symlinked-directories On
+# Color the common prefix
+set colored-completion-prefix On
+# Color the common prefix in menu-complete
+set menu-complete-display-prefix On
+
+# https://github.com/LukeSmithxyz/voidrice/blob/2440ad83e9e9cf2f927efbaef618513e0df3cbda/.config/shell/inputrc
 set editing-mode vi
 $if mode=vi
 
