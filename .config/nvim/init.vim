@@ -59,6 +59,10 @@ set noundofile
 "Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 "call plug#end()
 
+" gg=G work for .xml files now,:h matchit-activate
+" https://stackoverflow.com/questions/21408222/vim-indent-xml-file/28365920#28365920
+packadd! matchit
+
 " search case sensitive only if have uppercase
 set ignorecase
 set smartcase
