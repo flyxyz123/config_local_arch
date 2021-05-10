@@ -1,6 +1,7 @@
 " if without, nvim with no file will give error because it's not defined?
-let fenc_status = 0
+let fenc_bef = 0
 
+" I use only one return for better readability
 function Autocmd_set_fenc()
 	let fenc_bef = &fileencoding
 	if &fileencoding != "utf-8"
@@ -18,7 +19,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o f
 
 " auto rewrite as utf-8 if not when :w
 " if use FileType *, nvim can't recognize some file extensions, ex: .csv
-autocmd BufRead * let fenc_status = Autocmd_set_fenc()
+autocmd BufRead * let fenc_bef = Autocmd_set_fenc()
 
 language en_US
 set number relativenumber
@@ -82,7 +83,7 @@ set statusline+=\ %m
 set statusline+=%=
 set statusline+=\ %y
 "set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\ %{fenc_status}
+set statusline+=\ %{fenc_bef}
 set statusline+=\ \[%{&fileformat}\]
 set statusline+=\ %-10.(%l,%c%V%)
 set statusline+=\ %P
