@@ -87,7 +87,7 @@ set statusline+=\ %m
 set statusline+=%=
 set statusline+=\ %y
 "set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\ %{fenc_bef}
+set statusline+=\ %{fenc_bef?fenc_bef:&fileencoding}
 set statusline+=\ \[%{&fileformat}\]
 set statusline+=\ %-10.(%l,%c%V%)
 set statusline+=\ %P
