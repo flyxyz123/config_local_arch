@@ -37,7 +37,8 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
 $HOME/programs/my_scripts/set_dwm_status_bar.sh &
-fcitx5 &
+dunst &
+fcitx5 -d &
 redshift &
 sxhkd &
 udiskie &
