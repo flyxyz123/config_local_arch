@@ -18,6 +18,6 @@ alias ls='ls --color=auto'
 alias ll='ls -lah --color=auto'
 alias cfgc='/usr/bin/git --git-dir=$HOME/.mycfg_cross_platform/ --work-tree=$HOME'
 alias cfgl='/usr/bin/git --git-dir=$HOME/.mycfg_local/ --work-tree=$HOME'
-alias datec='TZ=Asia/Shanghai date "+%a %m/%d/%Y %H:%M:%S %Z"'
+alias datec='TZ=Asia/Shanghai date "+%a %m/%d/%Y %H:%M:%S UTC%:::z"'
 
 eval "$(zoxide init bash)"
