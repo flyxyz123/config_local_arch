@@ -1,10 +1,21 @@
 [Unit]
 Description=SSH key agent
 
+# archwiki approach
+# https://wiki.archlinux.org/title/SSH_keys#Start_ssh-agent_with_systemd_user
 [Service]
-Type=forking
+Type=simple
 Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
-ExecStart=/usr/bin/ssh-agent -a $SSH_AUTH_SOCK
+# DISPLAY required for ssh-askpass to work
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
+
+# github White-Oak approach
+# https://github.com/White-Oak/arch-setup-for-dummies/blob/master/setting-up-ssh-agent.md
+#[Service]
+#Type=forking
+#Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+#ExecStart=/usr/bin/ssh-agent -a $SSH_AUTH_SOCK
 
 [Install]
 WantedBy=default.target

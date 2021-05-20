@@ -15,7 +15,7 @@
 PS1='\[\e[0;91m\][\u@\h \W]\$ \[\e[0m\]'
 
 alias ls='ls --color=auto'
-alias ll='ls -lah --color=auto'
+alias ll='ls -lAh --color=auto'
 alias cfgc='/usr/bin/git --git-dir=$HOME/.mycfg_cross_platform/ --work-tree=$HOME'
 alias cfgl='/usr/bin/git --git-dir=$HOME/.mycfg_local/ --work-tree=$HOME'
 alias datec='TZ=Asia/Shanghai date "+%a %m/%d/%Y %H:%M:%S UTC%:::z"'
