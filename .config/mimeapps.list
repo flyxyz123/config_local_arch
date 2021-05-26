@@ -1,4 +1,7 @@
+# it seems there's no need to put sxiv.desktop into ~/.local/share/applications/ if there exist sxiv.desktop in /usr/share/applications
+# but if you what to create new .desktop desktop entries with new name, you need to put it in ~/.local/share/applications/
+
 [Default Applications]
-image/gif=mpvgif.desktop
+image/gif=sxiv.desktop;
 image/png=sxiv.desktop;
 image/jpeg=sxiv.desktop;
