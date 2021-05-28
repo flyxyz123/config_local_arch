@@ -1,2 +1,2 @@
 alt + Print
-	ffmpeg -f x11grab -i $DISPLAY -vframes 1 $HOME/pictures/screenshots/$($HOME/programs/my_scripts/time.uuid.sh).png
+	ffmpeg -f x11grab -i $DISPLAY -vframes 1 $HOME/pictures/screenshots/$(time.uuid).png

@@ -37,7 +37,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
 while true; do
-	$HOME/programs/my_scripts/set_dwm_status_bar.sh
+	set_dwm_status_bar
 	sleep 1
 done &
 
