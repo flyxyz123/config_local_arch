@@ -1,6 +1,11 @@
+cursor:
+  style:
+    shape: Beam
+  vi_mode_style: Block
+
 # when set TERM use following code on windows, syntax is very bad
 #env:
-#    TERM: alacritty
+#  TERM: alacritty
 
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
