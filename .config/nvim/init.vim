@@ -21,10 +21,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o f
 " if use FileType *, nvim can't recognize some file extensions, ex: .csv
 autocmd BufRead * let fenc_bef = Autocmd_set_fenc()
 
-" windows 10 bug, need this to change cursor back to vertical bar after leaving neovim
-" the number after ver seems no effects, maybe because neovim is exited
-" https://github.com/alacritty/alacritty/issues/2839#issuecomment-766421840
-autocmd VimLeave * set guicursor=a:ver25
 
 language en_US
 set number relativenumber
@@ -49,6 +45,10 @@ set encoding=utf-8
 " some file on win10 display as unix but is dos
 if has("win32")
 	set fileformats=dos
+	" windows 10 bug, need this to change cursor back to vertical bar after leaving neovim
+	" the number after ver seems no effects, maybe because neovim is exited
+	" https://github.com/alacritty/alacritty/issues/2839#issuecomment-766421840
+	autocmd VimLeave * set guicursor=a:ver25
 endif
 
 " don't generate those three types of files
