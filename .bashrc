@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+source /usr/share/fzf/completion.bash
+source /usr/share/fzf/key-bindings.bash
+
 # default PS1
 #PS1='[\u@\h \W]\$ '
 

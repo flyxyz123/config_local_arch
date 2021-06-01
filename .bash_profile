@@ -14,6 +14,7 @@ export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 #export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_STYLE_OVERRIDE=kvantum
 export PATH="$(find ~/.local/bin -type d -printf %p:)$PATH"
+export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude .git"
 
 # startx when login, should be put after environmental variables for .xinitrc to use
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
