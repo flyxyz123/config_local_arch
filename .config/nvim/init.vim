@@ -21,6 +21,8 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o f
 " if use FileType *, nvim can't recognize some file extensions, ex: .csv
 autocmd BufRead * let fenc_bef = Autocmd_set_fenc()
 
+" similar to filetype.vim code, .csx seems not c# but c# script file, setfiletype cs seems work tho
+autocmd BufNewFile,BufRead *.csx setfiletype cs
 
 language en_US
 set number relativenumber
