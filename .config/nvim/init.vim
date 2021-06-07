@@ -11,9 +11,6 @@ function Autocmd_set_fenc()
 	return fenc_bef
 endfunction
 
-" seems needs this for autocmd FileType * to work? 
-filetype plugin on
-
 " not fully understood augroup, recommanded in :help
 " https://www.youtube.com/watch?v=dBBUOO1PRIU
 augroup mycmd
@@ -28,6 +25,9 @@ augroup mycmd
 	" set syntax=cs also works
 	autocmd BufNewFile,BufRead *.csx setfiletype cs
 augroup END
+
+" seems needs this for autocmd FileType * to work? 
+filetype plugin on
 
 language en_US
 set number relativenumber
@@ -100,7 +100,9 @@ set statusline+=\ %m
 set statusline+=%=
 set statusline+=\ %y
 "set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\ %{fenc_bef?fenc_bef:&fileencoding}
+" below line doesn't work as expected, not sure why
+"set statusline+=\ %{fenc_bef?fenc_bef:&fileencoding}
+set statusline+=\ %{fenc_bef}
 set statusline+=\ \[%{&fileformat}\]
 set statusline+=\ %-10.(%l,%c%V%)
 set statusline+=\ %P
