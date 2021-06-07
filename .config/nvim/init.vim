@@ -14,17 +14,20 @@ endfunction
 " seems needs this for autocmd FileType * to work? 
 filetype plugin on
 
-" disable auto line break (tc) and insert comment (cro)
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=t
-
-" auto rewrite as utf-8 if not when :w
-" if use FileType *, nvim can't recognize some file extensions, ex: .csv
-autocmd BufRead * let fenc_bef = Autocmd_set_fenc()
-
-" similar to filetype.vim code, use setfiletype
-" .csx seems not c# but c# script file, this works tho
-" set syntax=cs also works
-autocmd BufNewFile,BufRead *.csx setfiletype cs
+" not fully understood augroup, recommanded in :help
+" https://www.youtube.com/watch?v=dBBUOO1PRIU
+augroup mycmd
+	autocmd!
+	" disable auto line break (tc) and insert comment (cro)
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=t
+	" auto rewrite as utf-8 if not when :w
+	" if use FileType *, nvim can't recognize some file extensions, ex: .csv
+	autocmd BufRead * let fenc_bef = Autocmd_set_fenc()
+	" similar to filetype.vim code, use setfiletype
+	" .csx seems not c# but c# script file, this works tho
+	" set syntax=cs also works
+	autocmd BufNewFile,BufRead *.csx setfiletype cs
+augroup END
 
 language en_US
 set number relativenumber
@@ -52,7 +55,8 @@ if has("win32")
 	" windows 10 bug, need this to change cursor back to vertical bar after leaving neovim
 	" the number after ver seems no effects, maybe because neovim is exited
 	" https://github.com/alacritty/alacritty/issues/2839#issuecomment-766421840
-	autocmd VimLeave * set guicursor=a:ver25
+	" use of ! after autocmd see youtube video above, not fully understood
+	autocmd! VimLeave * set guicursor=a:ver25
 endif
 
 " don't generate those three types of files
