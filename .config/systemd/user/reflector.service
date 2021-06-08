@@ -2,7 +2,6 @@
 # /usr/lib/systemd/system/reflector.service
 # /usr/lib/systemd/system/reflector.timer
 # /etc/xdg/reflector/reflector.conf
-# https://www.youtube.com/watch?v=ou369IE7fw8
 
 # how to use:
 # sudo systemctl enable --now ~/.config/systemd/user/reflector

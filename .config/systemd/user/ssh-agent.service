@@ -1,3 +1,6 @@
+# how to use:
+# systemctl --user enable --now ssh-agent
+
 [Unit]
 Description=SSH key agent
 
