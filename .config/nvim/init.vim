@@ -1,3 +1,6 @@
+" :h markdown
+let g:markdown_folding = 1
+
 " if without, nvim with no file will give error because it's not defined?
 let fenc_bef = 0
 
