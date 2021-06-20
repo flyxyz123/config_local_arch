@@ -1,6 +1,6 @@
 " :h markdown
 let g:markdown_folding = 1
-let g:markdown_minlines = 100
+let g:markdown_minlines = 500
 
 " if without, nvim with no file will give error because it's not defined?
 let fenc_bef = 0
@@ -68,13 +68,15 @@ set nobackup
 set noswapfile
 set noundofile
 
-"call plug#begin()
+" https://github.com/junegunn/vim-plug
+call plug#begin()
 "Plug 'preservim/nerdtree'
-"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" https://github.com/junegunn/fzf.vim#commands
+Plug 'junegunn/fzf.vim'
 "Plug 'vim-airline/vim-airline' 
 "Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
-"call plug#end()
+call plug#end()
 
 " gg=G work for .xml files now,:h matchit-activate
 " https://stackoverflow.com/questions/21408222/vim-indent-xml-file/28365920#28365920
