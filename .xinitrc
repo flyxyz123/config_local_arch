@@ -46,5 +46,9 @@ fcitx5 -d &
 redshift &
 sxhkd &
 udiskie &
-xwallpaper --maximize $HOME/pictures/wallpaper.png
+# default fastest windows 10 keyboard repeat delay and rate
+# without editing registry, using filter key, or other third party program
+# see http://stereopsis.com/keyrepeat/
+xset r rate 250 30 &
+xwallpaper --maximize $HOME/pictures/wallpaper.png &
 exec dwm
