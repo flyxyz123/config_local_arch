@@ -1,6 +1,6 @@
 " :h markdown
 let g:markdown_folding = 1
-let g:markdown_minlines = 100
+let g:markdown_minlines = 150
 
 " if without, nvim with no file will give error because it's not defined?
 let fenc_bef = 0
