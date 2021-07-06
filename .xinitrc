@@ -43,6 +43,7 @@ done &
 
 dunst &
 fcitx5 -d &
+picom -b
 redshift &
 sxhkd &
 udiskie &
