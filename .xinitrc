@@ -41,6 +41,7 @@ while true; do
 	sleep 1
 done &
 
+#clipmenud &
 dunst &
 fcitx5 -d &
 redshift &
