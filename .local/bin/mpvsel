@@ -1,0 +1,11 @@
+#!/bin/sh
+# references:
+# https://www.rockyourcode.com/til-how-to-watch-youtube-videos-with-mpv-and-keyboard-shortcuts/
+# https://github.com/mpv-player/mpv/issues/7792
+
+url=$(xsel -ob)
+case $url in
+	*"youtu"*) mpv --fs --speed=2 --af=rubberband=pitch-scale=0.981818181818181 $url ;;
+	*"douyu"*) alacritty -e mpv $(basename $url | python $HOME/programs/real-url/douyu.py | tail -1) ;;
+	*) echo "Clipboard url not supportted." >&2; exit 1 ;;
+esac

@@ -3,3 +3,6 @@ alt + Print
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	amixer set Master {5%+,5%-,toggle}
+
+alt + y
+	mpvsel
