@@ -19,12 +19,19 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 #export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_STYLE_OVERRIDE=kvantum
-#export FZF_DEFAULT_COMMAND="fd --no-ignore --hidden --exclude .git"
-export FZF_DEFAULT_COMMAND="sudo find . -path '*/\.git' -prune -o -print"
-#export FZF_CTRL_T_COMMAND="fd --absolute-path --no-ignore --hidden --exclude .git"
-export FZF_CTRL_T_COMMAND="sudo find $(pwd) -path '*/\.git' -prune -o -print"
-export FZF_ALT_C_COMMAND="sudo find . -path '*/\.git' -prune -o -type d -print"
 export SDCV_PAGER="less --quit-if-one-screen -RX"
+
+export FZF_DEFAULT_COMMAND="fd --no-ignore --hidden --exclude .git"
+export FZF_CTRL_T_COMMAND="fd --absolute-path --no-ignore --hidden --exclude .git"
+export FZF_ALT_C_COMMAND="fd --no-ignore --hidden --type d --exclude .git"
+#export FZF_DEFAULT_COMMAND="sudo find . -path '*/\.git' -prune -o -print"
+# https://askubuntu.com/questions/444551/get-absolute-path-of-files-using-find-command
+# following two lines if use "" on the outermost, will not perfom expected, not sure why
+#export FZF_CTRL_T_COMMAND='sudo find $PWD -path "*/\.git" -prune -o -print'
+#export FZF_CTRL_T_COMMAND='sudo find $(pwd) -path "*/\.git" -prune -o -print'
+# ~+ is bashism
+#export FZF_CTRL_T_COMMAND="sudo find ~+ -path '*/\.git' -prune -o -print"
+#export FZF_ALT_C_COMMAND="sudo find . -path '*/\.git' -prune -o -type d -print"
 
 # for clipmenu
 # set clipmenud to store clipboard only, don't store selection (primary)
