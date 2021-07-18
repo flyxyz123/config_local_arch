@@ -6,6 +6,6 @@
 url=$(xsel -ob)
 case $url in
 	*"youtu"*) mpv --ytdl-format="bestvideo[height<=?900][fps<=?30][vcodec!=?vp9]+bestaudio/best" --ytdl-raw-options='write-sub=,sub-lang="en,en-US,en-GB,zh-CN,zh-Hans,zh-Hant,zh-HK,zh-SG,zh-TW"' --fs --speed=2 --af=rubberband=pitch-scale=0.981818181818181 $url ;;
-	*"douyu"*) alacritty -e mpv $(basename $url | python $HOME/programs/real-url/douyu.py | tail -1) ;;
+	*"douyu"*) alacritty -e mpv $(basename $url | python $HOME/programs/real-url/douyu.py | tail -1) & ;;
 	*) echo "Clipboard url not supportted." >&2; exit 1 ;;
 esac
