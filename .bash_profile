@@ -7,16 +7,22 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+export PATH="$(find ~/.local/bin -type d -printf %p:)$PATH"
+export HISTSIZE=1000
+export HISTFILESIZE=1000
+
 export MANPAGER="nvim +Man!"
 export EDITOR=nvim
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 #export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_STYLE_OVERRIDE=kvantum
-export PATH="$(find ~/.local/bin -type d -printf %p:)$PATH"
-#export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude .git"
+#export FZF_DEFAULT_COMMAND="fd --no-ignore --hidden --exclude .git"
 export FZF_DEFAULT_COMMAND="sudo find . -path '*/\.git' -prune -o -print"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+#export FZF_CTRL_T_COMMAND="fd --absolute-path --no-ignore --hidden --exclude .git"
+export FZF_CTRL_T_COMMAND="sudo find $(pwd) -path '*/\.git' -prune -o -print"
 export FZF_ALT_C_COMMAND="sudo find . -path '*/\.git' -prune -o -type d -print"
 export SDCV_PAGER="less --quit-if-one-screen -RX"
 
