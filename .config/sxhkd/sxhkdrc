@@ -6,3 +6,6 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 
 alt + y
 	mpvsel
+
+alt + w
+	firefox
