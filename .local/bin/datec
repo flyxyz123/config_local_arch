@@ -1,3 +1,3 @@
 #!/bin/sh
 
-TZ=Asia/Shanghai date "+%a %m/%d/%Y %H:%M:%S UTC%:::z"
+TZ=Asia/Shanghai date '+%a %m/%d/%Y %H:%M:%S UTC%:::z'

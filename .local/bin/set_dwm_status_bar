@@ -1,9 +1,11 @@
 #!/bin/sh
 
-xsetroot -name "$(date "+%a %m/%d %H:%M") \
+xsetroot -name "$(date '+%a %m/%d %H:%M') \
+| $(TZ=Asia/Shanghai date '+/%d %H:') \
 | $(if xset q | grep -q "Caps Lock: *on"; then echo A; else echo a; fi) \
 | $(cat /sys/class/net/wlp6s0/operstate) \
-| $(free -h | awk '(NR==2){ print $4 }') \
-| $(sed 's/000$/°C/' /sys/class/thermal/thermal_zone0/temp) \
 | $(amixer get Master | awk -F'[][]' 'END{ print $6" "$2 }') \
 | $(cat /sys/class/power_supply/BAT1/capacity)%"
+
+#| $(free -h | awk '(NR==2){ print $4 }') \
+#| $(sed 's/000$/°C/' /sys/class/thermal/thermal_zone0/temp) \
