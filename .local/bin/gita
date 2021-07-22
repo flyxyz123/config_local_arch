@@ -1,0 +1,28 @@
+#!/bin/sh
+
+#if [ -z "$2" ]; then
+#	cmd=git
+#elif [ "$2" = 'l' ]; then
+#	cmd=cfgl
+#elif [ "$2" = 'c' ]; then
+#	cmd=cfgc
+#else
+#	exit 1
+#fi
+
+if [ -n "$2" ]; then
+	case $2 in
+		l) cmd=cfgl ;;
+		c) cmd=cfgc ;;
+		*) exit 1 ;;
+	esac
+else
+	cmd=git
+fi
+"$cmd" add -u
+if [ -z "$1" ]; then
+	"$cmd" commit -m "patch"
+else
+	"$cmd" commit -m "$1"
+fi
+"$cmd" push
