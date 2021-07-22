@@ -1,0 +1,10 @@
+#!/bin/sh
+
+for dir ; do
+	git -C "$dir" checkout master 
+	git -C "$dir" pull upstream master
+	git -C "$dir" push
+	git -C "$dir" checkout fly
+	git -C "$dir" merge --no-edit master
+	git -C "$dir" push
+done
