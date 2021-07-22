@@ -23,8 +23,6 @@ alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 
 alias ll="ls -lAh --color=auto --group-directories-first"
-#alias cfgc="/usr/bin/git --git-dir=$HOME/.mycfg_cross_platform/ --work-tree=$HOME"
-#alias cfgl="/usr/bin/git --git-dir=$HOME/.mycfg_local/ --work-tree=$HOME"
 
 alias v="$EDITOR"
 alias g=git
