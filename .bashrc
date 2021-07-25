@@ -18,6 +18,7 @@ source /usr/share/fzf/key-bindings.bash
 PS1="\[\e[0;91m\][\u@\h \W]\$ \[\e[0m\]"
 
 alias ls="ls --color=auto"
+alias rm="rm -vI"
 alias sdcv="sdcv --color"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
