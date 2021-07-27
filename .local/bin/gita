@@ -1,19 +1,5 @@
 #!/bin/sh
 
-#case "$2" in
-#	'') cmd=git ;;
-#	l) cmd=cfgl ;;
-#	c) cmd=cfgc ;;
-#	*) exit 1 ;;
-#esac
-#"$cmd" add -u
-#if [ -z "$1" ]; then
-#	"$cmd" commit -m "patch"
-#else
-#	"$cmd" commit -m "$1"
-#fi
-#"$cmd" push
-
 cmd='git'
 mes='patch'
 
