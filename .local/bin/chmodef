@@ -1,0 +1,4 @@
+#!/bin/sh
+
+find "$@" -type d -execdir chmod 755 -- '{}' \+
+find "$@" -type f -execdir chmod 644 -- '{}' \+
