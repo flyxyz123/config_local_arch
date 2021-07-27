@@ -51,5 +51,5 @@ udiskie &
 # without editing registry, using filter key, or other third party program
 # see http://stereopsis.com/keyrepeat/
 xset r rate 250 30 &
-xwallpaper --maximize $HOME/pictures/wallpaper.png &
+shufwall &
 exec dwm
