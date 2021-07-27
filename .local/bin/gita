@@ -1,16 +1,17 @@
 #!/bin/sh
 
 cmd='git'
-mes='patch'
 
-while getopts lcm: f; do
+while getopts lc f; do
 	case $f in
 		l) cmd='cfgl';;
 		c) cmd='cfgc';;
-		m) mes="$OPTARG" ;;
 		\?) exit 1;;
 	esac
 done
+shift $((OPTIND-1))
+
+mes="${1:-patch}"
 
 "$cmd" add -u
 "$cmd" commit -m "$mes"
