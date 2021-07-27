@@ -1,1 +1,5 @@
 auto-reload yes
+
+# https://newsboat.org/releases/2.24/docs/newsboat.html#_killfiles
+# https://newsboat.org/releases/2.24/docs/newsboat.html#_filter_language
+ignore-article "https://bugs.archlinux.org/feed.php?feed_type=rss2&topic=edit&project=1" "title !~ \"FS#47508\""
