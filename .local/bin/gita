@@ -1,4 +1,5 @@
 #!/bin/sh
+# note message string must come after options
 
 cmd='git'
 
