@@ -1,5 +1,6 @@
 #!/bin/sh
-# can improve by passing $@ to functions but seems need bashism
+# can improve by passing $@ to functions, but seems need bashism, or abandon functions
+# maybe use $1 for getext and use getopts, maybe seperate getext as another script
 # references: 
 # https://stackoverflow.com/questions/1842254/how-can-i-find-all-of-the-distinct-file-extensions-in-a-folder-hierarchy
 
