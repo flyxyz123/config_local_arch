@@ -22,6 +22,7 @@ alias rm="rm -vI"
 alias sdcv="sdcv --color"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
+alias absolutely-proprietary="absolutely-proprietary -f"
 
 alias ll="ls -lAh --color=auto --group-directories-first"
 
