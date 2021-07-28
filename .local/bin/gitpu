@@ -1,10 +1,19 @@
 #!/bin/sh
 
-for dir ; do
-	git -C "$dir" checkout master 
-	git -C "$dir" pull upstream master
-	git -C "$dir" push
-	git -C "$dir" checkout fly
-	git -C "$dir" merge --no-edit master
-	git -C "$dir" push
-done
+if [ -z "$1" ]; then
+	git checkout master 
+	git pull upstream master
+	git push
+	git checkout fly
+	git merge --no-edit master
+	git push
+else
+	for dir ; do
+		git -C "$dir" checkout master 
+		git -C "$dir" pull upstream master
+		git -C "$dir" push
+		git -C "$dir" checkout fly
+		git -C "$dir" merge --no-edit master
+		git -C "$dir" push
+	done
+fi

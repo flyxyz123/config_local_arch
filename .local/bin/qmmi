@@ -1,5 +1,21 @@
-#/bin/sh
+#!/bin/sh
 
-qmake
-make -B
-sudo make install
+foo ()
+{
+	qmake
+	make -B
+	sudo make install
+}
+
+origin="$PWD"
+
+if [ -z "$1" ]; then
+	foo
+else
+	for dir ; do
+		cd "$dir" || exit 1
+		foo
+		cd "$origin" || exit 1
+	done
+fi
+
