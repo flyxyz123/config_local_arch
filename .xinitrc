@@ -34,7 +34,7 @@ fi
 
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
+export XMODIFIERS='@im=fcitx'
 
 while true; do
 	set_dwm_status_bar
