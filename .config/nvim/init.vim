@@ -7,12 +7,15 @@ let fenc_bef = 0
 
 " I use only one return for better readability
 function Autocmd_set_fenc()
-	let fenc_bef = &fileencoding
-	if &fileencoding != "utf-8"
+	" need to test &modifiable for gO
+	if &modifiable && (&fileencoding != "utf-8")
+		let l:fenc_bef = &fileencoding
 		setlocal fileencoding=utf-8
 		unsilent echom ":w to rewrite as utf-8"
+		return l:fenc_bef
+	else
+		return &fileencoding
 	endif
-	return fenc_bef
 endfunction
 
 " not fully understood augroup, recommanded in :help
