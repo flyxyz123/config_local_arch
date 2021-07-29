@@ -18,4 +18,3 @@ else
 		cd "$origin" || exit 1
 	done
 fi
-

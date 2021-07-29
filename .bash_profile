@@ -12,7 +12,7 @@ export PATH="$(find ~/.local/bin -type d -printf %p:)$PATH"
 export HISTSIZE=4000
 export HISTFILESIZE=4000
 
-export MANPAGER="nvim +Man!"
+export MANPAGER='nvim +Man!'
 export EDITOR=nvim
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
