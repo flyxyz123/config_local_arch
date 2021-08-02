@@ -12,7 +12,7 @@ while getopts lc f; do
 done
 shift $((OPTIND-1))
 
-mes="${1:-patch}"
+mes="${1:-refactor}"
 
 "$cmd" add -u
 "$cmd" commit -m "$mes"
