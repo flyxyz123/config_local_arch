@@ -4,13 +4,17 @@
 http://keygenmusic.net/rss.php recreation
 
 # computer misc
-https://suckless.org/atom.xml "computer misc"
+https://suckless.org/atom.xml
 
 # arch linux
-https://archlinux.org/feeds/news/ "Arch Linux"
-https://bbs.archlinux.org/extern.php?action=feed&tid=260286&type=atom "Arch Linux"
-https://bugs.archlinux.org/feed.php?feed_type=rss2&topic=edit&project=1 "Arch Linux"
+https://archlinux.org/feeds/news/
+https://bbs.archlinux.org/extern.php?action=feed&tid=260286&type=atom
+https://aur.archlinux.org/rss/
+# arch linux development feeds: all projects
+https://bugs.archlinux.org/feed.php?feed_type=rss2&project=0
+https://bugs.archlinux.org/feed.php?feed_type=rss2&topic=edit&project=0
+https://bugs.archlinux.org/feed.php?feed_type=rss2&topic=clo&project=0
 
 # qmmp
-https://sourceforge.net/p/qmmp-dev/tickets/590/feed.atom qmmp
-https://sourceforge.net/p/qmmp-dev/tickets/714/feed.atom qmmp
+https://sourceforge.net/p/qmmp-dev/tickets/590/feed.atom
+https://sourceforge.net/p/qmmp-dev/tickets/714/feed.atom

@@ -2,4 +2,13 @@ auto-reload yes
 
 # https://newsboat.org/releases/2.24/docs/newsboat.html#_killfiles
 # https://newsboat.org/releases/2.24/docs/newsboat.html#_filter_language
-ignore-article "https://bugs.archlinux.org/feed.php?feed_type=rss2&topic=edit&project=1" "title !~ \"FS#47508\""
+
+# not sure if all following arch linux rss feed ignore-article will work as expected
+# maybe aur rss feed is broken; maybe arch linux feeds are updated very fast so I can't get the wanted news? 
+# not fully understand the rss feed
+ignore-article "https://aur.archlinux.org/rss/" "title !~\"youtube-dlp|yt-dlp\""
+# arch linux development feeds: all project
+ignore-article "https://bugs.archlinux.org/feed.php?feed_type=rss2&project=0" "title !~ \"wildmidi|aur.*(rss|feed)|(rss|feed).*aur\""
+ignore-article "https://bugs.archlinux.org/feed.php?feed_type=rss2&topic=edit&project=0" "title !~ \"FS#(47508|71501|71453|70113|69492)|wildmidi|aur.*(rss|feed)|(rss|feed).*aur\""
+ignore-article "https://bugs.archlinux.org/feed.php?feed_type=rss2&topic=clo&project=0" "title !~ \"FS#(47508|71501|71453|70113|69492)|wildmidi|aur.*(rss|feed)|(rss|feed).*aur\""
+
