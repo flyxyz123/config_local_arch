@@ -4,11 +4,6 @@
 # references: 
 # https://stackoverflow.com/questions/1842254/how-can-i-find-all-of-the-distinct-file-extensions-in-a-folder-hierarchy
 
-getext ()
-{
-	find . -maxdepth 1 -type f | awk -F. '!a[$NF]++{print $NF}'
-}
-
 outdir ()
 { 
 	find . -type f -execdir mv -t "$PWD" '{}' \+ 
@@ -18,13 +13,12 @@ outdir ()
 # may further optimize by output file extension names to a variable and use it for both mkdir and mv, current is fast enough for me
 indir ()
 {
-	getext | xargs mkdir
+	find . -maxdepth 1 -type f | awk -F. '!a[$NF]++{print $NF}' | xargs mkdir
 	# don't know why -print0/-0 for find and xargs doesn't work here
 	find . -mindepth 1 -maxdepth 1 -type d -execdir basename '{}' \; | xargs -I _ find . -maxdepth 1 -type f -name '*._' -execdir mv -t '_' '{}' \+
 }
 
 case "$1" in
-	'-e') getext;;
 	'-o') outdir;;
 	'-i') indir;;
 	*) outdir; indir;;
