@@ -37,6 +37,7 @@ flip() {
 }
 
 case "$1" in
+	"c") tr '\n' '\0' | xargs -0 setsid -f sxiv ;;
 	"d") [ "$(promptd "delete?")" = "Yes" ] && tr '\n' '\0' | xargs -0 rm ;;
 	"e") while read file; do alacritty -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
 	"f") flip ;;
