@@ -1,3 +1,5 @@
+# vim: ft=sh
+
 alt + Print
 	ffmpeg -f x11grab -i "$DISPLAY" -vframes 1 "$HOME"/pictures/screenshots/"$(time.uuid)".png
 
@@ -9,3 +11,6 @@ alt + y
 
 alt + w
 	firefox
+
+XF86Audio{Prev,Play,Next}
+	playerctl {previous,play-pause,next}
