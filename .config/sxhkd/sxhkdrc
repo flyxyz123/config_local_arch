@@ -5,7 +5,7 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 	amixer set Master {5%+,5%-,toggle}
 
 alt + y
-	mpvsel 2>&1 | xargs -0 notify-send
+	mpvsel || notify-send "mpvsel failed"
 
 alt + w
 	firefox
