@@ -37,7 +37,6 @@ flip() {
 }
 
 case "$1" in
-	"c") tr '\n' '\0' | xargs -0 realpath | xsel -b ;;
 	"d") [ "$(promptd "delete?")" = "Yes" ] && tr '\n' '\0' | xargs -0 rm ;;
 	"e") while read file; do alacritty -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
 	"f") flip ;;
@@ -45,5 +44,6 @@ case "$1" in
 	"l") tr '\n' '\0' | xargs -0 realpath -z | xargs -0 ln -s -t "$HOME/pictures/wallpapers" ;;
 	"r") rotate ;;
 	"w") tr '\n' '\0' | xargs -0 xwallpaper --maximize ;;
+	"y") tr '\n' '\0' | xargs -0 realpath | xsel -b ;;
 esac
 
