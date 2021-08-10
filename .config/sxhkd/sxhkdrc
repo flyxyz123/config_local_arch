@@ -12,5 +12,8 @@ alt + y
 alt + w
 	firefox
 
+alt + s
+	shufwall
+
 XF86Audio{Prev,Play,Next}
 	playerctl {previous,play-pause,next}
