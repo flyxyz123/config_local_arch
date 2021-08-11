@@ -20,7 +20,7 @@ if [ "$dim" -ne "$ratio" ]; then
 		chopgeom="0x$chopnum"	
 		height=$(echo "$width*$hratio/$wratio" | bc)
 	fi
-	# may throw error sort: write failed: 'standard output': Broken pipe \n sort: write error
+	# may throw error "sort: write failed: 'standard output': Broken pipe \n sort: write error"
 	# caused by head exit (or close stdin) before sort output complete, can ignore
 	# https://stackoverflow.com/questions/46202653/bash-error-in-sort-sort-write-failed-standard-output-broken-pipe
 	bgcolor=$(convert "$1" -gravity center -chop "$chopgeom" -define histogram:unique-colors=true -format %c histogram:info:- | sort -rn | head -n1 | awk \{print\ \$3\} | cut -c1-7)
