@@ -1,7 +1,7 @@
 #!/bin/sh
 
 git clone "$1"
-cd "$(basename "$1" .git)" || exit
+cd "$(basename "$1" .git)" || exit 1
 git remote add upstream "$2"
 git branch fly
 git checkout fly
