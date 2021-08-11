@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# 16:9 screen resolution ratio
+wratio=16
+hratio=9
+chopnum=99%
+
+width=$(identify -format '%w' "$1")
+height=$(identify -format '%h' "$1")
+
+dim=$(echo "$width*100/$height" | bc)
+
+if [ "$dim" -ne 177 ]; then
+	if [ "$dim" -lt 177 ]; then
+		chopgeom="${chopnum}x0"	
+		width=$(echo "$height*$wratio/$hratio" | bc)
+	else
+		chopgeom="0x${chopnum}"	
+		height=$(echo "$width*$hratio/$wratio" | bc)
+	fi
+	extgeom="${width}x${height}"
+	bgcolor=$(convert "$1" -gravity center -chop "$chopgeom" -define histogram:unique-colors=true -format %c histogram:info:- | sort -rn | head -n1 | awk \{print\ \$3\} | cut -c1-7)
+	convert "$1" -gravity center -background "$bgcolor" -extent "$extgeom" "$2"
+else
+	echo 'same resolution ratio, no need to convert' >&2
+	exit 1
+fi
