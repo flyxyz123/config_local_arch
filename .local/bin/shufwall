@@ -1,8 +1,9 @@
 #!/bin/sh
 
 if [ -z "$1" ]; then
-	xwallpaper --maximize "$(find -L ~/pictures/wallpapers -type f | shuf -n 1)"
+	file=$(find -L ~/pictures/wallpapers -type f | shuf -n 1)
 else
-	xwallpaper --maximize "$(find -L "$@" -maxdepth 1 -type f | shuf -n 1)"
+	file=$(find -L "$@" -maxdepth 1 -type f | shuf -n 1)
 fi
 
+display -backdrop -window root "$file"
