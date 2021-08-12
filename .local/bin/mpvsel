@@ -6,8 +6,8 @@
 fps=30
 height=900
 
-while getopts h:f: f; do
-	case $f in
+while getopts f:h: opt; do
+	case $opt in
 		f) fps="$OPTARG";;
 		h) height="$OPTARG";;
 		\?) exit 1;;
