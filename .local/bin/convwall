@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# 16:9 screen resolution ratio
+# 16:9 screen aspect ratio
 # 16*100/9 == 177
 wratio=16
 hratio=9
@@ -24,6 +24,7 @@ if [ "$dim" -ne "$ratio" ]; then
 	# caused by head exit (or close stdin) before sort output complete, can ignore
 	# https://stackoverflow.com/questions/46202653/bash-error-in-sort-sort-write-failed-standard-output-broken-pipe
 	bgcolor=$(convert "$1" -gravity center -chop "$chopgeom" -define histogram:unique-colors=true -format %c histogram:info:- | sort -rn | head -n1 | awk \{print\ \$3\} | cut -c1-7)
+	# another approach is to use "$width" or "x$height" for geometry, current approach is more readable
 	convert "$1" -gravity center -background "$bgcolor" -extent "${width}x$height" "$2"
 else
 	echo 'same resolution ratio, no need to convert' >&2
