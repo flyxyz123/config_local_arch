@@ -20,6 +20,7 @@ export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 #export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_STYLE_OVERRIDE=kvantum
 export SDCV_PAGER="less --quit-if-one-screen -RX"
+export SXHKD_SHELL=sh
 
 #export FZF_DEFAULT_COMMAND="fd --no-ignore --hidden --exclude .git"
 #export FZF_CTRL_T_COMMAND="fd --absolute-path --no-ignore --hidden --exclude .git"
