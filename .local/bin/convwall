@@ -6,8 +6,10 @@ hratio=$SCRHEIGHT
 # chop how much from center
 chopnum=99%
 
-width=$(identify -format '%w' "$1")
-height=$(identify -format '%h' "$1")
+# my benchmark shows -ping is much faster than default
+# https://github.com/ImageMagick/ImageMagick/issues/3183#issuecomment-800955241
+width=$(identify -ping -format '%w' "$1")
+height=$(identify -ping -format '%h' "$1")
 
 ratio=$((wratio*100/hratio))
 dim=$((width*100/height))
