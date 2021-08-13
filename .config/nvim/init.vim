@@ -1,9 +1,22 @@
-" :h markdown
-let g:markdown_folding = 1
-let g:markdown_minlines = 200
-
 " if without, nvim with no file will give error because it's not defined?
 let fenc_bef = 0
+
+" https://github.com/junegunn/vim-plug
+call plug#begin()
+"Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" https://github.com/junegunn/fzf.vim#commands
+Plug 'junegunn/fzf.vim'
+"Plug 'vim-airline/vim-airline' 
+"Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
+"Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+" chriskempson/base16-vim doesn't do bold/italic for markdown syntax, and not maintained
+" below two base16 plugins seem both work, both support tree-sitter
+Plug 'fnune/base16-vim'
+"Plug 'RRethy/nvim-base16'
+" nvim-treesitter does not support markdown right now, so wait
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+call plug#end()
 
 " I use only one return for better readability
 function Autocmd_set_fenc()
@@ -33,11 +46,22 @@ augroup mycmd
 	autocmd BufNewFile,BufRead *.csx setfiletype cs
 augroup END
 
+" :h markdown, for vim default tpope/vim-markdown
+"let g:markdown_folding = 1
+let g:markdown_minlines = 500
+
 " seems needs this for autocmd FileType * to work? 
 filetype plugin on
 
+" fold is slow and buggy, at least for different kinds of vim-markdown, disable it, not sure if works or not
+set nofoldenable
+
 language en_US
 set number relativenumber
+
+" need next line for base16 colorscheme to work?
+set termguicolors
+colorscheme base16-tomorrow-night
 
 " set dir to current editing file's dir 
 set autochdir
@@ -70,17 +94,6 @@ endif
 set nobackup
 set noswapfile
 set noundofile
-
-" https://github.com/junegunn/vim-plug
-call plug#begin()
-"Plug 'preservim/nerdtree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" https://github.com/junegunn/fzf.vim#commands
-Plug 'junegunn/fzf.vim'
-"Plug 'vim-airline/vim-airline' 
-"Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
-"Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-call plug#end()
 
 " gg=G work for .xml files now,:h matchit-activate
 " https://stackoverflow.com/questions/21408222/vim-indent-xml-file/28365920#28365920
