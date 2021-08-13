@@ -4,9 +4,9 @@ let fenc_bef = 0
 " https://github.com/junegunn/vim-plug
 call plug#begin()
 "Plug 'preservim/nerdtree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " https://github.com/junegunn/fzf.vim#commands
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf.vim'
 "Plug 'vim-airline/vim-airline' 
 "Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 "Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
