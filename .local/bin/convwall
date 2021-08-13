@@ -9,16 +9,16 @@ chopnum=99%
 width=$(identify -format '%w' "$1")
 height=$(identify -format '%h' "$1")
 
-ratio=$(echo "$wratio*100/$hratio" | bc)
-dim=$(echo "$width*100/$height" | bc)
+ratio=$((wratio*100/hratio))
+dim=$((width*100/height))
 
 if [ "$dim" -ne "$ratio" ]; then
 	if [ "$dim" -lt "$ratio" ]; then
 		chopgeom="${chopnum}x0"	
-		width=$(echo "$height*$wratio/$hratio" | bc)
+		width=$((height*wratio/hratio))
 	else
 		chopgeom="0x$chopnum"	
-		height=$(echo "$width*$hratio/$wratio" | bc)
+		height=$((width*hratio/wratio))
 	fi
 	# may throw error "sort: write failed: 'standard output': Broken pipe \n sort: write error"
 	# caused by head exit (or close stdin) before sort output complete, can ignore
