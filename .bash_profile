@@ -9,8 +9,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 export PATH="$(find ~/.local/bin -type d -printf %p:)$PATH"
-export HISTSIZE=4000
-export HISTFILESIZE=4000
+export HISTSIZE=5000
+export HISTFILESIZE=5000
 
 export MANPAGER='nvim +Man!'
 export EDITOR=nvim
