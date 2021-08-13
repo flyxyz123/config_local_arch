@@ -1,6 +1,7 @@
 #!/bin/sh
 # can improve by passing $@ to functions, but seems need bashism, or abandon functions
-# maybe use $1 for getext and use getopts, maybe seperate getext as another script, maybe add option for using ln instead of mv
+# maybe seperate find extension part and output names as another script with options of recursive or not
+# maybe add option for using ln instead of mv
 # references: 
 # https://stackoverflow.com/questions/1842254/how-can-i-find-all-of-the-distinct-file-extensions-in-a-folder-hierarchy
 
@@ -11,6 +12,7 @@ outdir ()
 }
 
 # may further optimize by output file extension names to a variable and use it for both mkdir and mv, current is fast enough for me
+# maybe better if make all uppercase to lowercase, is it possible to use awk for that?
 indir ()
 {
 	find . -maxdepth 1 -type f | awk -F. '!a[$NF]++{print $NF}' | xargs mkdir
