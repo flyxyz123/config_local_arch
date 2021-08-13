@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# 16:9 screen aspect ratio
-# 16*100/9 == 177
-wratio=16
-hratio=9
+# target image aspect ratio
+wratio=$SCRWIDTH
+hratio=$SCRHEIGHT
+# chop how much from center
 chopnum=99%
 
 width=$(identify -format '%w' "$1")
@@ -27,6 +27,6 @@ if [ "$dim" -ne "$ratio" ]; then
 	# another approach is to use "$width" or "x$height" for geometry, current approach is more readable
 	convert "$1" -gravity center -background "$bgcolor" -extent "${width}x$height" "$2"
 else
-	echo 'same resolution ratio, no need to convert' >&2
+	echo 'same aspect ratio, no need to convert' >&2
 	exit 1
 fi

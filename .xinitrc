@@ -41,6 +41,7 @@ while true; do
 	sleep 1
 done &
 
+shufwall &
 #clipmenud &
 dunst &
 fcitx5 -d &
@@ -51,5 +52,4 @@ udiskie &
 # without editing registry, using filter key, or other third party program
 # see http://stereopsis.com/keyrepeat/
 xset r rate 250 30 &
-shufwall &
 exec dwm
