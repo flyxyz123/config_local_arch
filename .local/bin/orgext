@@ -14,8 +14,7 @@ outdir ()
 indir ()
 {
 	find . -maxdepth 1 -type f | awk -F. '!a[$NF]++{print $NF}' | xargs mkdir
-	# don't know why -print0/-0 for find and xargs doesn't work here
-	find . -mindepth 1 -maxdepth 1 -type d -execdir basename '{}' \; | xargs -I _ find . -maxdepth 1 -type f -name '*._' -execdir mv -t '_' '{}' \+
+	find . -mindepth 1 -maxdepth 1 -type d -execdir basename -az '{}' \+ | xargs -0 -I _ find . -maxdepth 1 -type f -name '*._' -execdir mv -t '_' '{}' \+
 }
 
 case "$1" in
