@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/usr/bin/git --git-dir="$HOME"/.mycfg_cross_platform/ --work-tree="$HOME" "$@"
+/usr/bin/git --git-dir="$HOME/.mycfg_cross_platform/" --work-tree="$HOME" "$@"

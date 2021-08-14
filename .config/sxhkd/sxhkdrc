@@ -1,7 +1,7 @@
 # vim: ft=sh
 
 alt + Print
-	ffmpeg -f x11grab -i "$DISPLAY" -vframes 1 "$HOME/pictures/screenshots/$(time.uuid)".png
+	ffmpeg -f x11grab -i "$DISPLAY" -vframes 1 "$XDG_PICTURES_DIR/screenshots/$(time.uuid)".png
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	amixer set Master {5%+,5%-,toggle}

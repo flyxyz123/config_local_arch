@@ -2,11 +2,17 @@
 # ~/.bashrc
 #
 
+# $- meaning see https://stackoverflow.com/questions/42757236/what-does-mean-in-bash
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+#[[ $- != *i* ]] && return
+# https://github.com/westscz/.dotfiles/blob/master/system/bashrc
+case $- in
+	*i*) ;;
+	*) return;;
+esac
 
-source /usr/share/fzf/completion.bash
-source /usr/share/fzf/key-bindings.bash
+. /usr/share/fzf/completion.bash
+. /usr/share/fzf/key-bindings.bash
 
 # default PS1
 #PS1='[\u@\h \W]\$ '
@@ -17,16 +23,15 @@ source /usr/share/fzf/key-bindings.bash
 # need \[ and \] around color codes so bash ignore color codes when calculating line wraps
 PS1="\[\e[0;91m\][\u@\h \W]\$ \[\e[0m\]"
 
-alias ls="ls --color=auto"
-alias rm="rm -vI"
-alias sdcv="sdcv --color"
-alias grep="grep --color=auto"
-alias diff="diff --color=auto"
-alias absolutely-proprietary="absolutely-proprietary -f"
-
-alias ll="ls -lAh --color=auto --group-directories-first"
-
-alias v="$EDITOR"
-alias g=git
+alias \
+absolutely-proprietary="absolutely-proprietary -f" \
+diff="diff --color=auto" \
+grep="grep --color=auto" \
+ls="ls --color=auto" \
+rm="rm -vI" \
+sdcv="sdcv --color" \
+g=git \
+ll="ls -lAh --color=auto --group-directories-first" \
+v="$EDITOR"
 
 eval "$(zoxide init bash)"

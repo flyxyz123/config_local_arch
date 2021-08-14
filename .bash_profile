@@ -2,11 +2,25 @@
 # ~/.bash_profile
 #
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+# here `. ~/.bashrc` same as `source ~/.bashrc`, see `source filename` in `man bash`, and `. file` in `man dash`
+# `. file` is POSIX compliant, while `source file` is not
+# https://github.com/koalaman/shellcheck/wiki/SC3046
+#[[ -f ~/.bashrc ]] && . ~/.bashrc
+[ -f ~/.bashrc ] && . ~/.bashrc
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+
+. "$XDG_CONFIG_HOME/user-dirs.dirs"
+export XDG_DESKTOP_DIR="$XDG_DESKTOP_DIR"
+export XDG_DOWNLOAD_DIR="$XDG_DOWNLOAD_DIR"
+export XDG_TEMPLATES_DIR="$XDG_TEMPLATES_DIR"
+export XDG_PUBLICSHARE_DIR="$XDG_PUBLICSHARE_DIR"
+export XDG_DOCUMENTS_DIR="$XDG_DOCUMENTS_DIR"
+export XDG_MUSIC_DIR="$XDG_MUSIC_DIR"
+export XDG_PICTURES_DIR="$XDG_PICTURES_DIR"
+export XDG_VIDEOS_DIR="$XDG_VIDEOS_DIR"
 
 export PATH="$(find ~/.local/bin -type d -printf %p:)$PATH"
 export HISTSIZE=5000

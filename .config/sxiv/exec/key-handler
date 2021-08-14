@@ -38,7 +38,7 @@ flip() {
 
 linkwall() {
 	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read -r file; do
-		walldir="$HOME/pictures/wallpapers/"
+		walldir="$XDG_PICTURES_DIR/wallpapers/"
 		name=$(basename "$file")
 		if [ ! -e "$walldir$name" ]; then
 			convwall "$file" "$walldir$name" || ln -s "$file" "$walldir" 
