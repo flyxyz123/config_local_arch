@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xargs gallery-dl --download-archive "$XDG_DOCUMENTS_DIR/database/gallery-dl.sqlite3" -d "$XDG_PICTURES_DIR/anime" < "$XDG_CONFIG_HOME/myconf/gallery_urls"
