@@ -32,6 +32,8 @@ rm="rm -vI" \
 sdcv="sdcv --color" \
 g=git \
 ll="ls -lAh --color=auto --group-directories-first" \
-v="$EDITOR"
+v='$EDITOR' \
+vq='$EDITOR "$XDG_DOCUMENTS_DIR/notes/others/questions_ideas_tips.md"' \
+vc='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/command-line_notes.md"'
 
 eval "$(zoxide init bash)"
