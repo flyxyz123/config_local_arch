@@ -1,17 +1,16 @@
 #!/bin/sh
 
-mm ()
+mi ()
 {
-	make -B
-	sudo make install
+	sudo make -B install
 }
 
 origin="$PWD"
-cmd='mm'
+cmd='mi'
 
 while getopts q opt; do
 	case $opt in
-		q) cmd='qmake;mm';;
+		q) cmd='qmake;mi';;
 		\?) exit 1;;
 	esac
 done
