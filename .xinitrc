@@ -41,7 +41,8 @@ while true; do
 	sleep 1
 done &
 
-shufwall &
+#shufwall &
+display -window root "$XDG_PICTURES_DIR/wallpapers/galaxy_plus_fire.png" &
 #clipmenud &
 dunst &
 fcitx5 -d &
