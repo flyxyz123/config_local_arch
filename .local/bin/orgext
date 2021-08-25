@@ -7,16 +7,16 @@
 
 outdir ()
 { 
-	find . -type f -execdir mv -t "$PWD" '{}' \+ 
-	find . -mindepth 1 -maxdepth 1 -type d -execdir rm -r '{}' \+ 
+	find . -type f -execdir mv -t "$PWD" -- '{}' \+ 
+	find . -mindepth 1 -maxdepth 1 -type d -execdir rm -r -- '{}' \+ 
 }
 
 # may further optimize by output file extension names to a variable and use it for both mkdir and mv, current is fast enough for me
 # maybe better if make all uppercase to lowercase, is it possible to use awk for that?
 indir ()
 {
-	find . -maxdepth 1 -type f | awk -F. '!a[$NF]++{print $NF}' | xargs mkdir
-	find . -mindepth 1 -maxdepth 1 -type d -execdir basename -az '{}' \+ | xargs -0 -I _ find . -maxdepth 1 -type f -name '*._' -execdir mv -t '_' '{}' \+
+	find . -maxdepth 1 -type f | awk -F. '!a[$NF]++{print $NF}' | xargs mkdir --
+	find . -mindepth 1 -maxdepth 1 -type d -execdir basename -az -- '{}' \+ | xargs -0 -I _ find . -maxdepth 1 -type f -name '*._' -execdir mv -t '_' -- '{}' \+
 }
 
 case "$1" in
