@@ -35,6 +35,7 @@ export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 export QT_STYLE_OVERRIDE=kvantum
 export SDCV_PAGER="less --quit-if-one-screen -RX"
 export SXHKD_SHELL=sh
+export _ZO_ECHO=1
 
 # use sudo find for some files or dirs that has no permission ex: ~/.cache/paru/clone/
 #export FZF_DEFAULT_COMMAND="fd --no-ignore --hidden --exclude .git"
