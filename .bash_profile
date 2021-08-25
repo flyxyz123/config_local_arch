@@ -36,6 +36,7 @@ export QT_STYLE_OVERRIDE=kvantum
 export SDCV_PAGER="less --quit-if-one-screen -RX"
 export SXHKD_SHELL=sh
 
+# use sudo find for some files or dirs that has no permission ex: ~/.cache/paru/clone/
 #export FZF_DEFAULT_COMMAND="fd --no-ignore --hidden --exclude .git"
 #export FZF_CTRL_T_COMMAND="fd --absolute-path --no-ignore --hidden --exclude .git"
 #export FZF_ALT_C_COMMAND="fd --no-ignore --hidden --type d --exclude .git"
