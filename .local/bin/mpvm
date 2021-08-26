@@ -1,0 +1,10 @@
+#!/bin/sh
+
+music=${1:-$(find "$XDG_MUSIC_DIR" | fzf)}
+
+# use --loop-file for single file, better performance maybe
+if [ -d "$music" ]; then
+	mpv --shuffle --loop-playlist=inf --video=no "$music"
+elif [ -f "$music" ]; then
+	mpv --loop-file=inf --video=no "$music"
+fi
