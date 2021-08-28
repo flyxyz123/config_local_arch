@@ -5,4 +5,4 @@
 # https://linuxconfig.org/rename-all-files-from-uppercase-to-lowercase-characters
 # if only change ' ' to '_' `rename` might be sufficient, for upper to lower case might need perl-rename if want concise
 # shellcheck suggest use $1 for sh -c for better error messaging? see SC2156
-find "$@" -depth -execdir sh -c 'mv -nvT -- "$0" "$(echo "$0" | tr "[:upper:] " "[:lower:]_")"' '{}' \;
+find "$@" -depth -execdir sh -c 'mv -nvT -- "$1" "$(echo "$1" | tr "[:upper:] " "[:lower:]_")"' sh '{}' \;
