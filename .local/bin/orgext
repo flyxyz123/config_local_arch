@@ -8,8 +8,8 @@
 
 outdir ()
 { 
-	find . -type f -execdir mv -t "$PWD" -- '{}' \+ 
-	find . -mindepth 1 -maxdepth 1 -type d -execdir rm -r -- '{}' \+ 
+	find . -type f -execdir mv -nt "$PWD" -- '{}' \+ 
+	find . -mindepth 1 -maxdepth 1 -type d -delete
 }
 
 # may further optimize by output file extension names to a variable and use it for both mkdir and mv, current is fast enough for me
