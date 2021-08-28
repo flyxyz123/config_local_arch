@@ -1,10 +1,10 @@
 #!/bin/sh
 
-music=${1:-$(find "$XDG_MUSIC_DIR" | fzf)}
-
-# use --loop-file for single file, better performance maybe
-if [ -d "$music" ]; then
-	mpv --shuffle --loop-playlist=inf --video=no "$music"
-elif [ -f "$music" ]; then
-	mpv --loop-file=inf --video=no "$music"
+if [ $# -eq 0 ]; then
+	# fzf has --read0, maybe useful
+	find "$XDG_MUSIC_DIR" | fzf -m --print0 | xargs -0 mpv --shuffle --loop-playlist=inf --video=no
+elif [ $# -eq 1 ]; then
+	mpv --loop-file=inf --video=no "$1"
+else
+	mpv --shuffle --loop-playlist=inf --video=no "$@"
 fi
