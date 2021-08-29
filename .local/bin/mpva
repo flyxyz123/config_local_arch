@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]; then
+	# fzf has --read0, maybe useful
+	# may further improve it by consider fzf select only one file, seems hard without bashism array
+	find "$XDG_MUSIC_DIR" | fzf -m --print0 | xargs -0 mpv --af= --shuffle --loop-playlist=inf --video=no
+elif [ $# -eq 1 ]; then
+	# use --loop-file for single file, better performance maybe
+	mpv --af= --loop-file=inf --video=no "$1"
+else
+	mpv --af= --shuffle --loop-playlist=inf --video=no "$@"
+fi
