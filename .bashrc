@@ -25,6 +25,7 @@ PS1="\[\e[0;91m\][\u@\h \W]\$ \[\e[0m\]"
 
 alias \
 absolutely-proprietary="absolutely-proprietary -f" \
+alsamixer="alsamixer -V all" \
 diff="diff --color=auto" \
 grep="grep --color=auto" \
 ls="ls --color=auto" \

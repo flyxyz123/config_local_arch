@@ -4,8 +4,10 @@ xsetroot -name "$(date '+%a %m/%d %H:%M') \
 | $(TZ=Asia/Shanghai date '+/%d %H:') \
 | $(if xset q | grep -q "Caps Lock: *on"; then echo A; else echo a; fi) \
 | $(cat /sys/class/net/wlp6s0/operstate) \
-| $(amixer get Master | awk -F'[][]' 'END{ print $6" "$2 }') \
+| $(amixer get Master | awk -F'[][]' 'END{print "M "$4" "$2}') \
+| $(amixer get Capture | awk -F'[][]' 'END{print "C "$4}') \
 | $(cat /sys/class/power_supply/BAT1/capacity)%"
 
+#| $(amixer get Master | awk -F'[][]' 'END{ print $6" "$2 }') \
 #| $(free -h | awk '(NR==2){ print $4 }') \
 #| $(sed 's/000$/°C/' /sys/class/thermal/thermal_zone0/temp) \

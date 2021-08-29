@@ -6,6 +6,12 @@ alt + Print
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	amixer set Master {5%+,5%-,toggle}
 
+# for pulseaudio, master volume affects capture volume too? 
+# my laptop built-in microphone capture volume is really low
+# so I want to keep capture volume always 100%
+shift + XF86AudioMute
+	amixer set Capture toggle
+
 alt + y
 	mpvsel || notify-send "mpvsel failed"
 
