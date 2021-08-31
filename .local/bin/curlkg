@@ -22,7 +22,7 @@ done
 [ -z "$uid" ] && echo 'error: must provide share_uid
 ex: curlkg -u 649b9e82272a348b ./' >&2 && exit 1 
 shift $((OPTIND-1))
-download_dir="${1:-./}"
+download_dir="${1:-"$PWD"}"
 [ -d "$download_dir" ] || mkdir -p "$download_dir"
 
 get_json () 
@@ -30,7 +30,7 @@ get_json ()
 	curl -s -G --data-urlencode type=get_uinfo -d outCharset=utf-8 -d start="$1" -d num=$num -d share_uid="$uid" "$homepage_url" | sed -e 's/^MusicJsonCallback(//' -e 's/)$//'
 }
 
-# is it possible not to write to a file? only pipe stdout?
+# is it possible not to write to a file? only pipe stdout? should I?
 get_json 1 > "$tmp_json_file"
 ugc_total_count=$(jq '.data.ugc_total_count' "$tmp_json_file")
 # can also use while loop with i=$((i+1))
