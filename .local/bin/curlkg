@@ -30,14 +30,16 @@ get_json ()
 	curl -s -G --data-urlencode type=get_uinfo -d outCharset=utf-8 -d start="$1" -d num=$num -d share_uid="$uid" "$homepage_url" | sed -e 's/^MusicJsonCallback(//' -e 's/)$//'
 }
 
+# is it possible not to write to a file? only pipe stdout?
 get_json 1 > "$tmp_json_file"
 ugc_total_count=$(jq '.data.ugc_total_count' "$tmp_json_file")
 # can also use while loop with i=$((i+1))
-# maybe can improve to consider if ugc_total_count is num, numx2 ...
-for i in $(seq 2 $((ugc_total_count/num+1))); do
+# the calculation considers both ugc_total_count%num==0 and ugc_total_count%num>0
+for i in $(seq 2 $(((ugc_total_count+num-1)/num))); do
 	get_json "$i" >> "$tmp_json_file"
 done
 
+# how to show less aria2c stdout?
 jq -r '.data.ugclist[]|"'"$music_url"'?shareid=\(.shareid)\n out=\(.title)_\(.time).m4a"' "$tmp_json_file" | aria2c -d "$download_dir" --auto-file-renaming=false -i-
 
 ## ytfzf way with curl only
