@@ -27,6 +27,7 @@ download_dir="${1:-./}"
 
 get_json () 
 {
+	# maybe can improve, use alternative method to sed
 	curl -s -G --data-urlencode type=get_uinfo -d outCharset=utf-8 -d start="$1" -d num=$num -d share_uid="$uid" "$homepage_url" | sed -e 's/^MusicJsonCallback(//' -e 's/)$//'
 }
 
