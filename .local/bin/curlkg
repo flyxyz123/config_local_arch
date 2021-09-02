@@ -55,3 +55,5 @@ jq -r '.data.ugclist[]|"'"$music_url"'?shareid=\(.shareid)\n out=\(.title)_\(.ti
 #done <<- EOF
 #$data
 #EOF
+
+rm "$tmp_json_file"
