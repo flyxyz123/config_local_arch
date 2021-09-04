@@ -1,15 +1,23 @@
 #!/bin/sh
 # rewrite TianyiShi2001's python script which rewrite NeteaseCloudMusicApi node.js pai
+# references:
 # https://github.com/ytdl-org/youtube-dl/issues/18051#issuecomment-859964832
 # https://github.com/Binaryify/NeteaseCloudMusicApi
+# info about encrytion and api: 
+# https://github.com/metowolf/NeteaseCloudMusicApi/wiki
+# https://github.com/darknessomi/musicbox/wiki
 
 # lan lan, aid=48860966, rid=793052426, example id=1397315179,1817498734
 # cheng ruan, aid=46703185, rid=792968433
 
+# trial and error to get dj_max, don't know why, maybe because it is 2^31 and it is the size limit of whatever type of the variable
+dj_max=2147483647
+dl_urls_tmp='/tmp/curlncm_dl_urls'
 key='653832636b656e683864696368656e38'
 url='/api/song/enhance/player/url'
 request_id=$(date +'%s%3N')_$(seq -w 1 1000 | shuf -n1)
-user_agent='User-Agent: Mozilla/5.0 (Linux; U; Android 9; zh-cn; Redmi Note 8 Build/PKQ1.190616.001) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/71.0.3578.141 Mobile Safari/537.36 XiaoMi/MiuiBrowser/12.5.22'
+user_agent='Mozilla/5.0 (Linux; U; Android 9; zh-cn; Redmi Note 8 Build/PKQ1.190616.001) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/71.0.3578.141 Mobile Safari/537.36 XiaoMi/MiuiBrowser/12.5.22'
+cookie="$(printf '"appver":"8.0.0","versioncode":"140","buildver":"1623455100","resolution":"1920x1080","__csrf":"","os":"pc","requestId":"%s"' "$request_id")"
 
 die () 
 {
@@ -27,7 +35,7 @@ while getopts a:i:r: opt; do
 			aid="$OPTARG"
 			flag=1;;
 		i)	[ "$flag" -eq 1 ] && die "options a,i,r are mutually exclusive"
-			ids="$OPTARG"
+			id="$OPTARG"
 			flag=1;;
 		r)	[ "$flag" -eq 1 ] && die "options a,i,r are mutually exclusive"
 			rid="$OPTARG"
@@ -43,39 +51,33 @@ download_dir="${1:-"$PWD"}"
 
 if [ -n "$id" ]; then
 	# temporary solution, can improve by auto curl names
-	names="$id"
-	num=1
+	data="$(printf '%s\t%s' "$id" 'songname')"
 else
 	# need to consider second page of djradio
 	if [ -n "$rid" ]; then
-		data="$(curl -s -G --data-urlencode id="$rid" 'https://music.163.com/djradio' | grep 'songlist\|tt f-thide' | sed -e 's/.*songlist-\(.*\)" class.*/\1/g' -e 's/.*title="\(.*\)".*/\1/g' | paste -sd '\t\n' | sort)"
+		data="$(curl -s -G --data-urlencode id="$rid" -d limit="$dj_max" 'https://music.163.com/djradio' | grep 'songlist\|tt f-thide' | sed -e 's/.*songlist-\(.*\)" class.*/\1/g' -e 's/.*title="\(.*\)".*/\1/g' | paste -sd '\t\n' | sort | tr '/' '_')"
 	elif [ -n "$aid" ]; then
-		data="$(curl -s -G --data-urlencode id="$aid" 'https://music.163.com/artist' | grep -E '\[\{.*\}\]' | sed -e 's/.*>\[{/\[{/' -e 's/}\]<.*/}\]/' | jq -r '.[]|[.id,.name]|@tsv' | sort)"
+		data="$(curl -s -G --data-urlencode id="$aid" 'https://music.163.com/artist' | grep -E '\[\{.*\}\]' | sed -e 's/.*>\[{/\[{/' -e 's/}\]<.*/}\]/' | jq -r '.[]|[.id,.name]|@tsv' | sort | tr '/' '_')"
 	fi
-	# with only awk, has a ',' at the end, not sure bad or not
-	#echo "$data" | awk -F'\t' '{printf "%s,", $1}'
-	ids="$(echo "$data" | awk -F'\t' '{print $1}' | paste -sd ',')"
-	names="$(echo "$data" | awk -F'\t' '{print $2}' | tr '/' '_')"
-	num=$(echo "$names" | wc -l)
 fi
+# with only awk, has a ',' at the end, need to remove that, not sure how to do that in awk, not sure if it's faster?
+#ids="$(echo "$data" | awk -F'\t' '{printf "%s,", $1}')"
+ids="$(echo "$data" | awk -F'\t' '{print $1}' | paste -sd ',')"
 
-# I don't fully understand following severl lines of code
+# I don't fully understand following several lines of code
 # I rewrite TianyiShi2001's python script, he rewrites NeteaseCloudMusicApi
-cookie="$(printf '{"appver":"8.0.0","versioncode":"140","buildver":"1623455100","resolution":"1920x1080","__csrf":"","os":"pc","requestId":"%s"}' "$request_id")"
-text="$(printf '{"ids":"[%s]","br":999000,"header":%s}' "$ids" "$cookie")"
+text="$(printf '{"ids":"[%s]","br":999000,"header":{%s}}' "$ids" "$cookie")"
 message="nobody${url}use${text}md5forencrypt"
 digest="$(printf '%s' "$message" | openssl dgst -md5 -hex | awk '{print $2}')"
 params="$(printf '%s-36cd479b6b5-%s-36cd479b6b5-%s' "$url" "$text" "$digest")"
 encrypted_params="$(printf '%s' "$params" | openssl enc -aes-128-ecb -K "$key" | hexdump -ve '/1 "%02X"')"
-download_urls="$(curl 'https://interface3.music.163.com/eapi/song/enhance/player/url' -s -d params="$encrypted_params" -H "$user_agent" | jq -r '.data|sort_by(.id)|.[].url')"
+# curl default user agent header seems not working
+curl -s -A "$user_agent" -d params="$encrypted_params" 'https://interface3.music.163.com/eapi/song/enhance/player/url' | jq -r '.data|sort_by(.id)|.[].url' > "$dl_urls_tmp"
+[ "$(echo "$data" | wc -l)" -ne "$(wc -l < "$dl_urls_tmp")" ] && die "number of download uls doesn't match request"
 
-# using user agent seems faster? maybe using cookie will be faster too?
-# maybe try to use -i for aria2c, should I? 
 # can't download some music if live abroad, may need proxy or vpn
-for i in $(seq 1 "$num"); do
-	download_url="$(echo "$download_urls" | head -n "$i" | tail -1)"
-	if [ "$download_url" != 'null' ]; then 
-		filename="$(echo "$names" | head -n "$i" | tail -1).mp3"
-		aria2c -U "$user_agent" -d "$download_dir" --auto-file-renaming=false -o "$filename" "$download_url"
-	fi
-done
+# using user_agent, content-type header, cookie header, referer are not necessary? but feels faster
+# not sure about cookie header format for aria2c, this link shows that it's kinda messy, so I didn't use it
+# https://github.com/aria2/aria2/issues/545#issuecomment-650070869
+echo "$data" | awk -F'\t' '{printf(" out=%s_%s.mp3\n",$2,$1)}' | paste "$dl_urls_tmp" - -d '\n' | aria2c -U "$user_agent" --header='Content-Type: application/x-www-form-urlencoded' --referer='https://music.163.com' -d "$download_dir" --auto-file-renaming=false -i-
+rm "$dl_urls_tmp"
