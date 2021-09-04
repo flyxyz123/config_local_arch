@@ -6,7 +6,6 @@
 
 homepage_url='https://node.kg.qq.com/cgi/fcgi-bin/kg_ugc_get_homepage'
 music_url='https://node.kg.qq.com/cgi/fcgi-bin/fcg_get_play_url'
-#tab_space=$(printf '\t')
 # num seems only 8 and 15 works
 num=15
 tmp_json_file='/tmp/curlkg.json'
@@ -41,19 +40,4 @@ done
 
 # how to show less aria2c stdout?
 jq -r '.data.ugclist[]|"'"$music_url"'?shareid=\(.shareid)\n out=\(.title)_\(.time).m4a"' "$tmp_json_file" | aria2c -d "$download_dir" --auto-file-renaming=false -i-
-
-## ytfzf way with curl only
-#data="$(jq -r '.data.ugclist[]|[.shareid,.time,.title]|@tsv' "$tmp_json_file")"
-#while IFS=$tab_space read -r shareid time title; do
-#	filename="$download_dir/${title}_$time.m4a"
-#	if ! [ -e "$filename" ]; then
-#		# may need parallel download and control pid for curl to be faster
-#		curl -L -G --data-urlencode shareid="$shareid" "$music_url" > "$filename"
-#	else
-#		echo "$filename exist"
-#	fi
-#done <<- EOF
-#$data
-#EOF
-
 rm "$tmp_json_file"

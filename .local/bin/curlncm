@@ -13,6 +13,7 @@
 # trial and error to get dj_max, don't know why, maybe because it is 2^31 and it is the size limit of whatever type of the variable
 dj_max=2147483647
 dl_urls_tmp='/tmp/curlncm_dl_urls'
+# printf 'e82ckenh8dichen8' | hexdump -ve '/1 "%02x"'
 key='653832636b656e683864696368656e38'
 url='/api/song/enhance/player/url'
 request_id=$(date +'%s%3N')_$(seq -w 1 1000 | shuf -n1)
@@ -35,7 +36,7 @@ while getopts a:i:r: opt; do
 			aid="$OPTARG"
 			flag=1;;
 		i)	[ "$flag" -eq 1 ] && die "options a,i,r are mutually exclusive"
-			id="$OPTARG"
+			ids="$OPTARG"
 			flag=1;;
 		r)	[ "$flag" -eq 1 ] && die "options a,i,r are mutually exclusive"
 			rid="$OPTARG"
@@ -49,9 +50,9 @@ shift $((OPTIND-1))
 download_dir="${1:-"$PWD"}"
 [ -d "$download_dir" ] || mkdir -p "$download_dir"
 
-if [ -n "$id" ]; then
+if [ -n "$ids" ]; then
 	# temporary solution, can improve by auto curl names
-	data="$(printf '%s\t%s' "$id" 'songname')"
+	data="$(echo "$ids" | tr ',' '\n' | awk '{printf("%s\t%s\n",$0,"songname")}')"
 else
 	# need to consider second page of djradio
 	if [ -n "$rid" ]; then
@@ -59,18 +60,19 @@ else
 	elif [ -n "$aid" ]; then
 		data="$(curl -s -G --data-urlencode id="$aid" 'https://music.163.com/artist' | grep -E '\[\{.*\}\]' | sed -e 's/.*>\[{/\[{/' -e 's/}\]<.*/}\]/' | jq -r '.[]|[.id,.name]|@tsv' | sort | tr '/' '_')"
 	fi
+	# with only awk, has a ',' at the end, need to remove that, not sure how to do that in awk, not sure if it's faster?
+	#ids="$(echo "$data" | awk -F'\t' '{printf "%s,", $1}')"
+	ids="$(echo "$data" | awk -F'\t' '{print $1}' | paste -sd ',')"
 fi
-# with only awk, has a ',' at the end, need to remove that, not sure how to do that in awk, not sure if it's faster?
-#ids="$(echo "$data" | awk -F'\t' '{printf "%s,", $1}')"
-ids="$(echo "$data" | awk -F'\t' '{print $1}' | paste -sd ',')"
+echo "$data"
 
 # I don't fully understand following several lines of code
 # I rewrite TianyiShi2001's python script, he rewrites NeteaseCloudMusicApi
 text="$(printf '{"ids":"[%s]","br":999000,"header":{%s}}' "$ids" "$cookie")"
 message="nobody${url}use${text}md5forencrypt"
-digest="$(printf '%s' "$message" | openssl dgst -md5 -hex | awk '{print $2}')"
+digest="$(printf "$message" | openssl dgst -md5 -hex | awk '{print $2}')"
 params="$(printf '%s-36cd479b6b5-%s-36cd479b6b5-%s' "$url" "$text" "$digest")"
-encrypted_params="$(printf '%s' "$params" | openssl enc -aes-128-ecb -K "$key" | hexdump -ve '/1 "%02X"')"
+encrypted_params="$(printf "$params" | openssl enc -aes-128-ecb -K "$key" | hexdump -ve '/1 "%02X"')"
 # curl default user agent header seems not working
 curl -s -A "$user_agent" -d params="$encrypted_params" 'https://interface3.music.163.com/eapi/song/enhance/player/url' | jq -r '.data|sort_by(.id)|.[].url' > "$dl_urls_tmp"
 [ "$(echo "$data" | wc -l)" -ne "$(wc -l < "$dl_urls_tmp")" ] && die "number of download uls doesn't match request"
