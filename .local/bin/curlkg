@@ -26,7 +26,7 @@ download_dir="${1:-"$PWD"}"
 
 get_json () 
 {
-	curl -s -G --data-urlencode type=get_uinfo -d outCharset=utf-8 -d start="$1" -d num=$num -d share_uid="$uid" "$homepage_url" | sed -e 's/^MusicJsonCallback(//' -e 's/)$//'
+	curl -s -G --data-urlencode type=get_uinfo -d outCharset=utf-8 -d start="$1" -d num=$num -d share_uid="$uid" "$homepage_url" | sed 's/.*({\(.*\)}).*/{\1}/'
 }
 
 # is it possible not to write to a file? only pipe stdout? should I?
