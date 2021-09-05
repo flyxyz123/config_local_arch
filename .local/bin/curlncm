@@ -61,18 +61,20 @@ else
 	elif [ -n "$aid" ]; then
 		data="$(curl -s -G --data-urlencode id="$aid" 'https://music.163.com/artist' | grep -E '\[\{.*\}\]' | sed -e 's/.*>\[{/\[{/' -e 's/}\]<.*/}\]/' | jq -r '.[]|[.id,.name]|@tsv' | sort | tr '/' '_')"
 	fi
-	# with only awk, has a ',' at the end, need to remove that, not sure how to do that in awk, not sure if it's faster?
-	#ids="$(echo "$data" | awk -F'\t' '{printf "%s,", $1}')"
-	ids="$(echo "$data" | awk -F'\t' '{print $1}' | paste -sd ',')"
+	# awk code not print separator at beginning and end steal from:
+	# https://unix.stackexchange.com/a/581785/459013
+	# not sure awk one-liner or paste way which is better, need benchmark
+	ids="$(echo "$data" | awk -F'\t' '{printf "%s%s",sep,$1;sep=","}')"
+	#ids="$(echo "$data" | awk -F'\t' '{print $1}' | paste -sd ',')"
 fi
 
 # I don't fully understand following several lines of code
 # I rewrite TianyiShi2001's python script, he rewrites NeteaseCloudMusicApi
 text="$(printf '{"ids":"[%s]","br":999000,"header":{%s}}' "$ids" "$cookie")"
 message="nobody${url}use${text}md5forencrypt"
-digest="$(printf "$message" | openssl dgst -md5 -hex | awk '{print $2}')"
+digest="$(printf '%s' "$message" | openssl dgst -md5 -hex | awk '{print $2}')"
 params="$(printf '%s-36cd479b6b5-%s-36cd479b6b5-%s' "$url" "$text" "$digest")"
-encrypted_params="$(printf "$params" | openssl enc -aes-128-ecb -K "$key" | hexdump -ve '/1 "%02X"')"
+encrypted_params="$(printf '%s' "$params" | openssl enc -aes-128-ecb -K "$key" | hexdump -ve '/1 "%02X"')"
 # curl default user agent header seems not working
 curl -s -A "$user_agent" -d params="$encrypted_params" 'https://interface3.music.163.com/eapi/song/enhance/player/url' | jq -r '.data|sort_by(.id)|.[].url' > "$dl_urls_tmp"
 [ "$(echo "$data" | wc -l)" -ne "$(wc -l < "$dl_urls_tmp")" ] && die "number of download uls doesn't match request"
