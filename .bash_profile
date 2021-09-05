@@ -23,8 +23,8 @@ export XDG_PICTURES_DIR="$XDG_PICTURES_DIR"
 export XDG_VIDEOS_DIR="$XDG_VIDEOS_DIR"
 
 export PATH="$(find ~/.local/bin -type d -printf %p:)$PATH"
-export HISTSIZE=5000
-export HISTFILESIZE=5000
+export HISTSIZE=7000
+export HISTFILESIZE=7000
 
 export MANPAGER='nvim +Man!'
 export EDITOR=nvim
