@@ -57,6 +57,7 @@ else
 	# need to consider second page of djradio
 	if [ -n "$rid" ]; then
 		data="$(curl -s -G --data-urlencode id="$rid" -d limit="$dj_max" 'https://music.163.com/djradio' | grep 'songlist\|tt f-thide' | sed -e 's/.*songlist-\(.*\)" class.*/\1/g' -e 's/.*title="\(.*\)".*/\1/g' | paste -sd '\t\n' | sort | tr '/' '_')"
+	# can only curl featured 50 songs for the artist, can improve
 	elif [ -n "$aid" ]; then
 		data="$(curl -s -G --data-urlencode id="$aid" 'https://music.163.com/artist' | grep -E '\[\{.*\}\]' | sed -e 's/.*>\[{/\[{/' -e 's/}\]<.*/}\]/' | jq -r '.[]|[.id,.name]|@tsv' | sort | tr '/' '_')"
 	fi
