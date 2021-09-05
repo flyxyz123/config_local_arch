@@ -64,7 +64,6 @@ else
 	#ids="$(echo "$data" | awk -F'\t' '{printf "%s,", $1}')"
 	ids="$(echo "$data" | awk -F'\t' '{print $1}' | paste -sd ',')"
 fi
-echo "$data"
 
 # I don't fully understand following several lines of code
 # I rewrite TianyiShi2001's python script, he rewrites NeteaseCloudMusicApi
