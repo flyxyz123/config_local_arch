@@ -4,13 +4,15 @@ alt + Print
 	ffmpeg -f x11grab -i "$DISPLAY" -vframes 1 "$XDG_PICTURES_DIR/screenshots/$(time.uuid)".png
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
-	amixer set Master {5%+,5%-,toggle}
+	amixer set Master {5%+,5%-,toggle};\
+	kill -RTMIN+1 "$(cat ~/.cache/pidofbar)"
 
 # for pulseaudio, master volume affects capture volume too? 
 # my laptop built-in microphone capture volume is really low
 # so I want to keep capture volume always 100%
 shift + XF86AudioMute
-	amixer set Capture toggle
+	amixer set Capture toggle;\
+	kill -RTMIN "$(cat ~/.cache/pidofbar)"
 
 alt + y
 	mpvsel || notify-send "mpvsel failed"
@@ -23,3 +25,6 @@ alt + s
 
 XF86Audio{Prev,Play,Next}
 	playerctl {previous,play-pause,next}
+
+@Caps_Lock
+	kill -RTMIN+3 "$(cat ~/.cache/pidofbar)"

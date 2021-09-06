@@ -36,10 +36,10 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS='@im=fcitx'
 
-while true; do
-	set_dwm_status_bar
-	sleep 1
-done &
+#while true; do
+#	set_dwm_status_bar
+#	sleep 1
+#done &
 
 #shufwall &
 display -window root "$XDG_PICTURES_DIR/wallpapers/galaxy_plus_fire.png" &
@@ -47,6 +47,7 @@ display -window root "$XDG_PICTURES_DIR/wallpapers/galaxy_plus_fire.png" &
 dunst &
 fcitx5 -d &
 redshift &
+sbar &
 sxhkd &
 udiskie &
 # default fastest windows 10 keyboard repeat delay and rate
