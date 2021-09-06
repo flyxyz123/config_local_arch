@@ -36,11 +36,6 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS='@im=fcitx'
 
-#while true; do
-#	set_dwm_status_bar
-#	sleep 1
-#done &
-
 #shufwall &
 display -window root "$XDG_PICTURES_DIR/wallpapers/galaxy_plus_fire.png" &
 #clipmenud &
