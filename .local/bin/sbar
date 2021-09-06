@@ -1,0 +1,76 @@
+#!/bin/sh
+# steal from pystardust, GPL3 license: https://github.com/pystardust/sbar
+# modified to fit my own need
+
+# INIT
+printf '%s' "$$" > ~/.cache/pidofbar
+sec=0
+
+# MODULES
+update_time () { 
+	time="$(date '+%a %m/%d %H:%M') | $(TZ=Asia/Shanghai date '+/%d %H:')"
+}
+
+update_cap () { 
+	cap="$(if xset q | grep -q "Caps Lock: *on"; then echo A; else echo a; fi)"
+}
+
+update_net () { 
+	net="$(cat /sys/class/net/wlp6s0/operstate)"
+}
+
+update_vol () { 
+	vol="$(amixer get Master | awk -F'[][]' 'END{print "M "$4" "$2}')"
+}
+
+update_mic () { 
+	mic="$(amixer get Capture | awk -F'[][]' 'END{print "C "$4}')"
+}
+
+update_bat () { 
+	bat="$(cat /sys/class/power_supply/BAT1/capacity)%"
+}
+
+# For calcurse users, refer https://github.com/pystardust/automeet
+#update_event () { 
+#	event="$(calcurse -n | sed 1d | \
+#		sed -E "s_^ *\[(.*):(.*)\] ([^\t]*)\t?.*_[\1h \2m->\3]_")" 
+#	[ "[]" = "$event" ] && event=""
+#}
+
+# modules that don't update on their own need to be run at the start for getting their initial value
+update_vol
+update_mic
+update_cap
+
+display () { 
+	xsetroot -name "$time | $cap | $net | $vol | $mic | $bat"
+}
+
+# SIGNALLING
+# trap	"<function>;display"		"RTMIN+n"
+trap	"update_mic;display" 		"RTMIN"
+trap	"update_vol;display"		"RTMIN+1"
+# xev can't read my toggle internet keyboard key, don't know what key to use in sxhkd to send signal
+trap	"update_net;display"		"RTMIN+2"
+trap	"update_cap;display"		"RTMIN+3"
+# to update it from external commands
+## kill -m "$(cat ~/.cache/pidofbar)"
+# where m = 34 + n
+
+while true
+do
+	# next line of code seems make hotkeys that send kill signals more responsive? not fully understood
+	sleep 1 & wait && { 
+		# to update item ever n seconds with a offset of m
+		## [ $((sec % n)) -eq m ] && udpate_item
+		[ $((sec % 5 )) -eq 0 ] && update_time 	# update time every 5 seconds
+		[ $((sec % 5 )) -eq 0 ] && update_net
+		[ $((sec % 60)) -eq 0 ] && update_bat
+		#[ $((sec % 300)) -eq 1 ] && update_event
+
+		# how often the display updates ( 5 seconds )
+		[ $((sec % 5 )) -eq 0 ] && display
+		sec=$((sec + 1))
+	}
+done 
