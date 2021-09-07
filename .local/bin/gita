@@ -3,10 +3,11 @@
 
 cmd='git'
 
-while getopts lc f; do
+while getopts cls f; do
 	case $f in
-		l) cmd='cfgl';;
 		c) cmd='cfgc';;
+		l) cmd='cfgl';;
+		s) cmd='cfgs';;
 		\?) exit 1;;
 	esac
 done
