@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# some dotfiles file permissions are different than normal root:root file, need chown
 sudo cp -i -- "$XDG_CONFIG_HOME/myconf/pacman.conf" /etc/
 sudo cp -i -- "$XDG_CONFIG_HOME/myconf/locale.gen" /etc/
 sudo mkdir -p /etc/uwsgi/ || exit
