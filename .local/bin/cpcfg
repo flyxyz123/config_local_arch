@@ -1,0 +1,8 @@
+#!/bin/sh
+
+sudo cp -i -- "$XDG_CONFIG_HOME/myconf/pacman.conf" /etc/
+sudo cp -i -- "$XDG_CONFIG_HOME/myconf/locale.gen" /etc/
+sudo mkdir -p /etc/uwsgi/ || exit
+sudo cp -i -- "$XDG_CONFIG_HOME/myconf/searx.ini" /etc/uwsgi/
+sudo mkdir /etc/wildmidi/ || exit
+sudo cp -i -- "$XDG_CONFIG_HOME/myconf/wildmidi.cfg" /etc/wildmidi/
