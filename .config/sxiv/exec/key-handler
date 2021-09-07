@@ -51,7 +51,7 @@ linkwall() {
 # I choose not to put case nested in while read file loop
 # because it can pipe multiple files to one command?
 case "$1" in
-	"d") [ "$(promptd "delete?")" = "Yes" ] && tr '\n' '\0' | xargs -0 rm ;;
+	"d") [ "$(printf 'No\nYes' | dmenu -i -p 'delete?')" = "Yes" ] && tr '\n' '\0' | xargs -0 rm ;;
 	"e") while read -r file; do alacritty -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
 	"f") flip ;;
 	"g") tr '\n' '\0' | xargs -0 setsid -f gimp ;;
