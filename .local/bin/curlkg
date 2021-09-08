@@ -39,5 +39,5 @@ for i in $(seq 2 $(((ugc_total_count+num-1)/num))); do
 done
 
 # how to show less aria2c stdout?
-jq -r '.data.ugclist[]|"'"$music_url"'?shareid=\(.shareid)\n out=\(.title)_\(.time).m4a"' "$tmp_json_file" | aria2c -d "$download_dir" --auto-file-renaming=false -i-
+jq -r '.data.ugclist[]|"'"$music_url"'?shareid=\(.shareid)\n out=\(.title)_\(.time).m4a"' "$tmp_json_file" | aria2c -d "$download_dir" --auto-file-renaming=false --console-log-level=warn -i-
 rm "$tmp_json_file"

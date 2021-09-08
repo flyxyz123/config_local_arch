@@ -1,0 +1,52 @@
+#!/bin/sh
+# may need mkdir -p for some of the dirs? kg and ncm no need, how about refl and gall
+
+refl ()
+{
+	sudo reflector --save /etc/pacman.d/mirrorlist --latest 200 --sort rate
+}
+
+gall ()
+{
+	gallery-dl --download-archive "$XDG_DOCUMENTS_DIR/database/gallery-dl.sqlite3" -d "$XDG_PICTURES_DIR/anime" -i "$XDG_CONFIG_HOME/myconf/gallery_urls"
+}
+
+kg ()
+{
+	curlkg -u649b9e82272a348b "$XDG_MUSIC_DIR/not_pure/lan_lan/kg/"
+	curlkg -u64949d822c25328c "$XDG_MUSIC_DIR/not_pure/cheng_ruan/kg/"
+}
+
+ncm ()
+{
+	curlncm -a48860966 "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/artist/"
+	curlncm -a46703185 "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/artist/"
+	curlncm -r793052426 "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/djradio/"
+	curlncm -r792968433 "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/djradio/"
+}
+
+pac ()
+{
+	sudo pacman -Syu
+	paru -Syu
+	sudo pacman -Fy
+}
+
+if [ $# -eq 0 ]; then
+	pac
+	ncm
+	kg
+	refl
+	gall
+else
+	while getopts rgknp opt; do
+		case $opt in
+			r)refl;;
+			g)gall;;
+			k)kg;;
+			n)ncm;;
+			p)pac;;
+			\?)exit 1;;
+		esac
+	done
+fi
