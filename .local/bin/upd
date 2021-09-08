@@ -13,16 +13,16 @@ gall ()
 
 kg ()
 {
-	curlkg -u649b9e82272a348b "$XDG_MUSIC_DIR/not_pure/lan_lan/kg/"
-	curlkg -u64949d822c25328c "$XDG_MUSIC_DIR/not_pure/cheng_ruan/kg/"
+	curlkg -u649b9e82272a348b -- "$XDG_MUSIC_DIR/not_pure/lan_lan/kg/"
+	curlkg -u64949d822c25328c -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/kg/"
 }
 
 ncm ()
 {
-	curlncm -a48860966 "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/artist/"
-	curlncm -a46703185 "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/artist/"
-	curlncm -r793052426 "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/djradio/"
-	curlncm -r792968433 "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/djradio/"
+	curlncm -a48860966 -- "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/artist/"
+	curlncm -a46703185 -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/artist/"
+	curlncm -r793052426 -- "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/djradio/"
+	curlncm -r792968433 -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/djradio/"
 }
 
 pac ()
