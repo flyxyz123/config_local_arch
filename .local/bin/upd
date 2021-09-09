@@ -29,6 +29,8 @@ pac ()
 {
 	sudo pacman -Syu
 	paru -Syu
+	# not fully understand
+	rm ~/.cache/paru/clone/neovim-nightly-bin/ -rf && paru --rebuild --redownload neovim-nightly-bin
 	sudo pacman -Fy
 }
 
