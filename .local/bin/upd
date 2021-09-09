@@ -32,20 +32,28 @@ pac ()
 	sudo pacman -Fy
 }
 
+qb ()
+{
+	rm -r -- "$HOME/programs/qbittorrent_search_plugins/"
+	curlqb "$HOME/programs/qbittorrent_search_plugins/"
+}
+
 if [ $# -eq 0 ]; then
 	pac
+	qb
 	ncm
 	kg
 	refl
 	gall
 else
-	while getopts rgknp opt; do
+	while getopts rgknpq opt; do
 		case $opt in
 			r)refl;;
 			g)gall;;
 			k)kg;;
 			n)ncm;;
 			p)pac;;
+			q)qb;;
 			\?)exit 1;;
 		esac
 	done
