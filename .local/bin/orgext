@@ -8,7 +8,7 @@
 
 outdir ()
 { 
-	find . -type f -execdir mv -nt "$PWD" -- '{}' \+ 
+	find . -type f -exec mv -nt "$PWD" -- '{}' \+ 
 	find . -mindepth 1 -maxdepth 1 -type d -delete
 }
 
@@ -17,7 +17,7 @@ outdir ()
 indir ()
 {
 	find . -maxdepth 1 -type f | awk -F. '!a[$NF]++{print $NF}' | xargs mkdir --
-	find . -mindepth 1 -maxdepth 1 -type d -execdir basename -az -- '{}' \+ | xargs -0 -I _ find . -maxdepth 1 -type f -name '*._' -execdir mv -t '_' -- '{}' \+
+	find . -mindepth 1 -maxdepth 1 -type d -exec basename -az -- '{}' \+ | xargs -0 -I _ find . -maxdepth 1 -type f -name '*._' -exec mv -t '_' -- '{}' \+
 }
 
 case "$1" in
