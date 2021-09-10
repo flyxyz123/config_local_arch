@@ -28,6 +28,7 @@ export HISTFILESIZE=7000
 
 export MANPAGER='nvim +Man!'
 export EDITOR=nvim
+export BROWSER=firefox
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
