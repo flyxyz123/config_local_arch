@@ -1,6 +1,4 @@
-#
-# ~/.bashrc
-#
+#!/bin/sh
 
 # $- meaning see https://stackoverflow.com/questions/42757236/what-does-mean-in-bash
 # If not running interactively, don't do anything
