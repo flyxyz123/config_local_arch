@@ -18,6 +18,7 @@ unmap('<Alt-s>');
 // disable emoji
 iunmap(':');
 // disable all insert mode hotkeys
+// workaround for surfingkey Ctrl-i can't open firenvim, even with `settings.useNeovim = true;`, not sure why, I just use Ctrl-e for firenvim instead
 iunmap('<Alt-b>');
 iunmap('<Alt-d>');
 iunmap('<Alt-f>');
