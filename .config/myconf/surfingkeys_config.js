@@ -19,6 +19,8 @@ unmap('<Alt-s>');
 iunmap(':');
 // disable all insert mode hotkeys
 // workaround for surfingkey Ctrl-i can't open firenvim, even with `settings.useNeovim = true;`, not sure why, I just use Ctrl-e for firenvim instead
+settings.useNeovim = true;
+//iunmap('<Ctrl-i>');
 iunmap('<Alt-b>');
 iunmap('<Alt-d>');
 iunmap('<Alt-f>');
@@ -26,7 +28,6 @@ iunmap('<Alt-w>');
 iunmap("<Ctrl-'>");
 iunmap('<Ctrl-e>');
 iunmap('<Ctrl-f>');
-iunmap('<Ctrl-i>');
 iunmap('<Ctrl-u>');
 
 mapkey('n','Find next then center cursor', function(){

@@ -18,6 +18,9 @@ Plug 'fnune/base16-vim'
 "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 call plug#end()
 
+" next line must put below `Plug 'glacambre/firenvim'`, else if click github issue textarea, then click elsewhere, then click textarea, textarea will not be selected (no cursor in it), not sure why
+let g:firenvim_config = { 'localSettings': { '.*': { 'takeover': 'never' } } }
+
 " I use only one return for better readability
 function Autocmd_set_fenc()
 	" need to test &modifiable for gO
