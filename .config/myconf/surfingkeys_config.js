@@ -19,7 +19,7 @@ unmap('<Alt-s>');
 iunmap(':');
 // disable all insert mode hotkeys
 // workaround for surfingkey Ctrl-i can't open firenvim, even with `settings.useNeovim = true;`, not sure why, I just use Ctrl-e for firenvim instead
-settings.useNeovim = true;
+conf.useNeovim = true;
 //iunmap('<Ctrl-i>');
 iunmap('<Alt-b>');
 iunmap('<Alt-d>');
