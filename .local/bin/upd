@@ -40,6 +40,14 @@ qb ()
 	curlqb "$HOME/programs/qbittorrent_search_plugins/"
 }
 
+usb ()
+{
+	cfgc push usb
+	cfgl push usb
+	cfgs push usb
+	git --git-dir="$XDG_DOCUMENTS_DIR/notes/.git" --work-tree="$XDG_DOCUMENTS_DIR/notes/" push usb
+}
+
 if [ $# -eq 0 ]; then
 	pac
 	qb
@@ -48,7 +56,7 @@ if [ $# -eq 0 ]; then
 	refl
 	gall
 else
-	while getopts rgknpq opt; do
+	while getopts rgknpqu opt; do
 		case $opt in
 			r)refl;;
 			g)gall;;
@@ -56,6 +64,7 @@ else
 			n)ncm;;
 			p)pac;;
 			q)qb;;
+			u)usb;;
 			\?)exit 1;;
 		esac
 	done
