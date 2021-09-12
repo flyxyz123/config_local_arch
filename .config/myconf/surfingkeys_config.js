@@ -15,12 +15,16 @@ map('<Ctrl-Alt-h>','<Ctrl-h>');
 unmap('<Ctrl-h>');
 map('<Ctrl-Alt-s>','<Alt-s>');
 unmap('<Alt-s>');
-// current surfingkeys version 0.9.74 doesn't contain firenvim integration, wait for author to update
+
+// on firefox, firenvim default Ctrl-e will be overwirted by github issue hotkey, see:
+// https://github.com/glacambre/firenvim/issues/1046
+// https://bugzilla.mozilla.org/show_bug.cgi?id=1713794
+// currently seems no good solution but to use another hotkey, I choose Ctrl+,
+// current surfingkeys version 0.9.74 is outdated and doesn't contain firenvim integration, wait for author to update
 // I tried to run the source code as temp extension in about:debugging or with web-ext cli tool but no luck
 settings.useNeovim = true;
-// disable emoji
-iunmap(':');
-// disable all insert mode hotkeys except Ctrl-i
+
+// disable all insert mode hotkeys except Ctrl-i for future firenvim integration
 //iunmap('<Ctrl-i>');
 iunmap('<Alt-b>');
 iunmap('<Alt-d>');
@@ -30,6 +34,8 @@ iunmap("<Ctrl-'>");
 iunmap('<Ctrl-e>');
 iunmap('<Ctrl-f>');
 iunmap('<Ctrl-u>');
+// disable emoj
+iunmap(':');
 
 mapkey('n','Find next then center cursor', function(){
 	Visual.next(false);
