@@ -26,6 +26,7 @@ absolutely-proprietary='absolutely-proprietary -f' \
 alsamixer='alsamixer -V all' \
 diff='diff --color=auto' \
 grep='grep --color=auto' \
+iotop='sudo iotop' \
 ls='ls --color=auto' \
 rm='rm -vI' \
 sdcv='sdcv --color' \
