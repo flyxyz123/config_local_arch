@@ -28,6 +28,7 @@ diff='diff --color=auto' \
 grep='grep --color=auto' \
 iotop='sudo iotop' \
 ls='ls --color=auto' \
+radeontop='radeontop -c' \
 rm='rm -vI' \
 sdcv='sdcv --color' \
 g=git \
