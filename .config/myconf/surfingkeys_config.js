@@ -15,11 +15,12 @@ map('<Ctrl-Alt-h>','<Ctrl-h>');
 unmap('<Ctrl-h>');
 map('<Ctrl-Alt-s>','<Alt-s>');
 unmap('<Alt-s>');
+// current surfingkeys version 0.9.74 doesn't contain firenvim integration, wait for author to update
+// I tried to run the source code as temp extension in about:debugging or with web-ext cli tool but no luck
+settings.useNeovim = true;
 // disable emoji
 iunmap(':');
-// disable all insert mode hotkeys
-// workaround for surfingkey Ctrl-i can't open firenvim, even with `settings.useNeovim = true;`, not sure why, I just use Ctrl-e for firenvim instead
-settings.useNeovim = true;
+// disable all insert mode hotkeys except Ctrl-i
 //iunmap('<Ctrl-i>');
 iunmap('<Alt-b>');
 iunmap('<Alt-d>');
