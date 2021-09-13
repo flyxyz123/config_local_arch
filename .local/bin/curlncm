@@ -1,5 +1,5 @@
 #!/bin/sh
-# rewrite TianyiShi2001's python script which rewrite NeteaseCloudMusicApi node.js pai
+# rewrite TianyiShi2001's python script which rewrite NeteaseCloudMusicApi node.js api
 # references:
 # https://github.com/ytdl-org/youtube-dl/issues/18051#issuecomment-859964832
 # https://github.com/Binaryify/NeteaseCloudMusicApi
