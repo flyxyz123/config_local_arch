@@ -10,7 +10,7 @@ cmd='mi'
 
 while getopts q opt; do
 	case $opt in
-		q) cmd='qmake;mi';;
+		q) cmd='qmake6;mi';;
 		\?) exit 1;;
 	esac
 done
