@@ -21,21 +21,25 @@ esac
 # need \[ and \] around color codes so bash ignore color codes when calculating line wraps
 PS1='\[\e[0;91m\][\u@\h \W]\$ \[\e[0m\]'
 
-alias \
-absolutely-proprietary='absolutely-proprietary -f' \
-alsamixer='alsamixer -V all' \
-diff='diff --color=auto' \
-grep='grep --color=auto' \
-iotop='sudo iotop' \
-ls='ls --color=auto' \
-radeontop='radeontop -c' \
-rm='rm -vI' \
-sdcv='sdcv --color' \
-g=git \
-ll='ls -lAh --color=auto --group-directories-first' \
-o=xdg-open \
-v='$EDITOR' \
-vq='$EDITOR "$XDG_DOCUMENTS_DIR/notes/others/questions_ideas_tips.md"' \
-vc='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/command-line_notes.md"'
+alias absolutely-proprietary='absolutely-proprietary -f'
+alias alsamixer='alsamixer -V all'
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias iotop='sudo iotop'
+alias ls='ls --color=auto'
+alias nethogs='sudo nethogs'
+alias radeontop='radeontop -c'
+alias rm='rm -vI'
+alias sdcv='sdcv --color'
+
+# /dev/ttyACM0 can be in config file, or as environmantal variable, see /usr/share/doc/adafruit-ampy/README.md
+alias ap='sudo ampy -p /dev/ttyACM0'
+alias g=git
+alias ll='ls -lAh --color=auto --group-directories-first'
+alias o=xdg-open
+alias tp='sudo tio /dev/ttyACM0'
+alias v='$EDITOR'
+alias vc='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/command-line_notes.md"'
+alias vq='$EDITOR "$XDG_DOCUMENTS_DIR/notes/others/questions_ideas_tips.md"'
 
 eval "$(zoxide init bash)"
