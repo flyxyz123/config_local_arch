@@ -1,6 +1,6 @@
 # vim: ft=sh
 
-ctrl + Print
+alt + Print
 	ffmpeg -f x11grab -i "$DISPLAY" -vframes 1 "$XDG_PICTURES_DIR/screenshots/$(time.uuid)".png
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
@@ -10,7 +10,7 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 # for pulseaudio, master volume affects capture volume too? 
 # my laptop built-in microphone capture volume is really low
 # so I want to keep capture volume always 100%
-ctrl + XF86AudioMute
+alt + XF86AudioMute
 	amixer set Capture toggle;\
 	kill -RTMIN "$(cat ~/.cache/pidofbar)"
 
