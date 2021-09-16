@@ -56,6 +56,7 @@ case "$1" in
 	"f") flip ;;
 	"g") tr '\n' '\0' | xargs -0 setsid -f gimp ;;
 	"l") linkwall ;;
+	"p") tr '\n' '\0' | xargs -0 sh -c 'convert "$@" $(time.uuid).pdf' shell ;;
 	"r") rotate ;;
 	"w") tr '\n' '\0' | xargs -0 shufwall ;;
 	"y") tr '\n' '\0' | xargs -0 realpath | xsel -b ;;
