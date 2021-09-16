@@ -1,6 +1,6 @@
 # vim: ft=sh
 
-alt + Print
+ctrl + Print
 	ffmpeg -f x11grab -i "$DISPLAY" -vframes 1 "$XDG_PICTURES_DIR/screenshots/$(time.uuid)".png
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
