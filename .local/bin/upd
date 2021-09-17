@@ -51,6 +51,7 @@ usb ()
 misc ()
 {
 	tldr --update
+	nvim +PlugUpgrade +PlugUpdate +qa
 }
 
 if [ $# -eq 0 ]; then
