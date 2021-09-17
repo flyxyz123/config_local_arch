@@ -48,15 +48,21 @@ usb ()
 	git --git-dir="$XDG_DOCUMENTS_DIR/notes/.git" --work-tree="$XDG_DOCUMENTS_DIR/notes/" push usb
 }
 
+misc ()
+{
+	tldr --update
+}
+
 if [ $# -eq 0 ]; then
 	pac
+	misc
 	qb
 	ncm
 	kg
 	refl
 	gall
 else
-	while getopts rgknpqu opt; do
+	while getopts rgknpqum opt; do
 		case $opt in
 			r)refl;;
 			g)gall;;
@@ -65,6 +71,7 @@ else
 			p)pac;;
 			q)qb;;
 			u)usb;;
+			m)misc;;
 			\?)exit 1;;
 		esac
 	done
