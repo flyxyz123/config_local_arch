@@ -1,9 +1,21 @@
 #!/bin/sh
 # may need mkdir -p for some of the dirs? kg and ncm no need, how about refl and gall
 
-refl ()
+all ()
 {
-	sudo reflector --save /etc/pacman.d/mirrorlist --latest 200 --sort rate
+	fast
+	qb
+	ncm
+	kg
+	refl
+	gall
+}
+
+fast ()
+{
+	pac
+	misc
+	usb
 }
 
 gall ()
@@ -15,6 +27,12 @@ kg ()
 {
 	curlkg -u649b9e82272a348b -- "$XDG_MUSIC_DIR/not_pure/lan_lan/kg/"
 	curlkg -u64949d822c25328c -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/kg/"
+}
+
+misc ()
+{
+	tldr --update
+	nvim +PlugUpgrade +PlugUpdate +qa
 }
 
 ncm ()
@@ -40,39 +58,35 @@ qb ()
 	curlqb "$HOME/programs/qbittorrent_search_plugins/"
 }
 
+
+refl ()
+{
+	sudo reflector --save /etc/pacman.d/mirrorlist --latest 200 --sort rate
+}
+
 usb ()
 {
 	cfgc push usb
 	cfgl push usb
-	cfgs push usb
+	cfgs push
 	git --git-dir="$XDG_DOCUMENTS_DIR/notes/.git" --work-tree="$XDG_DOCUMENTS_DIR/notes/" push usb
 }
 
-misc ()
-{
-	tldr --update
-	nvim +PlugUpgrade +PlugUpdate +qa
-}
-
 if [ $# -eq 0 ]; then
-	pac
-	misc
-	qb
-	ncm
-	kg
-	refl
-	gall
+	fast
 else
-	while getopts rgknpqum opt; do
+	while getopts afgkmnpqru opt; do
 		case $opt in
-			r)refl;;
+			a)all;;
+			f)fast;;
 			g)gall;;
 			k)kg;;
+			m)misc;;
 			n)ncm;;
 			p)pac;;
 			q)qb;;
+			r)refl;;
 			u)usb;;
-			m)misc;;
 			\?)exit 1;;
 		esac
 	done
