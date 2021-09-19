@@ -36,8 +36,8 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS='@im=fcitx'
 
-#shufwall &
-display -window root "$XDG_PICTURES_DIR/wallpapers/galaxy_plus_fire.png" &
+shufwall &
+#display -window root "$XDG_PICTURES_DIR/wallpapers/galaxy_plus_fire.png" &
 #clipmenud &
 dunst &
 fcitx5 -d &
