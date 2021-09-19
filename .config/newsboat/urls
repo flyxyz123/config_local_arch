@@ -1,5 +1,12 @@
 # https://newsboat.org/releases/2.24/docs/newsboat.html#_tagging
 
+# recreation
+https://www.youtube.com/feeds/videos.xml?channel_id=UCz4iS6GAEXoFB1gJEmQFcvw recreation
+https://www.youtube.com/feeds/videos.xml?channel_id=UCccannnI4dtZNufDdO0wXRQ recreation
+https://www.youtube.com/feeds/videos.xml?channel_id=UCrSDd0eAroiLGZ2DGkwOTCA recreation
+https://www.youtube.com/feeds/videos.xml?channel_id=UCD6VugMZKRhSyzWEWA9W2fg recreation
+http://keygenmusic.net/rss.php recreation
+
 # computer misc
 https://suckless.org/atom.xml
 https://ryf.fsf.org/news/rss.xml
@@ -17,11 +24,3 @@ https://bugs.archlinux.org/feed.php?feed_type=rss2&topic=clo&project=0
 # qmmp
 https://sourceforge.net/p/qmmp-dev/tickets/590/feed.atom
 https://sourceforge.net/p/qmmp-dev/tickets/714/feed.atom
-
-# recreation
-http://keygenmusic.net/rss.php recreation
-https://www.youtube.com/feeds/videos.xml?channel_id=UCz4iS6GAEXoFB1gJEmQFcvw recreation
-https://www.youtube.com/feeds/videos.xml?channel_id=UCccannnI4dtZNufDdO0wXRQ recreation
-https://www.youtube.com/feeds/videos.xml?channel_id=UCrSDd0eAroiLGZ2DGkwOTCA recreation
-https://www.youtube.com/feeds/videos.xml?channel_id=UCD6VugMZKRhSyzWEWA9W2fg recreation
-
