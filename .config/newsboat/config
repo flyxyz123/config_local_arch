@@ -1,5 +1,16 @@
 auto-reload yes
 
+bind-key h quit
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key g home
+bind-key G end
+bind-key ^F pagedown
+bind-key ^B pageup
+
+macro y set browser "echo %u | xsel -ib; mpvsel"; open-in-browser-noninteractively; set browser "$BROWSER"
+
 # https://newsboat.org/releases/2.24/docs/newsboat.html#_killfiles
 # https://newsboat.org/releases/2.24/docs/newsboat.html#_filter_language
 
@@ -12,3 +23,4 @@ ignore-article "https://bugs.archlinux.org/feed.php?feed_type=rss2&project=0" "t
 ignore-article "https://bugs.archlinux.org/feed.php?feed_type=rss2&topic=edit&project=0" "title !~ \"FS#(47508|71501|71453|70113|69492)|wildmidi|aur.*(rss|feed)|(rss|feed).*aur\""
 ignore-article "https://bugs.archlinux.org/feed.php?feed_type=rss2&topic=clo&project=0" "title !~ \"FS#(47508|71501|71453|70113|69492)|wildmidi|aur.*(rss|feed)|(rss|feed).*aur\""
 
+# vim: ft=sh

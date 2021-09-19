@@ -16,4 +16,4 @@ done
 
 vformat="[height<=?$height][fps<=?$fps][vcodec!^=?vp9][vcodec!^=?av01]"
 
-mpv --ytdl-format="bestvideo$vformat+bestaudio/best$vformat" --ytdl-raw-options='write-sub=,sub-lang="en,en-US,en-GB,zh-CN,zh-Hans,zh-Hant,zh-HK,zh-SG,zh-TW"' --fs --speed=2 "$(xsel -ob)"
+mpv --ytdl-format="bestvideo$vformat+bestaudio/best$vformat" --ytdl-raw-options='write-sub=,sub-lang="en,en-US,en-GB,zh-CN,zh-Hans,zh-Hant,zh-HK,zh-SG,zh-TW"' --fs --speed=2 "$(xsel -ob)" || notify-send "mpvsel failed"

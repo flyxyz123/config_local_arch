@@ -4,4 +4,3 @@ alacritty -e radeontop &
 alacritty -e sudo nethogs &
 alacritty -e sudo iotop &
 htop
-

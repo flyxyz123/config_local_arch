@@ -1,5 +1,3 @@
-# vim: ft=sh
-
 alt + Print
 	ffmpeg -f x11grab -i "$DISPLAY" -vframes 1 "$XDG_PICTURES_DIR/screenshots/$(time.uuid)".png
 
@@ -15,7 +13,7 @@ alt + XF86AudioMute
 	kill -RTMIN "$(cat ~/.cache/pidofbar)"
 
 alt + y
-	mpvsel || notify-send "mpvsel failed"
+	mpvsel
 
 alt + w
 	firefox
@@ -28,3 +26,5 @@ XF86Audio{Prev,Play,Next}
 
 @Caps_Lock
 	kill -RTMIN+3 "$(cat ~/.cache/pidofbar)"
+
+# vim: ft=sh
