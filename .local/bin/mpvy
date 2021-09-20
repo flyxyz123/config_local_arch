@@ -3,27 +3,35 @@
 # https://www.rockyourcode.com/til-how-to-watch-youtube-videos-with-mpv-and-keyboard-shortcuts/
 # https://github.com/mpv-player/mpv/issues/7792
 
+notify ()
+{
+	notify-send "mpvsel failed"
+}
+
 fps=30
 height=$SCRHEIGHT
-download_dir='/tmp/mpvsel/'
 url="$(xsel -ob)"
 flag=s
 
 # can improve to make s and d mutually exclusive, see curlncm, maybe not, not necessary
 # option f and h may do nothing if redownload? since same filename exist, haven't tested. yt-dlp won't download same file even without --auto-file-renameing=false. how improve?
-while getopts ad:f:h:su: opt; do
+# how to simplify notify-send
+while getopts Aad:f:h:su: opt; do
 	case $opt in
-		# streaming, or aria2c
-		a|s) flag=$opt;;
-		d) download_dir="$OPTARG"; flag=a;;
+		# s: streaming, a: aria2c then mpv, A: aria2c
+		A|a|s) flag=$opt;;
+		d) download_dir="$OPTARG";;
 		f) fps="$OPTARG";;
 		h) height="$OPTARG";;
 		u) url="$OPTARG";;
 		\?) exit 1;;
 	esac
 done
+case $flag in
+	A) [ -z "$download_dir" ] && download_dir="$XDG_DOWNLOAD_DIR/mpvsel/";;
+	a) [ -z "$download_dir" ] && download_dir="/tmp/mpvsel/";;
+esac
 mkdir -p "$download_dir"
-
 vformat="[height<=?$height][fps<=?$fps][vcodec!^=?vp9][vcodec!^=?av01]"
 # usually with my vformat, video is .mp4, bestaudio is .webm, seems not a good idea to combine those, create problems when use yt-dlp to merge them, not sure about streaming
 #format="bestvideo$vformat+bestaudio/best$vformat"
@@ -32,6 +40,7 @@ format="best$vformat"
 case $flag in
 	# here if use --write-sub, mpv doesn't recognize subtitles? 
 	# --embed-subs is a little bit better
-	a) yt-dlp -f "$format" --embed-subs -P "$download_dir" --sponsorblock-remove all "$url" --exec "mpv --fs --speed=2" || notify-send "mpvsel failed";;
-	s) mpv --ytdl-format="$format" --ytdl-raw-options='write-sub=' --fs --speed=2 "$url" || notify-send "mpvsel failed";;
+	A) yt-dlp -f "$format" --embed-subs -P "$download_dir" --sponsorblock-remove all "$url" || notify;;
+	a) yt-dlp -f "$format" --embed-subs -P "$download_dir" --sponsorblock-remove all "$url" --exec "mpv --fs --speed=2" || notify;;
+	s) mpv --ytdl-format="$format" --ytdl-raw-options='write-sub=' --fs --speed=2 "$url" || notify;;
 esac
