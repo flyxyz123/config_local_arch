@@ -9,7 +9,7 @@ bind-key G end
 bind-key ^F pagedown
 bind-key ^B pageup
 
-macro y set browser "echo %u | xsel -ib; mpvsel &"; open-in-browser-noninteractively; set browser "$BROWSER"
+macro y set browser "echo %u | xsel -ib; mpvsel &"; open-in-browser-noninteractively; set browser "$BROWSER %u &"
 
 # https://newsboat.org/releases/2.24/docs/newsboat.html#_killfiles
 # https://newsboat.org/releases/2.24/docs/newsboat.html#_filter_language
