@@ -4,6 +4,7 @@
 all ()
 {
 	fast
+	usb
 	qb
 	ncm
 	kg
@@ -15,7 +16,6 @@ fast ()
 {
 	pac
 	misc
-	usb
 }
 
 gall ()
