@@ -13,7 +13,10 @@ alt + XF86AudioMute
 	kill -RTMIN "$(cat ~/.cache/pidofbar)"
 
 alt + y
-	mpvsel
+	mpvsel -s
+
+alt + Y
+	mpvsel -a
 
 alt + w
 	firefox

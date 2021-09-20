@@ -5,15 +5,33 @@
 
 fps=30
 height=$SCRHEIGHT
+download_dir='/tmp/mpvsel/'
+url="$(xsel -ob)"
+flag=s
 
-while getopts f:h: opt; do
+# can improve to make s and d mutually exclusive, see curlncm, maybe not, not necessary
+# option f and h may do nothing if redownload? since same filename exist, haven't tested. yt-dlp won't download same file even without --auto-file-renameing=false. how improve?
+while getopts ad:f:h:su: opt; do
 	case $opt in
+		# streaming, or aria2c
+		a|s) flag=$opt;;
+		d) download_dir="$OPTARG"; flag=a;;
 		f) fps="$OPTARG";;
 		h) height="$OPTARG";;
+		u) url="$OPTARG";;
 		\?) exit 1;;
 	esac
 done
+mkdir -p "$download_dir"
 
 vformat="[height<=?$height][fps<=?$fps][vcodec!^=?vp9][vcodec!^=?av01]"
+# usually with my vformat, video is .mp4, bestaudio is .webm, seems not a good idea to combine those, create problems when use yt-dlp to merge them, not sure about streaming
+#format="bestvideo$vformat+bestaudio/best$vformat"
+format="best$vformat"
 
-mpv --ytdl-format="bestvideo$vformat+bestaudio/best$vformat" --ytdl-raw-options='write-sub=,sub-lang="en,en-US,en-GB,zh-CN,zh-Hans,zh-Hant,zh-HK,zh-SG,zh-TW"' --fs --speed=2 "$(xsel -ob)" || notify-send "mpvsel failed"
+case $flag in
+	# here if use --write-sub, mpv doesn't recognize subtitles? 
+	# --embed-subs is a little bit better
+	a) yt-dlp -f "$format" --embed-subs -P "$download_dir" --sponsorblock-remove all "$url" --exec "mpv --fs --speed=2" || notify-send "mpvsel failed";;
+	s) mpv --ytdl-format="$format" --ytdl-raw-options='write-sub=' --fs --speed=2 "$url" || notify-send "mpvsel failed";;
+esac
