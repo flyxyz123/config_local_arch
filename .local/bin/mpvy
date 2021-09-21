@@ -13,8 +13,8 @@ notify ()
 	notify-send 'mpvsel failed'
 }
 
-# can improve to make s, a, A  mutually exclusive, see curlncm, maybe not, not necessary
-# option f and h may do nothing if redownload? since same filename exist, haven't tested. yt-dlp won't download same file even without --auto-file-renameing=false. how improve?
+# can improve to make some options mutually exclusive, see curlncm, maybe not
+# option f and h may do nothing if redownload? since same filename exist. yt-dlp won't download same file even without --auto-file-renameing=false. how improve? pass argument to aria2c?
 while getopts Aabd:f:h:su: opt; do
 	case $opt in
 		# s: streaming, a: aria2c then mpv, A: aria2c

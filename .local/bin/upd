@@ -47,8 +47,8 @@ pac ()
 {
 	sudo pacman --noconfirm -Syu
 	paru --noconfirm -Syu
-	# not fully understand
-	#rm ~/.cache/paru/clone/neovim-nightly-bin/ -rf && yes 1 | paru --rebuild --redownload neovim-nightly-bin
+	# part steal from aur comment
+	rm -rf ~/.cache/paru/clone/neovim-nightly-bin/ && yes 1 | PARU_PAGER=cat paru --rebuild --redownload neovim-nightly-bin
 	sudo pacman -Fy
 }
 
@@ -57,7 +57,6 @@ qb ()
 	rm -r -- "$HOME/programs/qbittorrent_search_plugins/"
 	curlqb "$HOME/programs/qbittorrent_search_plugins/"
 }
-
 
 refl ()
 {
