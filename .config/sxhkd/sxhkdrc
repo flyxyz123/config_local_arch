@@ -19,7 +19,7 @@ alt + Y
 	mpvy -a
 
 alt + ctrl + y
-	mpvy -A
+	tsp mpvy -A
 
 alt + w
 	firefox

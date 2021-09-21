@@ -8,12 +8,7 @@ height=$SCRHEIGHT
 url="$(xsel -ob)"
 flag=s
 
-notify ()
-{
-	notify-send 'mpvsel failed'
-}
-
-# can improve to make some options mutually exclusive, see curlncm, maybe not
+# may improve to make some options mutually exclusive, see curlncm, maybe not
 # option f and h may do nothing if redownload? since same filename exist. yt-dlp won't download same file even without --auto-file-renameing=false. how improve? pass argument to aria2c?
 while getopts Aabd:f:h:su: opt; do
 	case $opt in
@@ -37,7 +32,11 @@ fi
 case $flag in
 	# here if use --write-sub, mpv doesn't recognize subtitles? 
 	# --embed-subs is a little bit better, but still worse then direct streaming
-	A) tsp yt-dlp -f "$format" --embed-subs -P "${download_dir:-"$XDG_DOWNLOAD_DIR/mpvy/"}" --sponsorblock-remove all "$url";;
-	a) yt-dlp -f "$format" --embed-subs -P "${download_dir:-/tmp/mpvy/}" --sponsorblock-remove all "$url" --exec 'mpv --fs --speed=2' || notify ;;
-	s) mpv --ytdl-format="$format" --ytdl-raw-options='write-sub=' --fs --speed=2 "$url" || notify;;
+	A) yt-dlp -f "$format" --embed-subs -P "${download_dir:-"$XDG_DOWNLOAD_DIR/mpvy/"}" --sponsorblock-remove all "$url";;
+	a) yt-dlp -f "$format" --embed-subs -P "${download_dir:-/tmp/mpvy/}" --sponsorblock-remove all "$url" --exec 'mpv --fs --speed=2';;
+	s) mpv --ytdl-format="$format" --ytdl-raw-options='write-sub=' --fs --speed=2 "$url";;
 esac
+# not sure if this is the best practice, but it works ;)
+status=$?
+[ $status -ne 0 ] && notify-send 'mpvsel failed'
+exit $status
