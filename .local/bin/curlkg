@@ -8,7 +8,7 @@ homepage_url='https://node.kg.qq.com/cgi/fcgi-bin/kg_ugc_get_homepage'
 music_url='https://node.kg.qq.com/cgi/fcgi-bin/fcg_get_play_url'
 # num seems only 8 and 15 works
 num=15
-tmp_json_file='/tmp/curlkg.json'
+tmp_json_file="$(mktemp --suffix=.json)"
 
 while getopts u: opt; do
 	case $opt in
@@ -26,16 +26,16 @@ download_dir="${1:-"$PWD"}"
 
 get_json () 
 {
-	curl -s -G --data-urlencode type=get_uinfo -d outCharset=utf-8 -d start="$1" -d num=$num -d share_uid="$uid" "$homepage_url" | sed 's/.*({\(.*\)}).*/{\1}/'
+	curl -s -G --data-urlencode type=get_uinfo -d outCharset=utf-8 -d start="$1" -d num=$num -d share_uid="$uid" "$homepage_url" | sed 's/.*({\(.*\)}).*/{\1}/' >> "$tmp_json_file"
 }
 
 # is it possible not to write to a file? only pipe stdout? should I?
-get_json 1 > "$tmp_json_file"
+get_json 1
 ugc_total_count=$(jq '.data.ugc_total_count' "$tmp_json_file")
 # can also use while loop with i=$((i+1))
 # the calculation considers both ugc_total_count%num==0 and ugc_total_count%num>0
 for i in $(seq 2 $(((ugc_total_count+num-1)/num))); do
-	get_json "$i" >> "$tmp_json_file"
+	get_json "$i"
 done
 
 # how to show less aria2c stdout?
