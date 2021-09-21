@@ -5,3 +5,6 @@
 --throttled-rate 100K
 # player_client=android,web seems become default since 2021.07.21 version
 #--extractor-args youtube:player_client=android
+
+# manpage says yt-dlp use --sub-langs, youtube-dl use --sub-lang, but experiment shows yt-dlp also use --sub-lang
+--sub-lang zh-Hans,zh-CN,zh-Hant,zh-SG,zh-TW,zh-HK,en,en-US,en-GB
