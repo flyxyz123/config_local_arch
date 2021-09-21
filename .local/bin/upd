@@ -46,7 +46,7 @@ ncm ()
 pac ()
 {
 	sudo pacman --noconfirm -Syu
-	paru --noconfirm -Syu
+	paru --noconfirm -aSyu
 	# part steal from aur comment
 	rm -rf ~/.cache/paru/clone/neovim-nightly-bin/ && yes 1 | PARU_PAGER=cat paru --rebuild --redownload neovim-nightly-bin
 	sudo pacman -Fy
