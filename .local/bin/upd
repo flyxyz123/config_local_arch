@@ -45,10 +45,10 @@ ncm ()
 
 pac ()
 {
-	yes | sudo pacman -Syu
-	yes | paru -Syu
+	sudo pacman --noconfirm -Syu
+	paru --noconfirm -Syu
 	# not fully understand
-	rm ~/.cache/paru/clone/neovim-nightly-bin/ -rf && paru --rebuild --redownload neovim-nightly-bin
+	#rm ~/.cache/paru/clone/neovim-nightly-bin/ -rf && yes 1 | paru --rebuild --redownload neovim-nightly-bin
 	sudo pacman -Fy
 }
 
