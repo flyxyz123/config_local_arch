@@ -12,7 +12,7 @@
 
 # trial and error to get dj_max, don't know why, maybe because it is 2^31 and it is the size limit of whatever type of the variable
 dj_max=2147483647
-dl_urls_tmp='/tmp/curlncm_dl_urls'
+dl_urls_tmp="$(mktemp)"
 # printf 'e82ckenh8dichen8' | hexdump -ve '/1 "%02x"'
 key='653832636b656e683864696368656e38'
 url='/api/song/enhance/player/url'
