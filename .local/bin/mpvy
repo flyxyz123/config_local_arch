@@ -1,7 +1,6 @@
 #!/bin/sh
 # references:
 # https://www.rockyourcode.com/til-how-to-watch-youtube-videos-with-mpv-and-keyboard-shortcuts/
-# https://github.com/mpv-player/mpv/issues/7792
 
 fps=30
 height=$SCRHEIGHT
