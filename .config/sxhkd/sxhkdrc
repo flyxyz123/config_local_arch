@@ -19,7 +19,7 @@ alt + Y
 	mpvy -a
 
 alt + ctrl + y
-	tsp mpvy -A
+	tsp mpvy -A -u "$(xsel -ob)"
 
 alt + w
 	firefox
