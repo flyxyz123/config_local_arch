@@ -45,6 +45,7 @@ ncm ()
 
 pac ()
 {
+	# may improve to query updated packages' changelogs, using `pacman -Qc`
 	sudo pacman --noconfirm -Syu
 	paru --noconfirm -aSyu
 	# part steal from aur comment

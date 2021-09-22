@@ -20,8 +20,8 @@ if [ -z "$1" ]; then
 	eval "$cmd"
 else
 	for dir ; do
-		cd "$dir" || exit 1
+		cd "$dir" || exit
 		eval "$cmd"
-		cd "$origin" || exit 1
+		cd "$origin" || exit
 	done
 fi
