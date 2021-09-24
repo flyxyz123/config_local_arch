@@ -36,7 +36,6 @@ alias sdcv='sdcv --color'
 alias ap='sudo ampy -p /dev/ttyACM0'
 alias g=git
 alias ll='ls -lAh --color=auto --group-directories-first'
-alias o=xdg-open
 alias tp='sudo tio /dev/ttyACM0'
 alias v='$EDITOR'
 alias vc='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/command-line_notes.md"'
