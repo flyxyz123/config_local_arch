@@ -49,6 +49,7 @@ pac ()
 	sudo pacman --noconfirm -Syu
 	paru --noconfirm -aSyu
 	# part steal from aur comment
+	# sometimes "ERROR: Failure while downloading": https://github.com/neovim/neovim/issues/15709
 	rm -rf ~/.cache/paru/clone/neovim-nightly-bin/ && yes 1 | PARU_PAGER=cat paru --rebuild --redownload neovim-nightly-bin
 	sudo pacman -Fy
 }
