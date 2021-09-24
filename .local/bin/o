@@ -3,4 +3,4 @@
 # I don't care about errors, I don't want to handle errors, just shut up please.
 # I don't understand nohup, may be useful in the future
 # https://wiki.archlinux.org/title/default_applications
-xdg-open "$@" 0<&- >&- 2>&1 &
+xdg-open "$@" 0<&- >&- 2>&- &
