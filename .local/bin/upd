@@ -33,6 +33,7 @@ misc ()
 {
 	tldr --update
 	nvim +PlugUpgrade +PlugUpdate +qa
+	sudo hardcode-fixer
 }
 
 ncm ()
