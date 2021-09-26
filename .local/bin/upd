@@ -32,7 +32,7 @@ kg ()
 misc ()
 {
 	tldr --update
-	nvim +PlugUpgrade +PlugUpdate +qa
+	nvim +PlugUpgrade +PlugClean! +PlugUpdate +qa
 	sudo hardcode-fixer
 }
 
