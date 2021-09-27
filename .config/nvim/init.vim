@@ -16,6 +16,8 @@ Plug 'fnune/base16-vim'
 "Plug 'RRethy/nvim-base16'
 " nvim-treesitter does not support markdown right now, so wait
 "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+" use latest vim-markdown
+Plug 'tpope/vim-markdown'
 call plug#end()
 
 " next line must put below `Plug 'glacambre/firenvim'`, else if click github issue textarea, then click elsewhere, then click textarea, textarea will not be selected (no cursor in it), not sure why
