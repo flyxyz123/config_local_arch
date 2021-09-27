@@ -19,7 +19,8 @@ Window controls will be all wrong without it
   /* need 46vw for search bookmarks urls and title shown in one line */
   --uc-navigationbar-width: 46vw;
   --uc-toolbar-height: 40px;
-  --uc-urlbar-min-width: 100vw; /* minimum width for opened urlbar */
+  /* minimum width for opened urlbar */
+  /*--uc-urlbar-min-width: 100vw;*/ 
 }
 @media (-moz-proton){
   #scrollbutton-up,#scrollbutton-down{ border-block-width: 2px !important; }
@@ -87,12 +88,15 @@ Window controls will be all wrong without it
 /* 1px margin on touch density causes tabs to be too high */
 .tab-close-button{ margin-top: 0 !important }
 
-/* Make opened urlbar overlay all */
+/* Make opened urlbar overlay all
+fcitx5 input method or sxhkd caps lock will close opened bar, seems hard to fix */
+/*
 #urlbar[open]:focus-within{
   min-width: var(--uc-urlbar-min-width,none) !important;
   right: -78px !important;
   left: auto !important;
 }
+*/
 
 /* Hide dropdown placeholder */
 #urlbar-container:not(:hover) .urlbar-history-dropmarker{ margin-inline-start: -28px; }
