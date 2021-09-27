@@ -31,8 +31,9 @@ kg ()
 
 misc ()
 {
-	tldr --update
+	cfgc submodule foreach git pull
 	nvim +PlugUpgrade +PlugClean! +PlugUpdate +qa
+	tldr --update
 	sudo hardcode-fixer
 }
 
