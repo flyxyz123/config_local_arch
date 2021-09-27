@@ -3,4 +3,4 @@
 alacritty -e radeontop -c &
 alacritty -e sudo nethogs &
 alacritty -e sudo iotop &
-htop
+alacritty -e htop &
