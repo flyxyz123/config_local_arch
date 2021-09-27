@@ -1,6 +1,7 @@
 @import url(firefox-csshacks/chrome/navbar_tabs_oneliner.css);
 @import url(firefox-csshacks/chrome/urlbar_popup_full_width.css);
 
+/* need 46vw for search bookmarks urls and title shown in one line */
 #navigator-toolbox{
 	--uc-navigationbar-width: 46vw !important;
 }
