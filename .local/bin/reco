@@ -18,9 +18,9 @@ recodir="$XDG_VIDEOS_DIR/recordings/"
 mkdir -p "$recodir"
 
 if [ -e "$infofile" ]; then
-	kill "$(head -n1 "$infofile")"
+	read -r pid tmpfile < "$infofile"
+	kill "$pid"
 	notify-send 'finish recording, start converting'
-	tmpfile="$(tail -n1 "$infofile")"
 	ffmpeg -i "$tmpfile" "$recodir/$(time.uuid).mkv" && notify-send 'finish converting'
 	rm "$tmpfile" "$infofile"
 else
@@ -29,5 +29,5 @@ else
 	# arch wiki way
 	# no audio, less cpu use during capturing (fast?), large file size, need convert afterward
 	ffmpeg -y -f x11grab -framerate 25 -i "$DISPLAY" -c:v ffvhuff "$tmpfile" &
-	printf '%s\n%s' "$!" "$tmpfile" > "$infofile"
+	printf '%s\t%s' "$!" "$tmpfile" > "$infofile"
 fi
