@@ -7,6 +7,9 @@
 
 # better notify-send? keep send notify-send when recording? or not
 # mktemp instead of time.uuid?
+# benchmark diff. encode codecs to choose a better one?
+# consider audio, camera ...
+# hardware acc? seems no for ffvhuff? see arch wiki
 
 # use tmp instead?
 infofile="$XDG_CACHE_HOME/recoinfo"
