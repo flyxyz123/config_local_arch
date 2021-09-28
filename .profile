@@ -6,9 +6,9 @@
 #[[ -f ~/.bashrc ]] && . ~/.bashrc
 [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
 
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config/"
+export XDG_CACHE_HOME="$HOME/.cache/"
+export XDG_DATA_HOME="$HOME/.local/share/"
 
 . "$XDG_CONFIG_HOME/user-dirs.dirs"
 export XDG_DESKTOP_DIR="$XDG_DESKTOP_DIR"
