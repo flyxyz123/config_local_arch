@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# references:
+# https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/dmenurecord
+# https://wiki.archlinux.org/title/FFmpeg#Screen_capture
+# https://trac.ffmpeg.org/wiki/Capture/Desktop
+
+# better notify-send? keep send notify-send when recording? or not
+# mktemp instead of time.uuid?
+
+# use tmp instead?
+infofile="$XDG_CACHE_HOME/recoinfo"
+recodir="$XDG_VIDEOS_DIR/recordings/"
+mkdir -p "$recodir"
+
+if [ -e "$infofile" ]; then
+	notify-send 'finish recording, start converting'
+	kill "$(head -n1 "$infofile")"
+	tmpfile="$(tail -n1 "$infofile")"
+	ffmpeg -i "$tmpfile" "$recodir/$(time.uuid).mkv" && notify-send 'finish converting'
+	rm "$tmpfile" "$infofile"
+else
+	notify-send 'start recording'
+	tmpfile="/tmp/$(time.uuid).mkv"
+	# arch wiki way
+	# no audio, less cpu use during capturing (fast?), large file size, need convert afterward
+	ffmpeg -f x11grab -framerate 25 -i "$DISPLAY" -c:v ffvhuff "$tmpfile" &
+	printf '%s\n%s' "$!" "$tmpfile" > "$infofile"
+fi

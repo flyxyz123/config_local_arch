@@ -1,4 +1,4 @@
-alt + Print
+Print
 	ffmpeg -f x11grab -i "$DISPLAY" -vframes 1 "$XDG_PICTURES_DIR/screenshots/$(time.uuid)".png
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
@@ -32,5 +32,8 @@ XF86Audio{Prev,Play,Next}
 
 @Caps_Lock
 	kill -RTMIN+3 "$(cat ~/.cache/pidofbar)"
+
+alt + Print
+	reco
 
 # vim: ft=sh
