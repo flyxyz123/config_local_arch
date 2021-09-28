@@ -6,13 +6,12 @@
 # https://trac.ffmpeg.org/wiki/Capture/Desktop
 
 # better notify-send? keep send notify-send when recording? or not
-# mktemp instead of time.uuid?
-# benchmark diff. encode codecs to choose a better one?
+# benchmark different encode codecs to choose a better one?
 # consider audio, camera ...
 # hardware acc? seems no for ffvhuff? see arch wiki
 
 # use tmp instead?
-infofile="$XDG_CACHE_HOME/recoinfo"
+infofile="/tmp/recoinfo"
 recodir="$XDG_VIDEOS_DIR/recordings/"
 mkdir -p "$recodir"
 
@@ -24,9 +23,9 @@ if [ -e "$infofile" ]; then
 	rm "$tmpfile" "$infofile"
 else
 	notify-send 'start recording'
-	tmpfile="/tmp/$(time.uuid).mkv"
+	tmpfile="$(mktemp --suffix '.mkv')"
 	# arch wiki way
 	# no audio, less cpu use during capturing (fast?), large file size, need convert afterward
-	ffmpeg -f x11grab -framerate 25 -i "$DISPLAY" -c:v ffvhuff "$tmpfile" &
+	ffmpeg -y -f x11grab -framerate 25 -i "$DISPLAY" -c:v ffvhuff "$tmpfile" &
 	printf '%s\n%s' "$!" "$tmpfile" > "$infofile"
 fi
