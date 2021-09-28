@@ -9,6 +9,8 @@
 # benchmark different encode codecs to choose a better one?
 # consider audio, camera ...
 # hardware acc? seems no for ffvhuff? see arch wiki
+# sbar wait signal approach? or not
+# reco sbar status? so no notify-send
 
 # use tmp instead?
 infofile="/tmp/recoinfo"
@@ -16,14 +18,14 @@ recodir="$XDG_VIDEOS_DIR/recordings/"
 mkdir -p "$recodir"
 
 if [ -e "$infofile" ]; then
-	notify-send 'finish recording, start converting'
 	kill "$(head -n1 "$infofile")"
+	notify-send 'finish recording, start converting'
 	tmpfile="$(tail -n1 "$infofile")"
 	ffmpeg -i "$tmpfile" "$recodir/$(time.uuid).mkv" && notify-send 'finish converting'
 	rm "$tmpfile" "$infofile"
 else
-	notify-send 'start recording'
 	tmpfile="$(mktemp --suffix '.mkv')"
+	notify-send 'start recording'
 	# arch wiki way
 	# no audio, less cpu use during capturing (fast?), large file size, need convert afterward
 	ffmpeg -y -f x11grab -framerate 25 -i "$DISPLAY" -c:v ffvhuff "$tmpfile" &
