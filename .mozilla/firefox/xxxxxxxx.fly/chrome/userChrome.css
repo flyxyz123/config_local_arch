@@ -3,9 +3,7 @@
 
 /* on my laptop with linux, if only has more tool >> button and application menu hambugger button,
 need 46vw for search bookmarks urls and title shown in one line */
-#navigator-toolbox{
-	--uc-navigationbar-width: 46vw !important;
-}
+#navigator-toolbox { --uc-navigationbar-width: 46vw !important; }
 
 /* hide history back and forward-button */
 #back-button, #forward-button { display: none !important; }
