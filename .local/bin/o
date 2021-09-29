@@ -1,6 +1,19 @@
 #!/bin/sh
 
-# I don't care about errors, I don't want to handle errors, just shut up please.
-# I don't understand nohup, may be useful in the future
+# useful links
+# https://stackoverflow.com/questions/3430330/best-way-to-make-a-shell-script-daemon
+# https://serverfault.com/questions/117152/do-background-processes-get-a-sighup-when-logging-off
 # https://wiki.archlinux.org/title/default_applications
-xdg-open "$@" 0<&- >&- 2>&- &
+
+# improve
+# if $1 is executable script filename in current dir and no ./ in front, use ./$1 ?
+# also consider if $1 is executable but is directory?
+
+# I don't care about errors, I don't want to handle errors, just shut up please.
+# nohup seems not necessary if don't care about daemon SIGHUP requirement
+
+if [ $# -eq 1 ] && [ -e "$1" ] && ! [ -x "$1" ]; then
+	nohup xdg-open "$1" 0<&- >&- 2>&- &
+else
+	nohup "$@" 0<&- >&- 2>&- &
+fi
