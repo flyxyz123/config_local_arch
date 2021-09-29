@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# references:
+# useful urls:
 # https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/dmenurecord
 # https://wiki.archlinux.org/title/FFmpeg#Screen_capture
 # https://trac.ffmpeg.org/wiki/Capture/Desktop
@@ -12,7 +12,6 @@
 # sbar wait signal approach? or not
 # reco sbar status? so no notify-send
 
-# use tmp instead?
 infofile="/tmp/recoinfo"
 recodir="$XDG_VIDEOS_DIR/recordings/"
 mkdir -p "$recodir"
@@ -21,13 +20,15 @@ if [ -e "$infofile" ]; then
 	read -r pid tmpfile < "$infofile"
 	kill "$pid"
 	notify-send 'finish recording, start converting'
-	ffmpeg -i "$tmpfile" "$recodir/$(time.uuid).mkv" && notify-send 'finish converting'
+	ffmpeg -i "$tmpfile" "$recodir/$(time.uuid).mkv"
+	notify-send 'finish converting'
 	rm "$tmpfile" "$infofile"
 else
 	tmpfile="$(mktemp --suffix '.mkv')"
 	notify-send 'start recording'
-	# arch wiki way
-	# no audio, less cpu use during capturing (fast?), large file size, need convert afterward
-	ffmpeg -y -f x11grab -framerate 25 -i "$DISPLAY" -c:v ffvhuff "$tmpfile" &
-	printf '%s\t%s' "$!" "$tmpfile" > "$infofile"
+	# arch wiki way, no audio, less cpu use during capturing (fast?), large file size, need convert afterward
+	xrectsel '%w %h %x %y' | xargs sh -c 'ffmpeg -y -loglevel quiet -f x11grab -framerate 25 -s "$2"x"$3" -i "$DISPLAY+$4,$5" -c:v ffvhuff "$1" & echo $!' shell "$tmpfile" | xargs -I {} printf '%s\t%s' '{}' "$tmpfile" > "$infofile"
+	# another way to get subshell ffmpeg child pid
+	#xrectsel '%w %h %x %y' | xargs sh -c 'ffmpeg -y -f x11grab -framerate 25 -s "$2"x"$3" -i "$DISPLAY+$4,$5" -c:v ffvhuff "$1"' shell "$tmpfile" &
+	#printf '%s\t%s' "$(ps -o pid= --ppid $!)" "$tmpfile" > "$infofile"
 fi

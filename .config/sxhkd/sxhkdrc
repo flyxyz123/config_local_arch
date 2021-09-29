@@ -1,5 +1,8 @@
 Print
-	ffmpeg -f x11grab -i "$DISPLAY" -vframes 1 "$XDG_PICTURES_DIR/screenshots/$(time.uuid)".png
+	xrectsel '%w %h %x %y' | xargs sh -c 'ffmpeg -f x11grab -s "$1"x"$2" -i "$DISPLAY+$3,$4" -vframes 1 "$XDG_PICTURES_DIR/screenshots/$(time.uuid).png"' shell
+
+alt + Print
+	reco
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	amixer set Master {5%+,5%-,toggle};\
@@ -11,6 +14,12 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 alt + XF86AudioMute
 	amixer set Capture toggle;\
 	kill -RTMIN "$(cat ~/.cache/pidofbar)"
+
+XF86Audio{Prev,Play,Next}
+	playerctl {previous,play-pause,next}
+
+@Caps_Lock
+	kill -RTMIN+3 "$(cat ~/.cache/pidofbar)"
 
 alt + y
 	mpvy -s
@@ -26,14 +35,5 @@ alt + w
 
 alt + s
 	shufwall
-
-XF86Audio{Prev,Play,Next}
-	playerctl {previous,play-pause,next}
-
-@Caps_Lock
-	kill -RTMIN+3 "$(cat ~/.cache/pidofbar)"
-
-alt + Print
-	reco
 
 # vim: ft=sh
