@@ -1,4 +1,5 @@
 #!/bin/sh
+
 # references:
 # https://www.rockyourcode.com/til-how-to-watch-youtube-videos-with-mpv-and-keyboard-shortcuts/
 
@@ -7,7 +8,6 @@ height=$SCRHEIGHT
 url="$(xsel -ob)"
 flag=s
 
-# may improve to make some options mutually exclusive, see curlncm, maybe not
 # option f and h may do nothing if redownload? since same filename exist. yt-dlp won't download same file even without --auto-file-renameing=false. how improve? pass argument to aria2c?
 while getopts Aabd:f:h:su: opt; do
 	case $opt in

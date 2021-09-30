@@ -1,5 +1,4 @@
 #!/bin/sh
-# may need mkdir -p for some of the dirs? kg and ncm no need, how about refl and gall
 
 all ()
 {
@@ -47,7 +46,6 @@ ncm ()
 
 pac ()
 {
-	# may improve to query updated packages' changelogs, using `pacman -Qc`
 	sudo pacman --noconfirm -Syu
 	paru --noconfirm -aSyu
 	# part steal from aur comment

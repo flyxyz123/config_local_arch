@@ -1,12 +1,5 @@
 #!/bin/sh
 
-# how to not rewrite, maybe not?
-# how to know if there's new? use rewrite?
-# how to check if some script outdated? delete it?
-# how qbittorrent auto update those scripts, maybe try the fork?
-# how to make it a pure awk script? should I?
-# can I replace awk $0 ~ /.../ with /.../ ?
-
 curl -s 'https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins' | awk -F'"' '/Plugins for Private sites/{exit} /\.py/{url=$2;getline;getline;getline;if($0 !~ /❗|✖/)print url}' | xargs curl -s -Z -L --remote-name-all --create-dirs --output-dir "$1" --
 
 #curl -s 'https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins' | awk -F'"' '{

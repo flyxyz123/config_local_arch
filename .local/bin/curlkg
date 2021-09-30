@@ -1,4 +1,5 @@
 #!/bin/sh
+
 # references:
 # https://blog.csdn.net/qq_41730930/article/details/79327757
 # https://blog.csdn.net/u011112876/article/details/89634505
@@ -29,7 +30,6 @@ get_json ()
 	curl -s -G --data-urlencode type=get_uinfo -d outCharset=utf-8 -d start="$1" -d num=$num -d share_uid="$uid" "$homepage_url" | sed 's/.*({\(.*\)}).*/{\1}/' >> "$tmp_json_file"
 }
 
-# is it possible not to write to a file? only pipe stdout? should I?
 get_json 1
 ugc_total_count=$(jq '.data.ugc_total_count' "$tmp_json_file")
 # can also use while loop with i=$((i+1))
@@ -38,6 +38,5 @@ for i in $(seq 2 $(((ugc_total_count+num-1)/num))); do
 	get_json "$i"
 done
 
-# how to show less aria2c stdout?
 jq -r '.data.ugclist[]|"'"$music_url"'?shareid=\(.shareid)\n out=\(.title)_\(.time).m4a"' "$tmp_json_file" | aria2c -d "$download_dir" --auto-file-renaming=false --console-log-level=warn -i-
 rm "$tmp_json_file"

@@ -1,5 +1,6 @@
 #!/bin/sh
 # rewrite TianyiShi2001's python script which rewrite NeteaseCloudMusicApi node.js api
+
 # references:
 # https://github.com/ytdl-org/youtube-dl/issues/18051#issuecomment-859964832
 # https://github.com/Binaryify/NeteaseCloudMusicApi
@@ -26,8 +27,7 @@ die ()
 	exit 1
 }
 
-# let a i r mutually exclusive, can improve by chain ids
-# need to add usage help message after improvements
+# let a i r mutually exclusive
 # artist, song, djradio id
 flag=0
 while getopts a:i:r: opt; do
@@ -54,7 +54,6 @@ if [ -n "$ids" ]; then
 	# temporary solution, can improve by auto curl names
 	data="$(echo "$ids" | tr ',' '\n' | awk '{printf("%s\t%s\n",$0,"songname")}')"
 else
-	# need to consider second page of djradio
 	if [ -n "$rid" ]; then
 		data="$(curl -s -G --data-urlencode id="$rid" -d limit="$dj_max" 'https://music.163.com/djradio' | grep 'songlist\|tt f-thide' | sed -e 's/.*songlist-\(.*\)" class.*/\1/g' -e 's/.*title="\(.*\)".*/\1/g' | paste -sd '\t\n' | sort | tr '/' '_')"
 	# can only curl featured 50 songs for the artist, can improve

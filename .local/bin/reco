@@ -5,13 +5,6 @@
 # https://wiki.archlinux.org/title/FFmpeg#Screen_capture
 # https://trac.ffmpeg.org/wiki/Capture/Desktop
 
-# better notify-send? keep send notify-send when recording? or not
-# benchmark different encode codecs to choose a better one?
-# consider audio, camera ...
-# hardware acc? seems no for ffvhuff? see arch wiki
-# sbar wait signal approach? or not
-# reco sbar status? so no notify-send
-
 infofile="/tmp/recoinfo"
 recodir="$XDG_VIDEOS_DIR/recordings/"
 mkdir -p "$recodir"

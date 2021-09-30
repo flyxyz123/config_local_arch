@@ -5,11 +5,6 @@
 # https://serverfault.com/questions/117152/do-background-processes-get-a-sighup-when-logging-off
 # https://wiki.archlinux.org/title/default_applications
 
-# improve
-# if $1 is executable script filename in current dir and no ./ in front, use ./$1 ?
-# also consider if $1 is executable but is directory?
-# consider directoy, using xdg-mime to get the application name, hope the application can open dir and use it to batch open them, maybe not use while to open them one by one
-
 # I don't care about errors, I don't want to handle errors, just shut up please.
 # nohup seems not necessary if don't care about daemon SIGHUP requirement
 
