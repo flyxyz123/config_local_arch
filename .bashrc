@@ -30,7 +30,7 @@ alias iotop='sudo iotop'
 alias ls='ls --color=auto'
 alias nethogs='sudo nethogs'
 alias radeontop='radeontop -c'
-alias rm='rm -vI'
+alias rm='rm -I'
 alias sdcv='sdcv --color'
 
 # /dev/ttyACM0 can be in config file, or as environmantal variable, see /usr/share/doc/adafruit-ampy/README.md
