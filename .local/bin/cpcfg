@@ -1,6 +1,9 @@
 #!/bin/sh
 
 # some dotfiles file permissions are different than normal root:root file, need chown
+# If overwirte, cp by defualt uses `--no-preserve=all` which preserve target file mode, ownership, and timestamps.
+# https://serverfault.com/questions/273949/cp-without-overwriting-destination-permissions/1048378#1048378
+# However, if no overwrite, we need chown if the target file mode we want is different from normal root:root 644 file.
 sudo cp -i -- "$XDG_CONFIG_HOME/myconf/pacman.conf" /etc/
 sudo cp -i -- "$XDG_CONFIG_HOME/myconf/locale.gen" /etc/
 sudo mkdir -p /etc/wildmidi/
