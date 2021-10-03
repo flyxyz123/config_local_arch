@@ -3,7 +3,7 @@
 # but if you what to create new .desktop desktop entries with new name, you need to put it in ~/.local/share/applications/
 
 [Default Applications]
-image/gif=sxiv.desktop;
-image/png=sxiv.desktop;
-image/jpeg=sxiv.desktop;
+image/gif=nsxiv.desktop;
+image/png=nsxiv.desktop;
+image/jpeg=nsxiv.desktop;
 application/pdf=okularApplication_pdf.desktop;

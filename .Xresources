@@ -1,4 +1,6 @@
-! sxiv
-Sxiv.font:monospace:style=bold:size=10
-Sxiv.foreground:#c5c8c6
-Sxiv.background:#1d1f21
+! nsxiv, fnune/base16-vim base16-tomorrow-night colorscheme
+Nsxiv.bar.font:monospace:size=11
+Nsxiv.window.foreground:#c5c8c6
+Nsxiv.window.background:#1d1f21
+Nsxiv.bar.foreground:#b4b7b4
+Nsxiv.bar.background:#282a2e

@@ -34,6 +34,8 @@ misc ()
 	nvim +PlugUpgrade +PlugClean! +PlugUpdate +qa
 	tldr --update
 	sudo hardcode-fixer
+	nsxiv -c
+	find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -execdir rmdir --ignore-fail-on-non-empty -- '{}' \+
 }
 
 ncm ()
