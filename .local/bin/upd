@@ -35,7 +35,11 @@ misc ()
 	tldr --update
 	sudo hardcode-fixer
 	nsxiv -c
-	find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -execdir rmdir --ignore-fail-on-non-empty -- '{}' \+
+	# my ways
+	find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -empty -execdir rmdir -- '{}' \+
+	#find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -execdir rmdir --ignore-fail-on-non-empty -- '{}' \+
+	# nsxiv man page way
+	#find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -empty ! -name '.' -exec rmdir -- '{}' \;
 }
 
 ncm ()
