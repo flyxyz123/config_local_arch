@@ -1,0 +1,64 @@
+#!/bin/sh
+
+# Example for $XDG_CONFIG_HOME/sxiv/exec/key-handler
+# Called by sxiv(1) after the external prefix key (C-x by default) is pressed.
+# The next key combo is passed as its first argument. Passed via stdin are the
+# images to act upon, one path per line: all marked images, if in thumbnail
+# mode and at least one image has been marked, otherwise the current image.
+# sxiv(1) blocks until this script terminates. It then checks which images
+# have been modified and reloads them.
+
+# The key combo argument has the following form: "[C-][M-][S-]KEY",
+# where C/M/S indicate Ctrl/Meta(Alt)/Shift modifier states and KEY is the X
+# keysym as listed in /usr/include/X11/keysymdef.h without the "XK_" prefix.
+
+# my dependency notes
+# jpegtran is owned by libjpeg-turbo
+# mogrify is owned by imagemagick
+# exiv2 is owned by exiv2
+# rawtherapee is owned by rawtherapee
+
+rotate() {
+	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read -r file; do
+		case "$(file -b -i "$file")" in
+			image/jpeg*) jpegtran -rotate 90 -copy all -outfile "$file" "$file" ;;
+			*)           mogrify  -rotate 90 "$file" ;;
+		esac
+	done
+}
+
+flip() {
+	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read -r file; do
+		case "$(file -b -i "$file")" in
+			image/jpeg*) jpegtran -flip vertical -copy all -outfile "$file" "$file" ;;
+			*)           mogrify -flip "$file" ;;
+		esac
+	done
+}
+
+linkwall() {
+	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read -r file; do
+		walldir="$XDG_PICTURES_DIR/wallpapers/"
+		name=$(basename "$file")
+		if [ ! -e "$walldir$name" ]; then
+			convwall "$file" "$walldir$name" || ln -s "$file" "$walldir" 
+		else
+			notify-send 'error' "$name exist"
+		fi
+	done
+}
+
+# I choose not to put case nested in while read file loop
+# because it can pipe multiple files to one command?
+case "$1" in
+	"d") [ "$(printf 'No\nYes' | dmenu -i -p 'delete?')" = "Yes" ] && tr '\n' '\0' | xargs -0 rm ;;
+	"e") while read -r file; do alacritty -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
+	"f") flip ;;
+	"g") tr '\n' '\0' | xargs -0 setsid -f gimp ;;
+	"l") linkwall ;;
+	"p") tr '\n' '\0' | xargs -0 sh -c 'convert "$@" $(time.uuid).pdf' shell ;;
+	"r") rotate ;;
+	"w") tr '\n' '\0' | xargs -0 shufwall ;;
+	"y") tr '\n' '\0' | xargs -0 realpath | xsel -b ;;
+esac
+
