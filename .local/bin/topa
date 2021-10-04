@@ -1,6 +1,6 @@
 #!/bin/sh
 
-alacritty -e radeontop -c &
-alacritty -e sudo nethogs &
-alacritty -e sudo iotop &
-alacritty -e htop &
+o alacritty -e htop
+o alacritty -e radeontop -c
+o alacritty -e sudo iotop
+o alacritty -e sudo nethogs
