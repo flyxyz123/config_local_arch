@@ -21,14 +21,18 @@ esac
 # need \[ and \] around color codes so bash ignore color codes when calculating line wraps
 PS1='\[\e[0;91m\][\u@\h \W]\$ \[\e[0m\]'
 
+# https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
+for cmd in iotop nethogs; do
+	alias $cmd="sudo $cmd"
+done
+unset cmd
+
 alias absolutely-proprietary='absolutely-proprietary -f'
 alias alsamixer='alsamixer -V all'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias hardcode-fixer='sudo hardcode-fixer'
-alias iotop='sudo iotop'
 alias ls='ls --color=auto'
-alias nethogs='sudo nethogs'
 alias radeontop='radeontop -c'
 alias rm='rm -I'
 alias sdcv='sdcv --color'
