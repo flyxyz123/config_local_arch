@@ -4,4 +4,7 @@
 # link also show perl-rename approach
 # https://linuxconfig.org/rename-all-files-from-uppercase-to-lowercase-characters
 # if only change ' ' to '_' `rename` might be sufficient, for upper to lower case might need perl-rename if want concise
-find "$@" -depth -execdir sh -c 'mv -nvT -- "$1" "$(echo "$1" | tr "[:upper:] " "[:lower:]_")"' shell '{}' \;
+
+# pass awk script as argument trick from url:
+# https://unix.stackexchange.com/questions/282503/right-syntax-for-awk-usage-in-combination-with-other-command-inside-xargs-sh-c
+find "$@" -depth -execdir sh -c 'mv -nvT -- "$1" "$(echo "$1" | awk "$2" )"' shell '{}' '{gsub(/\/-+/,"/");gsub(/ +/,"_");gsub(/_*-+_*/,"-");print tolower($0)}' \;
