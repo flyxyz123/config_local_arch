@@ -1,7 +1,10 @@
 Print
-	xrectsel '%w %h %x %y' | xargs sh -c 'ffmpeg -f x11grab -s "$1"x"$2" -i "$DISPLAY+$3,$4" -vframes 1 "$XDG_PICTURES_DIR/screenshots/$(time.uuid).png"' shell
+	ffmpeg -f x11grab -i "$DISPLAY" -vframes 1 "$XDG_PICTURES_DIR/screenshots/$(time.uuid).png"
 
 alt + Print
+	xrectsel '%w %h %x %y' | xargs sh -c 'ffmpeg -f x11grab -s "$1"x"$2" -i "$DISPLAY+$3,$4" -vframes 1 "$XDG_PICTURES_DIR/screenshots/$(time.uuid).png"' shell
+
+alt + shift + Print
 	reco
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
