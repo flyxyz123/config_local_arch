@@ -8,7 +8,7 @@
 # pass awk script as argument trick from url:
 # https://unix.stackexchange.com/questions/282503/right-syntax-for-awk-usage-in-combination-with-other-command-inside-xargs-sh-c
 # -exec can't replace -execdir here, see cli notes for the -exec way
-find "$@" -depth -execdir sh -c 'mv -nvT -- "$2" "$(echo "$2" | awk "$1" )"' shell '{gsub(/\/-+/,"/");gsub(/ +/,"_");gsub(/_*-+_*/,"-");print tolower($0)}' '{}' \;
+find "$@" -depth -execdir sh -c 'mv -nvT -- "$2" "$(echo "$2" | awk "$1" )"' shell '{sub(/\/-+/,"/");gsub(/ +/,"_");gsub(/_*-+_*/,"-");print tolower($0)}' '{}' \;
 
 # for test
 #mkdir -p ~/test/TE\ ST/; rm -rf ~/test/TE\ ST/1t/; cp -r ~/test/0t/ ~/test/TE\ ST/1t/; mvtr ~/test/TE\ ST/1t/; tree ~/test/TE\ ST/1t/
