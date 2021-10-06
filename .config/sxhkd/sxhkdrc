@@ -34,10 +34,10 @@ alt + ctrl + y
 	tsp mpvy -A -u "$(xsel -ob)"
 
 alt + w
-	"$BROWSER"
+	"$BROWSER" &
 
 alt + W
-	mullvad-exclude o "$BROWSER"
+	mullvad-exclude "$BROWSER" &
 
 alt + s
 	shufwall

@@ -57,7 +57,7 @@ update_mic
 update_cap
 
 display () { 
-	xsetroot -name "$(echo "$time | N $net V $vpn | M $vol C $mic | $cap | $bat" | nawk '{gsub(/on|up|Con/,"1");gsub(/off|down|Dis/,"0");print}')"
+	xsetroot -name "$(echo "$time | N $net V $vpn | M $vol C $mic | $cap | $bat")"
 }
 
 # SIGNALLING
