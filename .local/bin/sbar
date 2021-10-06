@@ -17,7 +17,7 @@ bool () {
 
 # MODULES
 update_time () { 
-	time="$(date '+%a %m/%d %H:%M') | $(TZ=Asia/Shanghai date '+/%d %H:')"
+	time="$(date '+%a %m/%d %H:%M') $(TZ=Asia/Shanghai date '+/%d %H:')"
 }
 
 update_cap () { 
@@ -29,7 +29,7 @@ update_net () {
 }
 
 update_vpn () {
-	vpn="$(mullvad status | awk '{print substr($3,0,3)}' | bool)"
+	vpn="$(mullvad status | awk '{print $3}' | bool)"
 }
 
 update_vol () { 
