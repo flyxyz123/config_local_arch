@@ -6,6 +6,15 @@
 printf '%s' "$$" > "$XDG_CACHE_HOME/pidofbar"
 sec=0
 
+bool () {
+	read str
+	if [ "$str" = "on" ] || [ "$str" = "up" ] || [ "$str" = "Connected" ]; then
+		echo 1
+	else
+		echo 0
+	fi
+}
+
 # MODULES
 update_time () { 
 	time="$(date '+%a %m/%d %H:%M') | $(TZ=Asia/Shanghai date '+/%d %H:')"
@@ -16,15 +25,19 @@ update_cap () {
 }
 
 update_net () { 
-	net="$(cat /sys/class/net/wlp6s0/operstate)"
+	net="$(bool < /sys/class/net/wlp6s0/operstate)"
+}
+
+update_vpn () {
+	vpn="$(mullvad status | awk '{print substr($3,0,3)}' | bool)"
 }
 
 update_vol () { 
-	vol="$(amixer get Master | awk -F'[][]' 'END{print "M "$4" "$2}')"
+	vol="$(amixer get Master | awk -F'[][]' 'END{printf"%d %s",($4=="on")?1:0,$2}')"
 }
 
 update_mic () { 
-	mic="$(amixer get Capture | awk -F'[][]' 'END{print "C "$4}')"
+	mic="$(amixer get Capture | awk -F'[][]' 'END{print $4}' | bool)"
 }
 
 update_bat () { 
@@ -44,7 +57,7 @@ update_mic
 update_cap
 
 display () { 
-	xsetroot -name "$time | $cap | $net | $vol | $mic | $bat"
+	xsetroot -name "$(echo "$time | N $net V $vpn | M $vol C $mic | $cap | $bat" | nawk '{gsub(/on|up|Con/,"1");gsub(/off|down|Dis/,"0");print}')"
 }
 
 # SIGNALLING
@@ -52,8 +65,9 @@ display () {
 trap	"update_mic;display" 	"RTMIN"
 trap	"update_vol;display"	"RTMIN+1"
 # xev can't read my toggle internet keyboard key, don't know what key to use in sxhkd to send signal
-trap	"update_net;display"	"RTMIN+2"
+#trap	"update_net;display"	"RTMIN+2"
 trap	"update_cap;display"	"RTMIN+3"
+trap	"update_vpn;display"	"RTMIN+4"
 # to update it from external commands
 ## kill -m "$(cat "$XDG_CACHE_HOME/pidofbar")"
 # where m = 34 + n
@@ -65,6 +79,7 @@ while true; do
 		## [ $((sec % n)) -eq m ] && udpate_item
 		[ $((sec % 5 )) -eq 0 ] && update_time 	# update time every 5 seconds
 		[ $((sec % 5 )) -eq 0 ] && update_net
+		[ $((sec % 5 )) -eq 0 ] && update_vpn
 		[ $((sec % 60)) -eq 0 ] && update_bat
 		#[ $((sec % 300)) -eq 1 ] && update_event
 

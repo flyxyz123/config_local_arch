@@ -34,9 +34,16 @@ alt + ctrl + y
 	tsp mpvy -A -u "$(xsel -ob)"
 
 alt + w
-	firefox
+	"$BROWSER"
+
+alt + W
+	mullvad-exclude o "$BROWSER"
 
 alt + s
 	shufwall
+
+alt + v
+	if mullvad status | grep -q 'Disconnect'; then mullvad connect -w; else mullvad disconnect -w; fi;\
+	kill -RTMIN+4 "$(cat "$XDG_CACHE_HOME/pidofbar")"
 
 # vim: ft=sh
