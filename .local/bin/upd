@@ -36,7 +36,9 @@ misc ()
 	sudo hardcode-fixer
 	nsxiv -c
 	# my ways
+	# -exec can't replace -execdir here
 	find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -empty -execdir rmdir -- '{}' \+
+	# -exec can replace -execdir here
 	#find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -execdir rmdir --ignore-fail-on-non-empty -- '{}' \+
 	# nsxiv man page way
 	#find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -empty ! -name '.' -exec rmdir -- '{}' \;
