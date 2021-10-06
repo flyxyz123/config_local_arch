@@ -3,7 +3,7 @@
 # modified to fit my own need
 
 # INIT
-printf '%s' "$$" > ~/.cache/pidofbar
+printf '%s' "$$" > "$XDG_CACHE_HOME/pidofbar"
 sec=0
 
 # MODULES
@@ -48,18 +48,17 @@ display () {
 }
 
 # SIGNALLING
-# trap	"<function>;display"		"RTMIN+n"
-trap	"update_mic;display" 		"RTMIN"
-trap	"update_vol;display"		"RTMIN+1"
+# trap	"<function>;display"	"RTMIN+n"
+trap	"update_mic;display" 	"RTMIN"
+trap	"update_vol;display"	"RTMIN+1"
 # xev can't read my toggle internet keyboard key, don't know what key to use in sxhkd to send signal
-trap	"update_net;display"		"RTMIN+2"
-trap	"update_cap;display"		"RTMIN+3"
+trap	"update_net;display"	"RTMIN+2"
+trap	"update_cap;display"	"RTMIN+3"
 # to update it from external commands
-## kill -m "$(cat ~/.cache/pidofbar)"
+## kill -m "$(cat "$XDG_CACHE_HOME/pidofbar")"
 # where m = 34 + n
 
-while true
-do
+while true; do
 	# next line of code seems make hotkeys that send kill signals more responsive? not fully understood
 	sleep 1 & wait && { 
 		# to update item ever n seconds with a offset of m
