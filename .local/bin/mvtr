@@ -5,13 +5,10 @@
 # https://linuxconfig.org/rename-all-files-from-uppercase-to-lowercase-characters
 # if only change ' ' to '_' `rename` might be sufficient, for upper to lower case might need perl-rename if want concise
 
-# pass awk script as argument trick from url:
-# https://unix.stackexchange.com/questions/282503/right-syntax-for-awk-usage-in-combination-with-other-command-inside-xargs-sh-c
-# -exec can't replace -execdir here, see cli notes for the -exec way
+# ./_filename will be renamed ./filename, not what I want, need improve
+# -exec can't replace -execdir here, can write a -exec version
 
-find "$@" -depth -execdir sh -c 'mv -nvT -- "$1" "$(echo "$1" | tr "[:upper:] " "[:lower:]_" | tr -s "[:punct:]" | sed -E -e "s#/-#/#g" -e "s/_([-().,])/\1/g" -e "s/([-(),])_/\1/g" | tr -s "[:punct:]")"' shell '{}' \;
-
-#find "$@" -depth -execdir sh -c 'mv -nvT -- "$1" "$(echo "$1" | tr "[:upper:] " "[:lower:]_" | tr -s "[:punct:]" | sed -E -e "s#/-#/#g" -e "s/_([[:punct:]])/\1/g" -e "s/([[:punct:]])_/\1/g" | tr -s "[:punct:]")"' shell '{}' \;
+find "$@" -depth -execdir sh -c 'dest="$(echo "$1" | tr -d "\047" | sed -E -e "s/([[:lower:]])([[:upper:]])/\1_\2/g" | tr "[:upper:] " "[:lower:]_" | tr -s "[:punct:]" | sed -E -e "s#/-#/#g" -e "s/_([[:punct:]])/\1/g" -e "s/([[:punct:]])_/\1/g" | tr -s "[:punct:]")"; [ -e "$dest" ] || mv -v -- "$1" "$dest"' shell '{}' \;
 
 # for test
-#mkdir -p ~/test/TE\ ST/; rm -rf ~/test/TE\ ST/1t/; cp -r ~/test/0t/ ~/test/TE\ ST/1t/; mvtr ~/test/TE\ ST/1t/; tree ~/test/TE\ ST/1t/
+#mkdir -p ~/test/A\ A/; rm -rf ~/test/A\ A/1t/; cp -r ~/test/0t/ ~/test/A\ A/1t/; time mvtr ~/test/A\ A/1t/; tree ~/test/A\ A/1t/
