@@ -27,7 +27,7 @@ XF86Audio{Prev,Play,Next}
 alt + y
 	mpvy -s
 
-alt + Y
+alt + shift + y
 	mpvy -a
 
 alt + ctrl + y
@@ -35,9 +35,6 @@ alt + ctrl + y
 
 alt + w
 	"$BROWSER" &
-
-alt + W
-	mullvad-exclude "$BROWSER" &
 
 alt + s
 	shufwall

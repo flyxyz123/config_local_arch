@@ -7,7 +7,7 @@
 
 outdir ()
 { 
-	find . -type f -execdir mv -nt "$PWD" -- '{}' \+ 
+	find . -type f -execdir mv -t "$PWD" -- '{}' \+
 	find . -mindepth 1 -maxdepth 1 -type d -delete
 }
 
