@@ -34,7 +34,7 @@ alt + ctrl + y
 	tsp mpvy -A -u "$(xsel -ob)"
 
 alt + w
-	"$BROWSER" &
+	"$BROWSER"
 
 alt + s
 	shufwall
