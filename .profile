@@ -36,8 +36,6 @@ export QT_QPA_PLATFORMTHEME=gtk2
 export SDCV_PAGER='less --quit-if-one-screen -RX'
 export SXHKD_SHELL=sh
 export _ZO_ECHO=1
-# aur mullvad-vpn-bin version 2021.4 MULLVAD_SETTINGS_DIR not working
-#export MULLVAD_SETTINGS_DIR="$XDG_CONFIG_HOME/Mullvad VPN/"
 
 # use sudo find for some files or dirs that has no permission ex: ~/.cache/paru/clone/
 #export FZF_DEFAULT_COMMAND="fd --no-ignore --hidden --exclude .git"
