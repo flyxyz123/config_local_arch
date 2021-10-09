@@ -8,3 +8,5 @@ sudo cp -i -- "$XDG_CONFIG_HOME/myconf/pacman.conf" /etc/
 sudo cp -i -- "$XDG_CONFIG_HOME/myconf/locale.gen" /etc/
 sudo mkdir -p /etc/wildmidi/
 sudo cp -i -- "$XDG_CONFIG_HOME/myconf/wildmidi.cfg" /etc/wildmidi/
+sudo mkdir -p /etc/mullvad-vpn/
+sudo cp -i -- "$XDG_CONFIG_HOME/myconf/settings.json" /etc/mullvad-vpn/
