@@ -48,6 +48,7 @@ alt + v
 
 alt + q
 	mullvad connect -w;\
+	kill -RTMIN+4 "$(cat "$XDG_CACHE_HOME/pidofbar")";\
 	qbittorrent
 
 # vim: ft=sh
