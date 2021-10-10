@@ -36,16 +36,19 @@ alt + ctrl + y
 alt + w
 	"$BROWSER"
 
+# not ideal
 alt + shift +  w
 	mullvad-exclude "$BROWSER"
 
 alt + s
 	shufwall
 
+# not ideal
 alt + v
 	if mullvad status | grep -q 'Disconnect'; then mullvad connect -w; else killall qbittorrent; mullvad disconnect -w; fi;\
 	kill -RTMIN+4 "$(cat "$XDG_CACHE_HOME/pidofbar")"
 
+# not ideal
 alt + q
 	mullvad connect -w;\
 	kill -RTMIN+4 "$(cat "$XDG_CACHE_HOME/pidofbar")";\
