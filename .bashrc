@@ -46,6 +46,6 @@ alias tp='sudo tio /dev/ttyACM0'
 alias v='$EDITOR'
 alias vc='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/command-line_notes.md"'
 alias vq='$EDITOR "$XDG_DOCUMENTS_DIR/notes/others/questions_ideas_tips.md"'
-alias wttr='curl v2.wttr.in'
+alias wtr='curl v2.wttr.in'
 
 eval "$(zoxide init bash)"
