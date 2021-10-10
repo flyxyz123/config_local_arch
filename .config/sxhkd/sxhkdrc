@@ -39,12 +39,11 @@ alt + w
 alt + s
 	shufwall
 
-alt + v
-	if mullvad status | grep -q 'Disconnect'; then mullvad connect -w; else killall qbittorrent; mullvad disconnect -w; fi;\
-	kill -RTMIN+4 "$(cat "$XDG_CACHE_HOME/pidofbar")"
+#alt + v
+#	if mullvad status | grep -q 'Disconnect'; then mullvad connect -w; else killall qbittorrent; mullvad disconnect -w; fi;\
+#	kill -RTMIN+4 "$(cat "$XDG_CACHE_HOME/pidofbar")"
 
 alt + q
-	mullvad connect -w;\
 	qbittorrent
 
 # vim: ft=sh
