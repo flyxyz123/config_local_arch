@@ -47,6 +47,9 @@ mapkey('N','Find previous then center cursor', function(){
 	Visual.feedkeys('zz');
 });
 
+// with firefox RFP enabled in user.js, smooth scroll and gg/G do not work, firefox RFP's feature
+settings.smoothScroll = false;
+
 // set theme
 settings.theme = `
 .sk_theme {
