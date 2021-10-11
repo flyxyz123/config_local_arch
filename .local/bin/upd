@@ -22,7 +22,14 @@ gall ()
 	gallery-dl --download-archive "$XDG_DOCUMENTS_DIR/database/gallery-dl.sqlite3" -d "$XDG_PICTURES_DIR/anime/gallery-dl/" -i "$XDG_CONFIG_HOME/myconf/gallery_urls"
 }
 
-kg ()
+userjs ()
+{
+	kill $(pidof "$BROWSER")
+	"$HOME/.mozilla/firefox/xxxxxxxx.fly/prefsCleaner.sh" -s
+	"$HOME/.mozilla/firefox/xxxxxxxx.fly/updater.sh" -us
+}
+
+g ()
 {
 	curlkg -u649b9e82272a348b -- "$XDG_MUSIC_DIR/not_pure/lan_lan/kg/"
 	curlkg -u64949d822c25328c -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/kg/"
@@ -42,6 +49,7 @@ misc ()
 	#find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -execdir rmdir --ignore-fail-on-non-empty -- '{}' \+
 	# nsxiv man page way
 	#find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -empty ! -name '.' -exec rmdir -- '{}' \;
+	userjs
 }
 
 ncm ()
@@ -81,14 +89,16 @@ usb ()
 	git --git-dir="$XDG_DOCUMENTS_DIR/notes/.git" --work-tree="$XDG_DOCUMENTS_DIR/notes/" push usb
 }
 
+
 if [ $# -eq 0 ]; then
 	fast
 else
-	while getopts afgkmnpqru opt; do
+	while getopts afgjkmnpqru opt; do
 		case $opt in
 			a)all;;
 			f)fast;;
 			g)gall;;
+			j)userjs;;
 			k)kg;;
 			m)misc;;
 			n)ncm;;
