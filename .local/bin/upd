@@ -11,6 +11,20 @@ all ()
 	gall
 }
 
+# not in all
+clean ()
+{
+	nsxiv -c
+	# my ways
+	# -exec can't replace -execdir here
+	find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -empty -execdir rmdir -- '{}' \+
+	# -exec can replace -execdir here
+	#find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -execdir rmdir --ignore-fail-on-non-empty -- '{}' \+
+	# nsxiv man page way
+	#find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -empty ! -name '.' -exec rmdir -- '{}' \;
+	rm "$HOME/.mozilla/firefox/xxxxxxxx.fly/prefs.js.backup."*
+}
+
 fast ()
 {
 	pac
@@ -41,14 +55,6 @@ misc ()
 	nvim +PlugUpgrade +PlugClean! +PlugUpdate +qa
 	tldr --update
 	sudo hardcode-fixer
-	nsxiv -c
-	# my ways
-	# -exec can't replace -execdir here
-	find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -empty -execdir rmdir -- '{}' \+
-	# -exec can replace -execdir here
-	#find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -execdir rmdir --ignore-fail-on-non-empty -- '{}' \+
-	# nsxiv man page way
-	#find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -empty ! -name '.' -exec rmdir -- '{}' \;
 	userjs
 }
 
@@ -93,9 +99,11 @@ usb ()
 if [ $# -eq 0 ]; then
 	fast
 else
-	while getopts afgjkmnpqru opt; do
+	while getopts acfgjkmnpqru opt; do
 		case $opt in
 			a)all;;
+			# not in all
+			c)clean;;
 			f)fast;;
 			g)gall;;
 			j)userjs;;
