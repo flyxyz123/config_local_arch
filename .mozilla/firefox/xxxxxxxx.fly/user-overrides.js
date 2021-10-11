@@ -1,8 +1,9 @@
+// sometimes RFP break things, umcomment next line for temp access
+//user_pref("privacy.resistFingerprinting", false);
+
 user_pref("privacy.clearOnShutdown.cookies", false);
 // enable search engine in location bar
 user_pref("keyword.enabled", true); 
-// sometimes RFP break things, umcomment next line for temp access
-//user_pref("privacy.resistFingerprinting", false);
 
 // migrate some old about:config changes that also exist in user.js here, for better use of perfsCleaner.sh
 // use extensions on more sites
