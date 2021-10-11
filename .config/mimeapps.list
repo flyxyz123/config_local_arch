@@ -6,4 +6,4 @@
 image/gif=nsxiv.desktop;
 image/png=nsxiv.desktop;
 image/jpeg=nsxiv.desktop;
-application/pdf=okularApplication_pdf.desktop;
+application/pdf=org.pwmt.zathura.desktop;
