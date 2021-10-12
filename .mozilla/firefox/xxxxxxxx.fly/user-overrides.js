@@ -4,8 +4,11 @@
 user_pref("privacy.clearOnShutdown.cookies", false);
 // enable search engine in location bar
 user_pref("keyword.enabled", true); 
+// enable https-only mode in private windows only
+user_pref("dom.security.https_only_mode", false);
+user_pref("dom.security.https_only_mode_pbm", true);
 
-// migrate some old about:config changes that also exist in user.js here, for better use of perfsCleaner.sh
+// old about:config, for perfsCleaner.sh
 // use extensions on more sites
 user_pref("extensions.webextensions.restrictedDomains", "");
 // to use userChrome.css
