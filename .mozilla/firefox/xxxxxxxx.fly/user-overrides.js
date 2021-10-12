@@ -10,6 +10,8 @@ user_pref("dom.security.https_only_mode_pbm", true);
 // enable search suggestions
 //user_pref("browser.search.suggest.enabled", true);
 //user_pref("browser.urlbar.suggest.searches", true);
+user_pref("extensions.pocket.enabled", false);
+user_pref("extensions.screenshots.disabled", true);
 
 // old about:config, for perfsCleaner.sh
 // use extensions on more sites
