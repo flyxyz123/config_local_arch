@@ -7,6 +7,9 @@ user_pref("keyword.enabled", true);
 // enable https-only mode in private windows only
 user_pref("dom.security.https_only_mode", false);
 user_pref("dom.security.https_only_mode_pbm", true);
+// enable search suggestions
+//user_pref("browser.search.suggest.enabled", true);
+//user_pref("browser.urlbar.suggest.searches", true);
 
 // old about:config, for perfsCleaner.sh
 // use extensions on more sites
