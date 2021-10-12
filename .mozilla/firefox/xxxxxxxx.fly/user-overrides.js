@@ -12,8 +12,10 @@ user_pref("dom.security.https_only_mode_pbm", true);
 //user_pref("browser.urlbar.suggest.searches", true);
 user_pref("extensions.pocket.enabled", false);
 user_pref("extensions.screenshots.disabled", true);
+// allow popup
+user_pref("dom.disable_open_during_load", false);
 
-// old about:config, for perfsCleaner.sh
+// old about:config and settings, for perfsCleaner.sh
 // use extensions on more sites
 user_pref("extensions.webextensions.restrictedDomains", "");
 // to use userChrome.css
