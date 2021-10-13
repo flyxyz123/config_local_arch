@@ -28,3 +28,9 @@ user_pref("widget.content.allow-gtk-dark-theme", true);
 user_pref("dom.confirm_repost.testing.always_accept", true);
 // no warn on close multiple tabs
 user_pref("browser.tabs.warnOnClose", false);
+// address bar do not suggest open tabs
+user_pref("browser.urlbar.suggest.openpage", false);
+// address bar do not suggest shortcuts:
+// websites that appear when there's no entry in url bar
+// have sites like facebook that I almost never use and not in my bookmark
+user_pref("browser.urlbar.suggest.topsites", false);
