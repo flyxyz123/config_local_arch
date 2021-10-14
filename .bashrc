@@ -41,6 +41,7 @@ alias sdcv='sdcv --color'
 alias ap='sudo ampy -p /dev/ttyACM0'
 alias g=git
 alias ll='ls -lAh --color=auto --group-directories-first'
+alias sg='sudo git'
 alias spd='speedtest --no-upload; librespeed-cli --no-upload'
 alias tp='sudo tio /dev/ttyACM0'
 alias v='$EDITOR'
