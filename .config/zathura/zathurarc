@@ -1,0 +1,2 @@
+# mouse selection copy to clipboard instead of primary
+set selection-clipboard clipboard
