@@ -22,7 +22,7 @@ esac
 PS1='\[\e[0;91m\][\u@\h \W]\$ \[\e[0m\]'
 
 # https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
-for cmd in iotop nethogs; do
+for cmd in iotop nethogs hardcode-fixer; do
 	alias $cmd="sudo $cmd"
 done
 unset cmd
@@ -31,7 +31,6 @@ alias absolutely-proprietary='absolutely-proprietary -f'
 alias alsamixer='alsamixer -V all'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
-alias hardcode-fixer='sudo hardcode-fixer'
 alias ls='ls --color=auto'
 alias radeontop='radeontop -c'
 alias rm='rm -I'
@@ -41,7 +40,7 @@ alias sdcv='sdcv --color'
 alias ap='sudo ampy -p /dev/ttyACM0'
 alias g=git
 alias ll='ls -lAh --color=auto --group-directories-first'
-alias sg='sudo git'
+alias s='sudo ' # https://askubuntu.com/a/22043
 alias spd='speedtest --no-upload; librespeed-cli --no-upload'
 alias tp='sudo tio /dev/ttyACM0'
 alias v='$EDITOR'
