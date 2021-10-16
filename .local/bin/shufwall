@@ -6,4 +6,4 @@ else
 	file=$(find -L "$@" -maxdepth 1 -type f | shuf -n 1)
 fi
 
-display -resize "${SCRWIDTH}x$SCRHEIGHT" -backdrop -window root "$file"
+display -resize "${SCR_WIDTH}x$SCR_HEIGHT" -backdrop -window root "$file"

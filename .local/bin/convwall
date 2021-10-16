@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # target image aspect ratio
-wratio=$SCRWIDTH
-hratio=$SCRHEIGHT
+wratio=$SCR_WIDTH
+hratio=$SCR_HEIGHT
 # chop how much from center
 chopnum=99%
 

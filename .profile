@@ -57,8 +57,8 @@ export FZF_ALT_C_COMMAND="sudo find . -mindepth 1 -path '*/\.git' -prune -o -typ
 #export CM_OWN_CLIPBOARD=1
 #export CM_MAX_CLIPS=8
 
-export SCRWIDTH=1600
-export SCRHEIGHT=900
+export SCR_WIDTH=1600
+export SCR_HEIGHT=900
 
 # startx when login, should be put after environmental variables for .xinitrc to use
 if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
