@@ -4,7 +4,7 @@
 # https://www.rockyourcode.com/til-how-to-watch-youtube-videos-with-mpv-and-keyboard-shortcuts/
 
 fps=30
-height=$SCRHEIGHT
+height=$SCR_HEIGHT
 url="$(xsel -ob)"
 flag=s
 
