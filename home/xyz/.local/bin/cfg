@@ -9,7 +9,7 @@ while getopts clsmM opt; do
 		l|s)	dir=/
 				cmd="sudo git --git-dir=/etc/.cfg$opt/ --work-tree=/"
 				mods="/etc/myconf/cfg${opt}_meta";;
-		m)		sudo gitmetap "$cmd ls-tree -r --name-only --full-tree HEAD" "$dir" "$mods"
+		m)		sudo gitmetap "$cmd" "$dir" "$mods"
 				exit;;
 		M)		sudo gitmetar "$mods"
 				exit;;
