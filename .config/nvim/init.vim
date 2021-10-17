@@ -121,6 +121,7 @@ nnoremap j gj
 nnoremap o o<Esc>
 nnoremap O O<Esc>
 
+" maybe useful if use mapleader in the future: https://www.slant.co/topics/7423/~which-key-works-best-as-vim-leader
 " for searching command in manpages
 map <leader>- /^ *-
 
