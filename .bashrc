@@ -22,7 +22,7 @@ esac
 PS1='\[\e[0;91m\][\u@\h \W]\$ \[\e[0m\]'
 
 # https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
-for cmd in iotop nethogs hardcode-fixer; do
+for cmd in iotop nethogs hardcode-fixer ventoy; do
 	alias $cmd="sudo $cmd"
 done
 unset cmd
