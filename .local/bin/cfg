@@ -9,6 +9,8 @@ while getopts clLsSmM opt; do
 		L|S)	dir=/etc/
 				cmd="sudo git --git-dir=$dir/.cfg$opt/ --work-tree=$dir"
 				mods="/etc/myconf/cfg${opt}_mods";;
+				# -rw-r--r-- == binary 110100100 == octal 644
+				# https://stackoverflow.com/a/1796009
 		m)		$cmd ls-tree -r --name-only --full-tree HEAD | nawk -v a="$dir/" '{printf("%s%s\n",a,$0)}' | tr '\n' '\0' | xargs -0 ls -ldA -- | grep -v '^l\|^d' | nawk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k){for(i=10;$i;i++)$9=$9" "$i;printf("%0o %s\n",k,$9)}}' > "$mods"
 				exit;;
 		M)		while read -r mod path; do
