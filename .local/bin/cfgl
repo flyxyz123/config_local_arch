@@ -1,3 +1,0 @@
-#!/bin/sh
-
-git --git-dir="$HOME/.mycfg_local/" --work-tree="$HOME" "$@"

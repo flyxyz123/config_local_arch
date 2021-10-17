@@ -5,9 +5,9 @@ cmd='git'
 
 while getopts cls f; do
 	case $f in
-		c) cmd='cfgc';;
-		l) cmd='cfgl';;
-		s) cmd='cfgs';;
+		c) cmd='cfg -c';;
+		l) cmd='cfg -l';;
+		s) cmd='cfg -s';;
 		\?) exit 1;;
 	esac
 done
@@ -15,6 +15,6 @@ shift $((OPTIND-1))
 
 mes="${1:-refactor}"
 
-"$cmd" add -u
-"$cmd" commit -m "$mes"
-"$cmd" push
+$cmd add -u
+$cmd commit -m "$mes"
+$cmd push

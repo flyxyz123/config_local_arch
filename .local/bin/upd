@@ -51,7 +51,7 @@ g ()
 
 misc ()
 {
-	cfgc submodule foreach git pull
+	cfg -c submodule foreach git pull
 	nvim +PlugUpgrade +PlugClean! +PlugUpdate +qa
 	tldr --update
 	sudo hardcode-fixer
@@ -89,9 +89,9 @@ refl ()
 
 usb ()
 {
-	cfgc push usb
-	cfgl push usb
-	cfgs push
+	cfg -c push usb
+	cfg -l push usb
+	cfg -s push
 	git --git-dir="$XDG_DOCUMENTS_DIR/notes/.git" --work-tree="$XDG_DOCUMENTS_DIR/notes/" push usb
 }
 
