@@ -121,6 +121,7 @@ nnoremap j gj
 nnoremap o o<Esc>
 nnoremap O O<Esc>
 
+" for searching command in manpages
 map <leader>- /^ *-
 
 " default statusline:set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
