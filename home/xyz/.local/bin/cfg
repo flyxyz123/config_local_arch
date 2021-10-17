@@ -1,17 +1,16 @@
 #!/bin/sh
 
-# didn't consider $HOME contain space? need improve?
 while getopts clsmM opt; do
 	case $opt in
 		c)		dir="$HOME"
 				cmd="git --git-dir=$dir/.cfg$opt/ --work-tree=$dir"
-				mods="$XDG_CONFIG_HOME/myconf/cfg${opt}_meta";;
+				meta_file="$XDG_CONFIG_HOME/myconf/cfg${opt}_meta";;
 		l|s)	dir=/
 				cmd="sudo git --git-dir=/etc/.cfg$opt/ --work-tree=/"
-				mods="/etc/myconf/cfg${opt}_meta";;
-		m)		sudo gitmetap "$cmd" "$dir" "$mods"
+				meta_file="/etc/myconf/cfg${opt}_meta";;
+		m)		sudo gitmetap "$cmd" "$dir" "$meta_file"
 				exit;;
-		M)		sudo gitmetar "$mods"
+		M)		sudo gitmetar "$meta_file"
 				exit;;
 		\?)	exit 1;;
 	esac
