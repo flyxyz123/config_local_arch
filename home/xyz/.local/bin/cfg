@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # didn't consider $HOME contain space? need improve?
-while getopts clLsSmM opt; do
+while getopts clsmM opt; do
 	case $opt in
 		c)		dir="$HOME"
 				cmd="git --git-dir=$dir/.cfg$opt/ --work-tree=$dir"
