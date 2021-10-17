@@ -1,7 +1,8 @@
 // sometimes RFP break things, umcomment next line for temp access
-user_pref("privacy.resistFingerprinting", false);
-user_pref("network.http.referer.XOriginPolicy", 0);
-user_pref("network.http.referer.XOriginTrimmingPolicy", 0);
+//user_pref("privacy.resistFingerprinting", false);
+// not sure next two lines which break website
+//user_pref("network.http.referer.XOriginPolicy", 0);
+//user_pref("network.http.referer.XOriginTrimmingPolicy", 0);
 
 user_pref("privacy.clearOnShutdown.cookies", false);
 // enable search engine in location bar
