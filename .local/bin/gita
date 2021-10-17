@@ -3,11 +3,9 @@
 
 cmd='git'
 
-while getopts cls f; do
+while getopts clLsS f; do
 	case $f in
-		c) cmd='cfg -c';;
-		l) cmd='cfg -l';;
-		s) cmd='cfg -s';;
+		c|l|L|s|S) cmd="cfg -$f";;
 		\?) exit 1;;
 	esac
 done

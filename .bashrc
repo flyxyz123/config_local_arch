@@ -38,13 +38,15 @@ alias sdcv='sdcv --color'
 
 # /dev/ttyACM0 can be in config file, or as environmantal variable, see /usr/share/doc/adafruit-ampy/README.md
 alias ap='sudo ampy -p /dev/ttyACM0'
-alias c='cfg'
+alias cfgc='cfg -c'
+alias cfgl='cfg -l'
+alias cfgs='cfg -s'
 alias g=git
 alias ll='ls -lAh --color=auto --group-directories-first'
 alias s='sudo ' # https://askubuntu.com/a/22043
-alias sv='sudoedit'
 alias se='sudo -E '
 alias spd='speedtest --no-upload; librespeed-cli --no-upload'
+alias sv='sudoedit'
 alias tp='sudo tio /dev/ttyACM0'
 alias v='$EDITOR'
 alias vc='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/command-line_notes.md"'
