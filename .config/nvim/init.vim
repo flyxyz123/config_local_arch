@@ -128,6 +128,7 @@ nnoremap O O<Esc>
 " maybe useful if use mapleader in the future: https://www.slant.co/topics/7423/~which-key-works-best-as-vim-leader
 " for searching command in manpages
 map <leader>- /^ *-
+map <leader>* /\*\*.*\*\*<CR>
 
 " default statusline:set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set statusline+=%<
