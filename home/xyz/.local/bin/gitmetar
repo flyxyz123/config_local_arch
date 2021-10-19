@@ -2,5 +2,5 @@
 
 while read -r mod user group path; do
 	chown -c "$user:$group" -- "$path"
-	chmod -c "$mod" -- "$path"
+	[ "$mod" -ne 777 ] && chmod -c "$mod" -- "$path"
 done < "$1"
