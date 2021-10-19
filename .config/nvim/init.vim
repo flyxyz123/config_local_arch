@@ -55,6 +55,10 @@ augroup END
 "let g:markdown_folding = 1
 let g:markdown_minlines = 500
 
+" netrw-p preview vertial split
+let g:netrw_preview = 1
+let g:netrw_winsize = 20
+
 " seems needs this for autocmd FileType * to work? 
 filetype plugin on
 
