@@ -4,8 +4,8 @@ all () {
 	fast
 	usb
 	qb
-	ncm
 	kg
+	ncm
 	refl
 	gall
 }
@@ -54,8 +54,14 @@ misc () {
 ncm () {
 	curlncm -a48860966 -- "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/artist/"
 	curlncm -a46703185 -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/artist/"
+	curlncm -a30382647 -- "$XDG_MUSIC_DIR/not_pure/qi_tian_sakura/ncm/artist/"
+	curlncm -a32825443 -- "$XDG_MUSIC_DIR/not_pure/song_yue_ru/ncm/artist/"
+
 	curlncm -r793052426 -- "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/djradio/"
 	curlncm -r792968433 -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/djradio/"
+	curlncm -r792042397 -- "$XDG_MUSIC_DIR/not_pure/qi_tian_sakura/ncm/djradio/"
+	curlncm -r337005057 -- "$XDG_MUSIC_DIR/not_pure/qi_nian_yu_yu/ncm/djradio/"
+	curlncm -r962806671 -- "$XDG_MUSIC_DIR/not_pure/qi_nian_yu_yu/ncm/djradio/"
 }
 
 pac () {
