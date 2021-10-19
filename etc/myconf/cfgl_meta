@@ -9,6 +9,7 @@
 644 xyz wheel //home/xyz/.config/fontconfig/fonts.conf
 444 xyz wheel //home/xyz/.config/htop/htoprc
 644 xyz wheel //home/xyz/.config/mimeapps.list
+777 xyz wheel //home/xyz/.config/mpv/scripts/sponsorblock-minimal.lua
 644 xyz wheel //home/xyz/.config/Mullvad VPN/gui_settings.json
 644 xyz wheel //home/xyz/.config/myconf/gallery_urls
 644 xyz wheel //home/xyz/.config/newsboat/config
