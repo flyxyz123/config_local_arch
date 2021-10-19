@@ -25,8 +25,7 @@ shift $((OPTIND-1))
 download_dir="${1:-"$PWD"}"
 [ -d "$download_dir" ] || mkdir -p "$download_dir"
 
-get_json () 
-{
+get_json () {
 	curl -s -G --data-urlencode type=get_uinfo -d outCharset=utf-8 -d start="$1" -d num=$num -d share_uid="$uid" "$homepage_url" | sed 's/.*({\(.*\)}).*/{\1}/' >> "$tmp_json_file"
 }
 

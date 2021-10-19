@@ -5,14 +5,12 @@
 
 # not sure if find here need -depth, not sure if mv here need -n and -T
 
-outdir ()
-{ 
+outdir () { 
 	find . -type f -execdir mv -nt "$PWD" -- '{}' \+
 	find . -mindepth 1 -maxdepth 1 -type d -delete
 }
 
-indir ()
-{
+indir () {
 	find . -maxdepth 1 -type f | awk -F. '!a[$NF]++{print $NF}' | xargs mkdir --
 	find . -mindepth 1 -maxdepth 1 -type d -execdir basename -az -- '{}' \+ | xargs -0 -I _ find . -maxdepth 1 -type f -name '*._' -execdir mv -t '_' -- '{}' \+
 }

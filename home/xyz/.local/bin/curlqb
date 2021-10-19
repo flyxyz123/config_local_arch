@@ -1,18 +1,15 @@
 #!/bin/sh
 
-curl -s 'https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins' | awk -F'"' '/Plugins for Private sites/{exit} /\.py/{url=$2;getline;getline;getline;if($0 !~ /❗|✖/)print url}' | xargs curl -s -Z -L --remote-name-all --create-dirs --output-dir "$1" --
+curl -s 'https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins' | awk -F'"' '
+/Plugins for Private sites/ {exit}
+/\.py/ {
+	url=$2
+	getline
+	getline
+	getline
+	if($0 !~ /❗|✖/)
+		print url
+}
+' | xargs curl -s -Z -L --remote-name-all --create-dirs --output-dir "$1" --
 
-#curl -s 'https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins' | awk -F'"' '{
-#	if($0 ~ /Plugins for Private sites/)
-#		exit
-#	if($0 ~ /\.py/)
-#	{
-#		url=$2
-#		getline
-#		getline
-#		getline
-#		if($0 !~ /❗|✖/)
-#			print url
-#	}
-#}' | xargs curl -s -Z -L --remote-name-all --create-dirs --output-dir "$1" --
-
+#curl -s 'https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins' | awk -F'"' '/Plugins for Private sites/{exit} /\.py/{url=$2;getline;getline;getline;if($0 !~ /❗|✖/)print url}' | xargs curl -s -Z -L --remote-name-all --create-dirs --output-dir "$1" --

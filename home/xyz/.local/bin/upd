@@ -1,7 +1,6 @@
 #!/bin/sh
 
-all ()
-{
+all () {
 	fast
 	usb
 	qb
@@ -12,8 +11,7 @@ all ()
 }
 
 # not in all
-clean ()
-{
+clean () {
 	nsxiv -c
 	# my ways
 	# -exec can't replace -execdir here
@@ -25,32 +23,27 @@ clean ()
 	rm "$HOME/.mozilla/firefox/xxxxxxxx.fly/prefs.js.backup."*
 }
 
-fast ()
-{
+fast () {
 	pac
 	misc
 }
 
-gall ()
-{
+gall () {
 	gallery-dl --download-archive "$XDG_DOCUMENTS_DIR/database/gallery-dl.sqlite3" -d "$XDG_PICTURES_DIR/anime/gallery-dl/" -i "$XDG_CONFIG_HOME/myconf/gallery_urls"
 }
 
-userjs ()
-{
+userjs () {
 	kill $(pidof "$BROWSER")
 	"$HOME/.mozilla/firefox/xxxxxxxx.fly/prefsCleaner.sh" -s
 	"$HOME/.mozilla/firefox/xxxxxxxx.fly/updater.sh" -us
 }
 
-g ()
-{
+g () {
 	curlkg -u649b9e82272a348b -- "$XDG_MUSIC_DIR/not_pure/lan_lan/kg/"
 	curlkg -u64949d822c25328c -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/kg/"
 }
 
-misc ()
-{
+misc () {
 	cfg -c submodule foreach git pull
 	nvim +PlugUpgrade +PlugClean! +PlugUpdate +qa
 	tldr --update
@@ -58,16 +51,14 @@ misc ()
 	userjs
 }
 
-ncm ()
-{
+ncm () {
 	curlncm -a48860966 -- "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/artist/"
 	curlncm -a46703185 -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/artist/"
 	curlncm -r793052426 -- "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/djradio/"
 	curlncm -r792968433 -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/djradio/"
 }
 
-pac ()
-{
+pac () {
 	sudo pacman --noconfirm -Syu
 	paru --noconfirm -aSyu
 	# part steal from aur comment
@@ -76,19 +67,16 @@ pac ()
 	sudo pacman -Fy
 }
 
-qb ()
-{
+qb () {
 	rm -r -- "$HOME/programs/qbittorrent_search_plugins/"
 	curlqb "$HOME/programs/qbittorrent_search_plugins/"
 }
 
-refl ()
-{
+refl () {
 	sudo reflector --save /etc/pacman.d/mirrorlist --latest 200 --sort rate
 }
 
-usb ()
-{
+usb () {
 	cfg -c push usb
 	cfg -l push usb
 	cfg -s push
