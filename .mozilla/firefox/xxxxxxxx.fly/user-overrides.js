@@ -1,13 +1,12 @@
-// sometimes RFP break things, umcomment next line for temp access
+// fixes
 //user_pref("privacy.resistFingerprinting", false);
-// not sure next two lines which break website
+// douyu pay, not sure next two which one worked, need test
 //user_pref("network.http.referer.XOriginPolicy", 0);
 //user_pref("network.http.referer.XOriginTrimmingPolicy", 0);
-
-// some maybe bad choices
-user_pref("privacy.clearOnShutdown.cookies", false);
-// to open baidu
+// baidu
 user_pref("security.ssl.require_safe_negotiation", false);
+
+user_pref("privacy.clearOnShutdown.cookies", false);
 // enable search engine in location bar
 user_pref("keyword.enabled", true); 
 // enable https-only mode in private windows only
