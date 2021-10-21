@@ -1,7 +1,7 @@
 #!/bin/sh
 # note message string must come after options
 
-cmd='git'
+cmd=git
 
 while getopts cls f; do
 	case $f in
