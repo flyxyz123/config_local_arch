@@ -18,6 +18,8 @@ Plug 'fnune/base16-vim'
 "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 " use latest vim-markdown
 Plug 'tpope/vim-markdown'
+" alternatives: h-hg/fcitx.nvim, rlue/vim-barbaric, lilydjwg/fcitx.vim
+Plug 'rlue/vim-barbaric'
 call plug#end()
 
 " next line must put below `Plug 'glacambre/firenvim'`, else if click github issue textarea, then click elsewhere, then click textarea, textarea will not be selected (no cursor in it), not sure why
@@ -90,7 +92,7 @@ set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set encoding=utf-8
 
 " some file on win10 display as unix but is dos
-if has("win32")
+if has('win32')
 	set fileformats=dos
 	" windows 10 bug, need this to change cursor back to vertical bar after leaving neovim
 	" the number after ver seems no effects, maybe because neovim is exited
