@@ -23,6 +23,7 @@ clean () {
 	rm "$HOME/.mozilla/firefox/xxxxxxxx.fly/prefs.js.backup."*
 }
 
+# basic daily stuff
 fast () {
 	pac
 	misc
