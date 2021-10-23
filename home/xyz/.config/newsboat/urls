@@ -24,3 +24,7 @@ https://bugs.archlinux.org/feed.php?feed_type=rss2&topic=clo&project=0
 # qmmp
 https://sourceforge.net/p/qmmp-dev/tickets/590/feed.atom
 https://sourceforge.net/p/qmmp-dev/tickets/714/feed.atom
+
+# stackoverflow
+https://stackoverflow.com/feeds/question/55115787
+https://unix.stackexchange.com/feeds/question/217661
