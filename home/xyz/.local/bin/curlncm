@@ -31,15 +31,21 @@ die () {
 flag=0
 while getopts a:i:r: opt; do
 	case $opt in
-		a)	[ "$flag" -eq 1 ] && die "options a,i,r are mutually exclusive"
+		a)
+			[ "$flag" -eq 1 ] && die "options a,i,r are mutually exclusive"
 			aid="$OPTARG"
-			flag=1;;
-		i)	[ "$flag" -eq 1 ] && die "options a,i,r are mutually exclusive"
+			flag=1
+			;;
+		i)
+			[ "$flag" -eq 1 ] && die "options a,i,r are mutually exclusive"
 			ids="$OPTARG"
-			flag=1;;
-		r)	[ "$flag" -eq 1 ] && die "options a,i,r are mutually exclusive"
+			flag=1
+			;;
+		r)
+			[ "$flag" -eq 1 ] && die "options a,i,r are mutually exclusive"
 			rid="$OPTARG"
-			flag=1;;
+			flag=1
+			;;
 		\?) exit 1;;
 	esac
 done
