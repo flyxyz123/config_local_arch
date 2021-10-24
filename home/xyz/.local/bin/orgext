@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# not sure if find here need -depth, not sure if mv here need -n and -T
-
 outdir () { 
 	find . -type f -execdir mvt "$PWD" '{}' \+
 	find . -mindepth 1 -maxdepth 1 -type d -execdir rmdir -- '{}' \+
