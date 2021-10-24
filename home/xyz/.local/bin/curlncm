@@ -81,7 +81,7 @@ params="$(printf '%s-36cd479b6b5-%s-36cd479b6b5-%s' "$url" "$text" "$digest")"
 encrypted_params="$(printf '%s' "$params" | openssl enc -aes-128-ecb -K "$key" | hexdump -ve '/1 "%02X"')"
 # curl default user agent header seems not working
 curl -s -A "$user_agent" -d params="$encrypted_params" 'https://interface3.music.163.com/eapi/song/enhance/player/url' | jq -r '.data|sort_by(.id)|.[].url' > "$dl_urls_tmp"
-[ "$(echo "$data" | wc -l)" -ne "$(wc -l < "$dl_urls_tmp")" ] && die "number of download uls doesn't match request"
+[ "$(echo "$data" | wc -l)" -ne "$(wc -l < "$dl_urls_tmp")" ] && die "number of download urls doesn't match request"
 
 # can't download some music if live abroad, may need proxy or vpn
 # using user_agent, content-type header, cookie header, referer are not necessary? but feels faster
