@@ -2,16 +2,24 @@
 
 while getopts clsmM opt; do
 	case $opt in
-		c)		work_tree_dir="$HOME"
-				meta_file="$XDG_CONFIG_HOME/myconf/cfg${opt}_meta"
-				cmd="git --git-dir=$HOME/.cfg$opt/ --work-tree=$HOME";;
-		l|s)	work_tree_dir=/
-				meta_file="/etc/myconf/cfg${opt}_meta"
-				cmd="sudo git --git-dir=/etc/.cfg$opt/ --work-tree=/";;
-		m)		sudo gitmetap "$cmd" "$work_tree_dir" "$meta_file"
-				exit;;
-		M)		sudo gitmetar "$meta_file"
-				exit;;
+		c)		
+			work_tree_dir="$HOME"
+			meta_file="$XDG_CONFIG_HOME/myconf/cfg${opt}_meta"
+			cmd="git --git-dir=$HOME/.cfg$opt/ --work-tree=$HOME"
+			;;
+		l|s)	
+			work_tree_dir=/
+			meta_file="/etc/myconf/cfg${opt}_meta"
+			cmd="sudo git --git-dir=/etc/.cfg$opt/ --work-tree=/"
+			;;
+		m)		
+			sudo gitmetap "$cmd" "$work_tree_dir" "$meta_file"
+			exit
+			;;
+		M)	
+			sudo gitmetar "$meta_file"
+			exit
+			;;
 		\?)	exit 1;;
 	esac
 done
