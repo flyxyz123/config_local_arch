@@ -38,6 +38,7 @@
 755 xyz wheel //home/xyz/.local/bin/mmi
 755 xyz wheel //home/xyz/.local/bin/mpva
 755 xyz wheel //home/xyz/.local/bin/mpvy
+755 xyz wheel //home/xyz/.local/bin/mvt
 755 xyz wheel //home/xyz/.local/bin/mvtr
 755 xyz wheel //home/xyz/.local/bin/o
 755 xyz wheel //home/xyz/.local/bin/orgext
