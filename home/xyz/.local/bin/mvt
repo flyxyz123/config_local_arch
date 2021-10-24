@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# emulate mv -t, for more POSIX compliant
+dist="$1"
+shift
+mv -- "$@" "$dist" 

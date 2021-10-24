@@ -1,18 +1,16 @@
 #!/bin/sh
 
-# references: 
-# https://stackoverflow.com/questions/1842254/how-can-i-find-all-of-the-distinct-file-extensions-in-a-folder-hierarchy
-
 # not sure if find here need -depth, not sure if mv here need -n and -T
 
 outdir () { 
-	find . -type f -execdir mv -nt "$PWD" -- '{}' \+
-	find . -mindepth 1 -maxdepth 1 -type d -delete
+	find . -type f -execdir mvt "$PWD" '{}' \+
+	find . -mindepth 1 -maxdepth 1 -type d -execdir rmdir -- '{}' \+
 }
 
 indir () {
+	# https://stackoverflow.com/questions/1842254/how-can-i-find-all-of-the-distinct-file-extensions-in-a-folder-hierarchy
 	find . -maxdepth 1 -type f | awk -F. '!a[$NF]++{print $NF}' | xargs mkdir --
-	find . -mindepth 1 -maxdepth 1 -type d -execdir basename -az -- '{}' \+ | xargs -0 -I _ find . -maxdepth 1 -type f -name '*._' -execdir mv -t '_' -- '{}' \+
+	find . -mindepth 1 -maxdepth 1 -type d -execdir basename -az -- '{}' \+ | xargs -0 -I _ find . -maxdepth 1 -type f -name '*._' -execdir mvt '_' '{}' \+
 }
 
 case "$1" in
