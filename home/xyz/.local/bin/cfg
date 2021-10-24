@@ -6,7 +6,7 @@ while getopts clsmM opt; do
 				cmd="git --git-dir=$HOME/.cfg$opt/ --work-tree=$HOME"
 				meta_file="$XDG_CONFIG_HOME/myconf/cfg${opt}_meta";;
 		l|s)	work_tree_dir=/
-				cmd="sudo git --git-dir=/etc/.cfg$opt/ --work-tree=/"
+				cmd="sudo GPG_TTY=$(tty) git --git-dir=/etc/.cfg$opt/ --work-tree=/"
 				meta_file="/etc/myconf/cfg${opt}_meta";;
 		m)		sudo gitmetap "$cmd" "$work_tree_dir" "$meta_file"
 				exit;;
