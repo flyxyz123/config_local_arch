@@ -55,7 +55,7 @@ augroup END
 
 " :h markdown, for vim default tpope/vim-markdown
 "let g:markdown_folding = 1
-let g:markdown_minlines = 500
+let g:markdown_minlines = 1000
 
 " netrw-p preview vertial split
 let g:netrw_preview = 1
