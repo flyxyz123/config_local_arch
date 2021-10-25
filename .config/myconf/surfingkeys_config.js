@@ -1,4 +1,3 @@
-//test
 // old example config, may not work. also, I change ctrl-y to Ctrl-y
 // an example to create a new mapping `ctrl-y`
 //mapkey('<Ctrl-y>', 'Show me the money', function() {
