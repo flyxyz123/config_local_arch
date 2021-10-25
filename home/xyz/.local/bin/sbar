@@ -34,7 +34,7 @@ update_vpn () {
 
 update_vol () { 
 	# $(NF-1) for both alsa and pulseaudio
-	vol="$(amixer get Master | awk -F'[][]' 'END{printf"%d %s",($(NF-1)=="on")?1:0,$2}')"
+	vol="$(amixer get Master | awk -F'[][]' 'END{printf("%d %s",($(NF-1)=="on")?1:0,$2)}')"
 }
 
 update_mic () { 
