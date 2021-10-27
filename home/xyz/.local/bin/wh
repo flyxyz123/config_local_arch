@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# blue, see `man terminfo`
+setaf=$(tput setaf 4)
+sgr0=$(tput sgr0)
+
+for cmd in type whatis whereis which "pacman -Qo --color always"; do
+	#printf '\n%s\n%s\n' "$setaf$cmd $*$sgr0" "$($cmd "$@" 2>&1)"
+	printf '\n\033[0;34m%s\033[0m\n%s\n' "$setaf$cmd $*$sgr0" "$($cmd "$@" 2>&1)"
+done | less -R --quit-if-one-screen
