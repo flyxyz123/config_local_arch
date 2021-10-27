@@ -24,16 +24,23 @@ export PATH="$(find "$HOME/.local/bin" -type d -exec printf '%s:' '{}' \+)$PATH"
 export HISTSIZE=7000
 export HISTFILESIZE=7000
 
-export MANPAGER='nvim +Man!'
 export EDITOR=nvim
 export BROWSER=firefox
+
+export PAGER=less
+# -X seems can keep the output if exit less?
+# -F is useful when sdcv need user to manually select similar word, after selection if no -F less will not quit if one screen
+# but other situation seems less use -F as default?
+# steal from sdcv arch wiki
+export LESS='-FRX'
+export SDCV_PAGER="$PAGER"
+export MANPAGER='nvim +Man!'
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 #export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_QPA_PLATFORMTHEME=gtk2
 #export QT_STYLE_OVERRIDE=kvantum
-export SDCV_PAGER='less --quit-if-one-screen -RX'
 export SXHKD_SHELL=sh
 export _ZO_ECHO=1
 # enable color for `tree` command, not forced
