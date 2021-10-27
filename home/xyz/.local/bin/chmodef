@@ -1,4 +1,5 @@
 #!/bin/sh
+# chmodef: CHMOD DEFault
 
 # https://wiki.archlinux.org/title/File_permissions_and_attributes#Numeric_method
 find "$@" -type d -execdir chmod 755 -- '{}' \+
