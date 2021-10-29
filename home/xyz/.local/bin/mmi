@@ -1,7 +1,8 @@
 #!/bin/sh
 
 mi () {
-	sudo make -B install
+	make -B
+	sudo make install
 }
 
 origin="$PWD"
