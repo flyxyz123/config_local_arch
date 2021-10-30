@@ -47,9 +47,9 @@ alias tree='tree -a'
 
 # /dev/ttyACM0 can be in config file, or as environmantal variable, see /usr/share/doc/adafruit-ampy/README.md
 alias ap='sudo ampy -p /dev/ttyACM0'
-alias c='cfg'
+alias c=cd
 alias g=git
-alias ll='ls -lAh --color=auto --group-directories-first'
+alias l='ls -lAh --color=auto --group-directories-first'
 alias s='sudo ' # https://askubuntu.com/a/22043
 alias se='sudo -E '
 alias spd='speedtest --no-upload; librespeed-cli --no-upload'
