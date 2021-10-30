@@ -50,7 +50,6 @@ alias ap='sudo ampy -p /dev/ttyACM0'
 alias c=cfg
 alias g=git
 alias l='ls -A --group-directories-first'
-alias ll='l -lh'
 alias s='sudo ' # https://askubuntu.com/a/22043
 alias se='sudo -E '
 alias spd='speedtest --no-upload; librespeed-cli --no-upload'
@@ -61,7 +60,9 @@ alias vc='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/cli_notes.md"'
 alias vq='$EDITOR "$XDG_DOCUMENTS_DIR/notes/others/questions_ideas_tips.md"'
 alias vrc='$EDITOR +e\ \$MYVIMRC'
 alias wtr='curl v2.wttr.in'
-alias zq='zoxide -query -i'
+alias zq='zoxide query'
+
+alias ll='l -lh'
 
 eval "$(zoxide init posix --hook prompt --no-aliases)"
 
