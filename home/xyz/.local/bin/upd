@@ -69,6 +69,7 @@ pac () {
 	# sometimes "ERROR: Failure while downloading": https://github.com/neovim/neovim/issues/15709
 	rm -rf ~/.cache/paru/clone/neovim-nightly-bin/ && yes 1 | PARU_PAGER=cat paru --rebuild --redownload neovim-nightly-bin
 	sudo pacman -Fy
+	log="$(printf '%s\nupdated pacman packages: %s\nupdated aur packages: %s\n' "$log" "$pacpacs" "$aurpacs")"
 }
 
 qb () {
@@ -111,5 +112,4 @@ else
 	done
 fi
 
-printf 'updated pacman packages: %s\n'\
-'updated aur packages: %s\n' "$pacpacs" "$aurpacs"
+echo "$log"
