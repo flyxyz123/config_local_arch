@@ -47,10 +47,10 @@ alias tree='tree -a'
 
 # /dev/ttyACM0 can be in config file, or as environmantal variable, see /usr/share/doc/adafruit-ampy/README.md
 alias ap='sudo ampy -p /dev/ttyACM0'
-alias c=cd
-alias f=cfg
+alias c=cfg
 alias g=git
-alias l='ls -lAh --color=auto --group-directories-first'
+alias l='ls -A --group-directories-first'
+alias ll='l -lh'
 alias s='sudo ' # https://askubuntu.com/a/22043
 alias se='sudo -E '
 alias spd='speedtest --no-upload; librespeed-cli --no-upload'
@@ -61,5 +61,14 @@ alias vc='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/cli_notes.md"'
 alias vq='$EDITOR "$XDG_DOCUMENTS_DIR/notes/others/questions_ideas_tips.md"'
 alias vrc='$EDITOR +e\ \$MYVIMRC'
 alias wtr='curl v2.wttr.in'
+alias zq='zoxide -query -i'
 
-eval "$(zoxide init bash)"
+eval "$(zoxide init posix --hook prompt --no-aliases)"
+
+z () {
+	__zoxide_z "$@" && l
+}
+
+zi () {
+	__zoxide_zi "$@" && l
+}
