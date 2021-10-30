@@ -1,14 +1,14 @@
 #!/bin/sh
 
 outdir () { 
-	find . -type f -execdir mvt "$PWD" '{}' \+
+	find . -type f -execdir mvt "$PWD" -- '{}' \+
 	find . -mindepth 1 -maxdepth 1 -type d -execdir rmdir -- '{}' \+
 }
 
 indir () {
 	# https://stackoverflow.com/questions/1842254/how-can-i-find-all-of-the-distinct-file-extensions-in-a-folder-hierarchy
 	find . -maxdepth 1 -type f | awk -F. '!a[$NF]++{print $NF}' | xargs mkdir --
-	find . -mindepth 1 -maxdepth 1 -type d -execdir basename -az -- '{}' \+ | xargs -0 -I _ find . -maxdepth 1 -type f -name '*._' -execdir mvt '_' '{}' \+
+	find . -mindepth 1 -maxdepth 1 -type d -execdir basename -az -- '{}' \+ | xargs -0 -I _ find . -maxdepth 1 -type f -name '*._' -execdir mvt '_' -- '{}' \+
 }
 
 case "$1" in

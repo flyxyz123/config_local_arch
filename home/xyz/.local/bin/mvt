@@ -3,4 +3,5 @@
 
 dist="$1"
 shift
-mv -- "$@" "$dist" 
+# not use -- here, use -- when use mvt, so I can specify -f or -i switch before -- when use mvt
+mv "$@" "$dist"
