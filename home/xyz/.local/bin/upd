@@ -63,8 +63,8 @@ ncm () {
 }
 
 pac () {
-	sudo pacman --noconfirm -Syu
-	paru --noconfirm -aSyu
+	pacpacs="$(sudo pacman --noconfirm -Syu | tee /dev/tty | grep '^Packages' | cut -d' ' -f3-)"
+	aurpacs="$(paru --noconfirm -aSyu | tee /dev/tty | grep '^Aur' | cut -d' ' -f3-)"
 	# part steal from aur comment
 	# sometimes "ERROR: Failure while downloading": https://github.com/neovim/neovim/issues/15709
 	rm -rf ~/.cache/paru/clone/neovim-nightly-bin/ && yes 1 | PARU_PAGER=cat paru --rebuild --redownload neovim-nightly-bin
@@ -110,3 +110,6 @@ else
 		esac
 	done
 fi
+
+printf 'updated pacman packages: %s\n'\
+'updated aur packages: %s\n' "$pacpacs" "$aurpacs"
