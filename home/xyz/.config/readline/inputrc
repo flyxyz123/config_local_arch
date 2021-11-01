@@ -13,8 +13,9 @@ set colored-completion-prefix On
 # Color the common prefix in menu-complete
 set menu-complete-display-prefix On
 
-# https://github.com/LukeSmithxyz/voidrice/blob/2440ad83e9e9cf2f927efbaef618513e0df3cbda/.config/shell/inputrc
 set editing-mode vi
+
+# https://github.com/LukeSmithxyz/voidrice/blob/2440ad83e9e9cf2f927efbaef618513e0df3cbda/.config/shell/inputrc
 $if mode=vi
 
 	set show-mode-in-prompt on
@@ -22,13 +23,17 @@ $if mode=vi
 	set vi-cmd-mode-string \1\e[2 q\2
 
 	#set keymap vi-command
-	# these are for vi-command mode
-	#Control-l: clear-screen
-	#Control-a: beginning-of-line
+	# depreciated
+	# shell-expand-line expand all subshell `$()`? not perfect but ok
+	# if there's " or ', then after \\z the " and ' will be gone because shell-expand-line
+	# a lot of bugs compare to fzf's key-bindings.bash approach with `bind -x`
+	# zsh approach seems not easy too
+	# so I choose to just use a posix sh script
+	#"\\e": shell-expand-line
+	# https://unix.stackexchange.com/questions/439280/is-there-a-way-to-define-a-bash-readline-command
+	#"\\z": "a $(zoxide query -i)\e\\e"
 
 	set keymap vi-insert
-	# these are for vi-insert mode
-	Control-l: clear-screen
-	#Control-a: beginning-of-line
+	"\C-l": clear-screen
 
 $endif
