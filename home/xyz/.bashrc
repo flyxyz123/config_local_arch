@@ -84,8 +84,12 @@ zi () {
 }
 
 # steal from fzf: https://github.com/junegunn/fzf/blob/master/shell/key-bindings.bash
+# READLINE_LINE and READLINE_POINT see `man bash`
 zqi_key () {
-	selected="$(zoxide query -i)"
+	# fzf uses printf '%q' to escape output, but attention %q is not POSIX
+	# well we use bashism here so whatever, but use single quotes here also seems work fine so whatever
+	# maybe consider deal with FZF_DEFAULT_COMMAND not escape path at .profile instead
+	selected="'$(zoxide query -i)'"
 	READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$selected${READLINE_LINE:$READLINE_POINT}"
 	READLINE_POINT=$((READLINE_POINT+${#selected}))
 }
