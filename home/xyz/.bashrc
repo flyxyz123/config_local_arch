@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # $- meaning see https://stackoverflow.com/questions/42757236/what-does-mean-in-bash
 # If not running interactively, don't do anything
@@ -35,6 +35,7 @@ for cmd in iotop nethogs hardcode-fixer ventoy; do
 done
 unset cmd
 
+# same name
 alias absolutely-proprietary='absolutely-proprietary -f'
 alias alsamixer='alsamixer -V all'
 alias diff='diff --color=auto'
@@ -43,29 +44,33 @@ alias ls='ls --color=auto'
 alias radeontop='radeontop -c'
 alias rm='rm -I'
 alias sdcv='sdcv --color'
+alias shellcheck='shellcheck -x'
 alias tree='tree -a'
 
+# different name
 # /dev/ttyACM0 can be in config file, or as environmantal variable, see /usr/share/doc/adafruit-ampy/README.md
 alias ap='sudo ampy -p /dev/ttyACM0'
 alias c=cfg
 alias g=git
-alias l='ls -A --group-directories-first'
+alias l='\ls --color=auto -A --group-directories-first'
+alias ll='\ls --color=auto -lAh --group-directories-first'
 alias m=man
 alias p=pacman
 alias pu=paru
 alias s='sudo ' # https://askubuntu.com/a/22043
-alias se='sudo -E '
 alias spd='speedtest --no-upload; librespeed-cli --no-upload'
 alias sv='sudoedit'
 alias tp='sudo tio /dev/ttyACM0'
 alias v='$EDITOR'
 alias vc='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/cli_notes.md"'
 alias vq='$EDITOR "$XDG_DOCUMENTS_DIR/notes/others/questions_ideas_tips.md"'
-alias vrc='$EDITOR +e\ \$MYVIMRC'
+alias vvrc='$EDITOR +e\ \$MYVIMRC'
 alias wtr='curl v2.wttr.in'
-alias zq='zoxide query'
 
-alias ll='l -lh'
+# almost never use
+#alias se='sudo -E '
+#alias zq='zoxide query'
+#alias zqi='zoxide query -i'
 
 eval "$(zoxide init posix --hook prompt --no-aliases)"
 
@@ -76,3 +81,12 @@ z () {
 zi () {
 	__zoxide_zi "$@" && l
 }
+
+# steal from fzf: https://github.com/junegunn/fzf/blob/master/shell/key-bindings.bash
+zqi_key () {
+	selected="$(zoxide query -i)"
+	READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$selected${READLINE_LINE:$READLINE_POINT}"
+	READLINE_POINT=$((READLINE_POINT+${#selected}))
+}
+bind -m vi-command -x '"\C-o":zqi_key'
+bind -m vi-insert -x '"\C-o":zqi_key'
