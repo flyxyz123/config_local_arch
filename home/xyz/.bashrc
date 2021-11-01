@@ -26,8 +26,9 @@ esac
 #PS1='\[\033[0;91m\][\u@\h \W]\$ \[\033[0m\]'
 
 # tput is better for different terminals? 
+# but also need \[ and \] around color code!
 # setaf and sgr0 see `man terminfo`
-PS1="$(tput setaf 1)[\u@\h \W]\$ $(tput sgr0)"
+PS1="\[$(tput setaf 1)\][\u@\h \W]\$ \[$(tput sgr0)\]"
 
 # https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
 for cmd in iotop nethogs hardcode-fixer ventoy; do
