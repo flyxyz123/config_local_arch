@@ -26,7 +26,7 @@ esac
 #PS1='\[\033[0;91m\][\u@\h \W]\$ \[\033[0m\]'
 
 # tput is better for different terminals? 
-# but also need \[ and \] around color code!
+# but also need \[ and \] around color code for PS1! but seems no need for printf in script? why?
 # setaf and sgr0 see `man terminfo`
 PS1="\[$(tput setaf 1)\][\u@\h \W]\$ \[$(tput sgr0)\]"
 
