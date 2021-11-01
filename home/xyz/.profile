@@ -20,9 +20,10 @@ export XDG_MUSIC_DIR="$XDG_MUSIC_DIR"
 export XDG_PICTURES_DIR="$XDG_PICTURES_DIR"
 export XDG_VIDEOS_DIR="$XDG_VIDEOS_DIR"
 
-export PATH="$(find "$HOME/.local/bin" -type d -exec printf '%s:' '{}' \+)$PATH"
-export HISTSIZE=7000
-export HISTFILESIZE=7000
+PATH="$(find "$HOME/.local/bin" -type d -exec printf '%s:' '{}' \+)$PATH"
+export PATH
+export HISTSIZE=10000
+export HISTFILESIZE=10000
 
 export EDITOR=nvim
 export BROWSER=firefox
