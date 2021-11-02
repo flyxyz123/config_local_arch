@@ -24,6 +24,7 @@
 644 xyz wheel //home/xyz/.config/systemd/user/ssh-agent.service
 644 xyz wheel //home/xyz/.config/user-dirs.dirs
 644 xyz wheel //home/xyz/.config/zathura/zathurarc
+755 xyz wheel //home/xyz/.local/bin/bell
 755 xyz wheel //home/xyz/.local/bin/cfg
 755 xyz wheel //home/xyz/.local/bin/chmodef
 755 xyz wheel //home/xyz/.local/bin/convwall
