@@ -1,7 +1,7 @@
 #!/bin/sh
 
 bef="$(amixer get Master | awk -F '[][]' 'END{print $2}')"
-amixer set Master 30%
+amixer set Master 20%
 # code steal from https://unix.stackexchange.com/a/163716/459013
 speaker-test -t sine -f 1000 -l 1
 amixer set Master "$bef"
