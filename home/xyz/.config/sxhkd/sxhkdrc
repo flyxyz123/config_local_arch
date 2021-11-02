@@ -51,7 +51,11 @@ alt + q
 	kill -RTMIN+4 "$(cat "$XDG_CACHE_HOME/pidofbar")";\
 	qbittorrent
 
+# close dunst Notification
 alt + n
 	dunstctl close
+
+alt + shift + n
+	echo 'notify-send -u critical Boiling\ Water!; bell' | at now + 12 minutes && notify-send "Successfully Scheduled"
 
 # vim: ft=sh
