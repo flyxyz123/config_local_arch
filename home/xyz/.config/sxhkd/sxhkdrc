@@ -51,4 +51,7 @@ alt + q
 	kill -RTMIN+4 "$(cat "$XDG_CACHE_HOME/pidofbar")";\
 	qbittorrent
 
+alt + n
+	dunstctl close
+
 # vim: ft=sh

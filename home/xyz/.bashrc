@@ -50,7 +50,7 @@ alias tree='tree -a'
 
 # different name
 # /dev/ttyACM0 can be in config file, or as environmantal variable, see /usr/share/doc/adafruit-ampy/README.md
-alias anw='echo "notify-send -u critical "Boiling Water!"" | at now + 10 minutes'
+alias anw='echo "notify-send -u critical Boiling\ Water!" | at now + 10 minutes'
 alias ap='sudo ampy -p /dev/ttyACM0'
 alias c=cfg
 alias g=git
