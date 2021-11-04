@@ -1,0 +1,30 @@
+#!/bin/sh
+# edge cases give me headache
+
+lns () {
+	# prevent `mvln file1 file1` or `mvln dir1/file1 dir1/`
+	# which means `ln -s samename samename` or `ln -s dir/file dir/`
+	# both $1 and $2 here are realpath
+	[ "$1" != "$2" ] && ln -s -- "$1" "$2"
+}
+
+mv -i -- "$@"
+# consider `mvln file1 dir/file2`
+if [ $# -eq 2 ] && ! [ -d "$2" ]; then
+	# use realpath here
+	lns "$(realpath "$2")" "$(realpath "$1")" 	
+else
+	dir="$(realpath -- "$(lastarg "$@")")"
+	# steal from https://unix.stackexchange.com/a/353833/459013
+	while [ $# -gt 1 ]; do
+		to="$(realpath -- "$1")"
+		# prevent `mvln dir1/ dir1/`
+		if [ "$dir" != "$to" ]; then
+			lns "$dir/$(basename "$1")" "$to"
+		fi
+		shift
+	done
+fi
+
+# for test
+#rm -rf ~/test/A\ A/; mkdir -p ~/test/A\ A/; cp -r ~/test/0t/ ~/test/A\ A/1t/; mvln ~/test/A\ A/1t/* ~/test/A\ A/; tree ~/test/A\ A/

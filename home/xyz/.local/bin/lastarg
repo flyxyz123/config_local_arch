@@ -1,0 +1,5 @@
+#!/bin/sh
+# useage: lastarg "$@"
+
+shift $(($# - 1))
+echo "$1"
