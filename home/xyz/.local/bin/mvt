@@ -1,5 +1,6 @@
 #!/bin/sh
 # emulate mv -t, for use with `find ... -exec mvt ... '{}' \+`, more POSIX compliant
+# example: mvt ./dir/ -i -- file1 file2
 
 dist="$1"
 shift
