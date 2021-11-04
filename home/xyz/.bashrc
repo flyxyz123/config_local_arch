@@ -70,9 +70,9 @@ alias vvrc='$EDITOR +e\ \$MYVIMRC'
 alias wtr='curl v2.wttr.in'
 
 # almost never use
-#alias se='sudo -E '
-#alias zq='zoxide query'
-#alias zqi='zoxide query -i'
+alias se='sudo -E '
+alias zq='zoxide query'
+alias zqi='zoxide query -i'
 
 eval "$(zoxide init posix --hook prompt --no-aliases)"
 
