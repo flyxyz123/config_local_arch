@@ -1,0 +1,5 @@
+#!/bin/sh
+# steal codes from https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/compiler
+
+base="${1%.*}"
+cc "$1" -o "$base" -lgsl -lgslcblas && ./"$base"
