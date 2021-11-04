@@ -20,10 +20,14 @@ Plug 'fnune/base16-vim'
 Plug 'tpope/vim-markdown'
 " alternatives: h-hg/fcitx.nvim, rlue/vim-barbaric, lilydjwg/fcitx.vim
 Plug 'rlue/vim-barbaric'
+" alternatives: 'thinca/vim-ref' with 'eiiches/vim-ref-info', 'HiPhish/info.vim', 'alx741/vinfo'
+Plug 'HiPhish/info.vim'
 call plug#end()
 
 " next line must put below `Plug 'glacambre/firenvim'`, else if click github issue textarea, then click elsewhere, then click textarea, textarea will not be selected (no cursor in it), not sure why
 let g:firenvim_config = { 'localSettings': { '.*': { 'takeover': 'never' } } }
+
+let g:infoprg = '/usr/bin/info'
 
 " I use only one return for better readability
 function Autocmd_set_fenc()
