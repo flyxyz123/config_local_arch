@@ -48,6 +48,7 @@ alias rm='rm -I'
 alias sdcv='sdcv --color'
 alias shellcheck='shellcheck -x'
 alias tree='tree -a'
+alias uname='uname -a'
 
 # different name
 # /dev/ttyACM0 can be in config file, or as environmantal variable, see /usr/share/doc/adafruit-ampy/README.md
