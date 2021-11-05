@@ -36,7 +36,7 @@ export PAGER=less
 export LESS='-FRX'
 export SDCV_PAGER="$PAGER"
 
-# gnuism
+# not posix
 export MANPAGER='nvim -M +Man!'
 export MANSECT='1p:1:n:l:8:3p:3:0p:0:2:5:4:9:6:7'
 
