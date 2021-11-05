@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # steal from https://github.com/HiPhish/info.vim
-"$EDITOR" -R -M -c "Info $1 $2" +only
+"$EDITOR" -RM +"Info $1 $2" +only

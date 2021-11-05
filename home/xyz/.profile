@@ -35,7 +35,8 @@ export PAGER=less
 # steal from sdcv arch wiki
 export LESS='-FRX'
 export SDCV_PAGER="$PAGER"
-export MANPAGER='nvim +Man!'
+export MANPAGER='nvim -M +Man!'
+export MANSECT='1p:1:n:l:8:3p:3:0p:0:2:5:4:9:6:7'
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"

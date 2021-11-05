@@ -46,7 +46,7 @@ kg () {
 
 misc () {
 	cfg -c submodule foreach git pull
-	nvim +PlugUpgrade +PlugClean! +PlugUpdate +qa
+	"$EDITOR" +PlugUpgrade +PlugClean! +PlugUpdate +qa
 	tldr --update
 	sudo hardcode-fixer
 	userjs
