@@ -74,6 +74,10 @@ alias se='sudo -E '
 alias zq='zoxide query'
 alias zqi='zoxide query -i'
 
+# depreciated
+# all green color, no auto turn off color when pipe to nvim
+#alias pactree='pactree -c'
+
 eval "$(zoxide init posix --hook prompt --no-aliases)"
 
 z () {
