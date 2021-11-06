@@ -59,6 +59,6 @@ case "$1" in
 	"p") tr '\n' '\0' | xargs -0 sh -c 'convert "$@" $(time.uuid).pdf' shell ;;
 	"r") rotate ;;
 	"w") tr '\n' '\0' | xargs -0 shufwall ;;
-	"y") tr '\n' '\0' | xargs -0 realpath | xsel -b ;;
+	"y") tr '\n' '\0' | xargs -0 realpath | tr '\n' '\0' | xargs -0 printf '%q ' | xsel -ib ;;
 esac
 

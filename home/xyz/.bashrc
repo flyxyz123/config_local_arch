@@ -79,7 +79,8 @@ alias zqi='zoxide query -i'
 # all green color, no auto turn off color when pipe to nvim
 #alias pactree='pactree -c'
 
-eval "$(zoxide init posix --hook prompt --no-aliases)"
+#eval "$(zoxide init posix --hook prompt --no-aliases)"
+eval "$(zoxide init bash)"
 
 z () {
 	__zoxide_z "$@" && l
@@ -93,9 +94,8 @@ zi () {
 # READLINE_LINE and READLINE_POINT see `man bash`
 zqi_key () {
 	# fzf uses printf '%q' to escape output, but attention %q is not POSIX
-	# well we use bashism here so whatever, but use single quotes here also seems work fine so whatever
-	# maybe consider deal with FZF_DEFAULT_COMMAND not escape path at .profile instead
-	selected="'$(zoxide query -i)'"
+	# well we use bash here so whatever
+	selected=$(printf '%q ' "$(zoxide query -i)")
 	READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$selected${READLINE_LINE:$READLINE_POINT}"
 	READLINE_POINT=$((READLINE_POINT+${#selected}))
 }
