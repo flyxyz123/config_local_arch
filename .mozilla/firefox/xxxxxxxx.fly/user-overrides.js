@@ -1,8 +1,7 @@
 // fixes
 //user_pref("privacy.resistFingerprinting", false);
-// douyu pay, not sure next two which one worked, need test
+// douyu pay
 //user_pref("network.http.referer.XOriginPolicy", 0);
-//user_pref("network.http.referer.XOriginTrimmingPolicy", 0);
 // baidu
 user_pref("security.ssl.require_safe_negotiation", false);
 
