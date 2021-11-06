@@ -80,7 +80,8 @@ alias zqi='zoxide query -i'
 #alias pactree='pactree -c'
 
 #eval "$(zoxide init posix --hook prompt --no-aliases)"
-eval "$(zoxide init bash)"
+# if no --no-aliases, when tab complete a dir name contain spaces, bash will not escape spaces, don't know why, maybe bug?
+eval "$(zoxide init bash --no-aliases)"
 
 z () {
 	__zoxide_z "$@" && l
