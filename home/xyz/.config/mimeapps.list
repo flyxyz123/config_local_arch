@@ -4,6 +4,7 @@
 
 [Default Applications]
 application/pdf=org.pwmt.zathura.desktop;
+application/epub+zip=org.pwmt.zathura.desktop;
 image/gif=nsxiv.desktop;
 image/jpeg=nsxiv.desktop;
 image/png=nsxiv.desktop;
