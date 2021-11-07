@@ -9,7 +9,12 @@
 # nohup seems not necessary if don't care about daemon SIGHUP requirement
 
 if [ $# -eq 1 ] && [ -e "$1" ] && { ! [ -x "$1" ] || [ -d "$1" ];}; then
-	nohup xdg-open "$1" 0<&- >&- 2>&- &
+	case "$1" in
+		# libreoffice, please don't let firefox eat your shit
+		*.docx|*.pptx) cmd=libreoffice;;
+		*) cmd=xdg-open;;
+	esac
+	nohup "$cmd" "$1" 0<&- >&- 2>&- &
 else
 	nohup "$@" 0<&- >&- 2>&- &
 fi
