@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xdg-mime query filetype "$1" | tee /dev/tty | xargs xdg-mime query default
