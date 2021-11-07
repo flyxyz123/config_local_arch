@@ -57,6 +57,7 @@ update_bat () {
 update_vol
 update_mic
 update_cap
+update_vpn
 
 display () { 
 	xsetroot -name "$(echo "$time | N $net V $vpn | M $vol C $mic | $cap | $bat")"
@@ -81,7 +82,8 @@ while true; do
 		## [ $((sec % n)) -eq m ] && udpate_item
 		[ $((sec % 5 )) -eq 0 ] && update_time 	# update time every 5 seconds
 		[ $((sec % 5 )) -eq 0 ] && update_net
-		[ $((sec % 5 )) -eq 0 ] && update_vpn
+		# mullvad like writing log when asking it about status
+		#[ $((sec % 5 )) -eq 0 ] && update_vpn
 		[ $((sec % 60)) -eq 0 ] && update_bat
 		#[ $((sec % 300)) -eq 1 ] && update_event
 
