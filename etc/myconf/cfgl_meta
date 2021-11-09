@@ -1,6 +1,7 @@
 644 root root //etc/locale.gen
 644 root root //etc/myconf/cfgl_meta
 644 root root //etc/pacman.conf
+644 root root //etc/uwsgi/searx.ini
 644 root root //etc/wildmidi/wildmidi.cfg
 644 xyz wheel //home/xyz/.bashrc
 600 xyz wheel //home/xyz/.config/aria2/aria2.conf
