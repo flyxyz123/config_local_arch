@@ -40,13 +40,16 @@ export XMODIFIERS=@im=fcitx
 display -window root "$XDG_PICTURES_DIR/wallpapers/wallpaper" &
 #clipmenud &
 dunst &
-fcitx5 -d &
+fcitx5 -d
 redshift &
 sbar &
 sxhkd &
 udiskie &
+# xorg-server 21.1.1-2 messed up my dpi? So I set it manually.
+# Attention, don't use & at the end otherwise dwm status bar won't have proper dpi.
+xrandr --dpi 96
 # default fastest windows 10 keyboard repeat delay and rate
 # without editing registry, using filter key, or other third party program
 # see http://stereopsis.com/keyrepeat/
-xset r rate 250 30 &
+xset r rate 250 30
 exec dwm
