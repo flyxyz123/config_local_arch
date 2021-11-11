@@ -73,6 +73,15 @@ export FZF_ALT_C_COMMAND="sudo find . -mindepth 1 -path '*/\.git' -prune -o -typ
 export SCR_WIDTH=1600
 export SCR_HEIGHT=900
 
+# GDK_SCALE and GDK_DPI_SCALE should be use at the same time
+# more see bookmarks about dpi
+# not sure if correct
+#export GDK_SCALE=1.36
+#export GDK_DPI_SCALE=0.73
+# correct but not sure if fits me
+#export GDK_SCALE=2
+#export GDK_DPI_SCALE=0.5
+
 # startx when login, should be put after environmental variables for .xinitrc to use
 if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	exec startx
