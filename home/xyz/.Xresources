@@ -1,5 +1,10 @@
+! studio ture dpi
+!Xft.dpi: 131
+! studio fake dpi
+!Xft.dpi: 96
+
 ! nsxiv, fnune/base16-vim base16-tomorrow-night colorscheme
-Nsxiv.bar.font:monospace:size=11
+Nsxiv.bar.font:monospace:size=8
 Nsxiv.window.foreground:#c5c8c6
 Nsxiv.window.background:#1d1f21
 Nsxiv.bar.foreground:#b4b7b4
