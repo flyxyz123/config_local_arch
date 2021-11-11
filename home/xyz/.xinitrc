@@ -45,7 +45,7 @@ redshift &
 sbar &
 sxhkd &
 udiskie &
-# xorg-server 21.1.1-2 messed up my dpi? So I set it manually.
+# xorg-server 21.1.1-2 set correct dpi for my computer, but I choose to take the blue pill
 # Attention, don't use & at the end otherwise dwm status bar won't have proper dpi.
 xrandr --dpi 96
 # default fastest windows 10 keyboard repeat delay and rate
