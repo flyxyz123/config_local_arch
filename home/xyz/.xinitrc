@@ -47,7 +47,8 @@ sxhkd &
 udiskie &
 # xorg-server 21.1.1-2 set correct dpi for my computer, but I choose to take the blue pill
 # Attention, don't use & at the end otherwise dwm status bar won't have proper dpi.
-xrandr --dpi 96
+# xorg-server 21.1.1-3 "fixed" it, so no need now
+#xrandr --dpi 96
 # default fastest windows 10 keyboard repeat delay and rate
 # without editing registry, using filter key, or other third party program
 # see http://stereopsis.com/keyrepeat/
