@@ -86,7 +86,6 @@ usb () {
 	cfg -l push usb
 	cfg -s push
 	git --git-dir="$XDG_DOCUMENTS_DIR/notes/.git/" --work-tree="$XDG_DOCUMENTS_DIR/notes/" push usb
-	sync
 }
 
 
