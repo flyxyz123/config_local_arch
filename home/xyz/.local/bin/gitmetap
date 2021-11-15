@@ -1,4 +1,5 @@
 #!/bin/sh
+# GIT META Print
 
 # -rw-r--r-- == binary 110100100 == octal 644
 # https://stackoverflow.com/a/1796009

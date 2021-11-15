@@ -1,4 +1,5 @@
 #!/bin/sh
+# GIT META Read
 
 while read -r mod user group path; do
 	chown -hc "$user:$group" -- "$path"
