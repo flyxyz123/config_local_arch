@@ -49,6 +49,8 @@ export SXHKD_SHELL=sh
 export _ZO_ECHO=1
 # enable color for `tree` command, not forced
 export CLICOLOR=1
+# for pacdiff, without using aur neovim-drop-in or neovim-symlinks
+export DIFFPROG='nvim -d'
 
 # use sudo find for some files or dirs that has no permission ex: ~/.cache/paru/clone/
 #export FZF_DEFAULT_COMMAND="fd --no-ignore --hidden --exclude .git"
