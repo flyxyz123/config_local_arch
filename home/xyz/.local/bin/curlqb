@@ -1,7 +1,7 @@
 #!/bin/sh
 
 curl -s 'https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins' | awk -F'"' '
-/Plugins for Private sites/ {exit}
+/require an account/ {exit}
 /\.py/ {
 	url=$2
 	getline
@@ -11,5 +11,3 @@ curl -s 'https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-pl
 		print url
 }
 ' | xargs curl -s -Z -L --remote-name-all --create-dirs --output-dir "$1" --
-
-#curl -s 'https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins' | awk -F'"' '/Plugins for Private sites/{exit} /\.py/{url=$2;getline;getline;getline;if($0 !~ /❗|✖/)print url}' | xargs curl -s -Z -L --remote-name-all --create-dirs --output-dir "$1" --
