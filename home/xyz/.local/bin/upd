@@ -113,4 +113,4 @@ else
 	done
 fi
 
-echo "$log"
+printf '%s' "$log"
