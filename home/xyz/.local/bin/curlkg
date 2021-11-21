@@ -34,8 +34,9 @@ ugc_total_count=$(jq '.data.ugc_total_count' "$tmp_json_file")
 # can also use while loop with i=$((i+1))
 # the calculation considers both ugc_total_count%num==0 and ugc_total_count%num>0
 for i in $(seq 2 $(((ugc_total_count+num-1)/num))); do
-	get_json "$i"
+	get_json "$i" &
 done
 
+wait
 jq -r '.data.ugclist[]|"'"$music_url"'?shareid=\(.shareid)\n out=\(.title)_\(.time).m4a"' "$tmp_json_file" | aria2c -d "$download_dir" --auto-file-renaming=false --console-log-level=warn -i-
 rm "$tmp_json_file"
