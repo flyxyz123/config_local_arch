@@ -1,16 +1,15 @@
 #!/bin/sh
+# MPV Audio
 
 # fzf has --read0, maybe useful
 # use --loop-file for single file, better performance maybe
 
 if [ $# -eq 0 ]; then
 	find "$XDG_MUSIC_DIR" | fzf -m --print0
-else
-	printf '%s\0' "$@"
 fi | xargs -0 sh -c '
 if [ $# -eq 1 ] && ! [ -d "$1" ]; then
 	mpv --af= --loop-file=inf --video=no "$1"
 else
 	mpv --af= --shuffle --loop-playlist=inf --video=no "$@"
 fi
-' shell
+' shell "$@"
