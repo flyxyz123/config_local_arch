@@ -9,7 +9,20 @@ homepage_url='https://node.kg.qq.com/cgi/fcgi-bin/kg_ugc_get_homepage'
 music_url='https://node.kg.qq.com/cgi/fcgi-bin/fcg_get_play_url'
 # num seems only 8 and 15 works
 num=15
-tmp_json_file="$(mktemp --suffix=.json)"
+tmp_file="$(mktemp)"
+
+get_json () {
+	curl -s -G --data-urlencode type=get_uinfo -d outCharset=utf-8 -d start="$1" -d num=$num -d share_uid="$uid" "$homepage_url" | sed 's/.*({\(.*\)}).*/{\1}/'
+}
+
+# concurrent file append with less than 4096 bytes will be atomic on linux, at least on my arch linux machine
+# so need to process json data before append to the file, to append less than 4096 bytes for each process
+# another appraoch is to use a loop to write to several files each corresponding to one process
+# https://stackoverflow.com/questions/1154446/is-file-append-atomic-in-unix
+# https://unix.stackexchange.com/questions/458653/parallel-processes-appending-outputs-to-an-array-in-a-bash-script
+process_json() {
+	jq -r '.data.ugclist[]|"'"$music_url"'?shareid=\(.shareid)\n out=\(.title)_\(.time).m4a"' >> "$tmp_file"
+}
 
 while getopts u: opt; do
 	case $opt in
@@ -25,18 +38,15 @@ shift $((OPTIND-1))
 download_dir="${1:-"$PWD"}"
 [ -d "$download_dir" ] || mkdir -p "$download_dir"
 
-get_json () {
-	curl -s -G --data-urlencode type=get_uinfo -d outCharset=utf-8 -d start="$1" -d num=$num -d share_uid="$uid" "$homepage_url" | sed 's/.*({\(.*\)}).*/{\1}/' >> "$tmp_json_file"
-}
-
-get_json 1
-ugc_total_count=$(jq '.data.ugc_total_count' "$tmp_json_file")
+first_json="$(get_json 1)"
+ugc_total_count=$(echo "$first_json" | jq '.data.ugc_total_count')
+echo "$first_json" | process_json
 # can also use while loop with i=$((i+1))
 # the calculation considers both ugc_total_count%num==0 and ugc_total_count%num>0
 for i in $(seq 2 $(((ugc_total_count+num-1)/num))); do
-	get_json "$i" &
+	get_json "$i" | process_json &
 done
 
 wait
-jq -r '.data.ugclist[]|"'"$music_url"'?shareid=\(.shareid)\n out=\(.title)_\(.time).m4a"' "$tmp_json_file" | aria2c -d "$download_dir" --auto-file-renaming=false --console-log-level=warn -i-
-rm "$tmp_json_file"
+aria2c -d "$download_dir" --auto-file-renaming=false --console-log-level=warn -i "$tmp_file"
+rm "$tmp_file"
