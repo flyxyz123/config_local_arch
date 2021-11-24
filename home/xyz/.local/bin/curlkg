@@ -15,7 +15,7 @@ get_json () {
 	curl -s -G --data-urlencode type=get_uinfo -d outCharset=utf-8 -d start="$1" -d num=$num -d share_uid="$uid" "$homepage_url" | sed 's/.*({\(.*\)}).*/{\1}/'
 }
 
-# concurrent file append with less than 4096 bytes will be atomic on linux, at least on my arch linux machine
+# concurrent file append with less than 4096 bytes will be atomic on arch linux ext4
 # so need to process json data before append to the file, to append less than 4096 bytes for each process
 # another appraoch is to use a loop to write to several files each corresponding to one process
 # https://stackoverflow.com/questions/1154446/is-file-append-atomic-in-unix
