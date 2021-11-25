@@ -5,7 +5,8 @@
 // baidu
 user_pref("security.ssl.require_safe_negotiation", false);
 
-user_pref("privacy.clearOnShutdown.cookies", false);
+// http://kb.mozillazine.org/Network.cookie.lifetimePolicy
+user_pref("network.cookie.lifetimePolicy", 0);
 // enable search engine in location bar
 user_pref("keyword.enabled", true); 
 // enable https-only mode in private windows only
