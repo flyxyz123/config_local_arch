@@ -70,7 +70,11 @@ pac () {
 	rm -rf ~/.cache/paru/clone/neovim-nightly-bin/ && yes 1 | PARU_PAGER=cat paru --rebuild --redownload neovim-nightly-bin
 	sudo pacman -Fy
 	# pacdiff default use pacman database, so no need `sudo -E` for find, but will be a little bit slower
-	log="$(printf '%s\nupdated pacman packages: %s\nupdated aur packages: %s\npacdiff: %s\n' "$log" "$pacpacs" "$aurpacs" "$(pacdiff -o | tr '\n' ' ')")"
+	log="$log
+updated pacman packages: $pacpacs
+updated aur packages: $aurpacs
+pacdiff: $(pacdiff -o | tr '\n' ' ')
+"
 }
 
 qb () {
