@@ -1,7 +1,7 @@
 // fixes
 //user_pref("privacy.resistFingerprinting", false);
 // douyu pay
-//user_pref("network.http.referer.XOriginPolicy", 0);
+user_pref("network.http.referer.XOriginPolicy", 0);
 // baidu
 user_pref("security.ssl.require_safe_negotiation", false);
 
