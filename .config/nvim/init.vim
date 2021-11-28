@@ -3,17 +3,15 @@ let fenc_bef = 0
 
 " https://github.com/junegunn/vim-plug
 call plug#begin()
-"Plug 'preservim/nerdtree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " https://github.com/junegunn/fzf.vim#commands
-Plug 'junegunn/fzf.vim'
-"Plug 'vim-airline/vim-airline' 
+" seems only need junegunn/fzf.vim, no need junegunn/fzf if already installed fzf with pacman
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
 "Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " chriskempson/base16-vim doesn't do bold/italic for markdown syntax, and not maintained
-" below two base16 plugins seem both work, both support tree-sitter
+" fnune/base16-vim and RRethy/nvim-base16 seem both work, both support tree-sitter
 Plug 'fnune/base16-vim'
-"Plug 'RRethy/nvim-base16'
 " nvim-treesitter does not support markdown right now, so wait
 "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 " use latest vim-markdown
