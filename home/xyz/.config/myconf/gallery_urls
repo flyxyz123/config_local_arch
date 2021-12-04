@@ -1,5 +1,5 @@
 # input file format see https://github.com/mikf/gallery-dl/blob/13d4045a8a5a6fd45cb20df399f44055b25f5cca/gallery_dl/__init__.py#L33-L58
-https://www.pixiv.net/users/13379747/artworks
+#https://www.pixiv.net/users/13379747/artworks
 https://www.deviantart.com/wlop/gallery
 https://www.deviantart.com/minimalistic-animoo/gallery/
 https://www.deviantart.com/theminimalists/gallery/
