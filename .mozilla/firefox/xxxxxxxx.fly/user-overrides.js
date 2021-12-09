@@ -27,7 +27,8 @@ user_pref("extensions.webextensions.restrictedDomains", "");
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 // let tree style tab background dark with arc-dark linux theme
 // i'm not using TST now, but it still might be useful for other extensions
-user_pref("widget.content.allow-gtk-dark-theme", true);
+// however, starting from around firefox 95, this makes some site show dark background with light theme fonts? so not using it now
+//user_pref("widget.content.allow-gtk-dark-theme", true);
 // when refresh searx page, no window will pop up and ask for resend
 // https://www.reddit.com/r/firefox/comments/nnluzz/disable_to_display_this_page_firefox_must_send/gzyoia4?utm_source=share&utm_medium=web2x&context=3
 user_pref("dom.confirm_repost.testing.always_accept", true);

@@ -12,6 +12,7 @@
 //unmap('<Ctrl-j>');
 map('<Ctrl-Alt-h>','<Ctrl-h>');
 unmap('<Ctrl-h>');
+// ctrl-alt-s not working now (12/09/2021), not sure why, maybe arkenfox user.js problem?
 map('<Ctrl-Alt-s>','<Alt-s>');
 unmap('<Alt-s>');
 
