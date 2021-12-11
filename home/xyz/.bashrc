@@ -61,6 +61,7 @@ alias m=man
 alias p=pacman
 alias pu=paru
 alias s='sudo ' # https://askubuntu.com/a/22043
+alias se='sudo -E '
 alias spd='speedtest --no-upload; librespeed-cli --no-upload'
 alias sv='sudoedit'
 alias tp='sudo tio /dev/ttyACM0'
@@ -69,9 +70,9 @@ alias vc='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/cli_notes.md"'
 alias vq='$EDITOR "$XDG_DOCUMENTS_DIR/notes/others/questions_ideas_tips.md"'
 alias vvrc='$EDITOR +e\ \$MYVIMRC'
 alias wtr='mullvad-exclude curl v2.wttr.in?m'
+alias za='zoxide add'
 
 # almost never use
-alias se='sudo -E '
 #alias zq='zoxide query'
 #alias zqi='zoxide query -i'
 
