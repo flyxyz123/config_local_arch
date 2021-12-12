@@ -4,6 +4,8 @@
 //user_pref("network.http.referer.XOriginPolicy", 0);
 // baidu
 user_pref("security.ssl.require_safe_negotiation", false);
+// pixiv some images not show
+//user_pref("network.http.referer.XOriginPolicy", 0);
 
 // http://kb.mozillazine.org/Network.cookie.lifetimePolicy
 user_pref("network.cookie.lifetimePolicy", 0);
