@@ -51,7 +51,7 @@ kg () {
 }
 
 misc () {
-	cfg -c submodule foreach git pull
+	cfg -l submodule foreach git pull
 	"$EDITOR" +PlugUpgrade +PlugClean! +PlugUpdate +qa
 	tldr --update
 	sudo hardcode-fixer
@@ -93,7 +93,6 @@ refl () {
 }
 
 usb () {
-	cfg -c push usb
 	cfg -l push usb
 	cfg -s push
 	git --git-dir="$XDG_DOCUMENTS_DIR/notes/.git/" --work-tree="$XDG_DOCUMENTS_DIR/notes/" push usb
