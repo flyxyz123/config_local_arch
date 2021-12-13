@@ -1,0 +1,3 @@
+[submodule ".mozilla/firefox/xxxxxxxx.fly/chrome/firefox-csshacks"]
+	path = .mozilla/firefox/xxxxxxxx.fly/chrome/firefox-csshacks
+	url = git@github.com:MrOtherGuy/firefox-csshacks.git

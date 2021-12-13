@@ -1,0 +1,5 @@
+*.exe
+*.log
+*.o
+*.so
+.qmake.stash
