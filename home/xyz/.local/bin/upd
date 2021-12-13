@@ -20,7 +20,13 @@ clean () {
 	#find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -execdir rmdir --ignore-fail-on-non-empty -- '{}' \+
 	# nsxiv man page way
 	#find "$XDG_CACHE_HOME/nsxiv/" -depth -type d -empty ! -name '.' -exec rmdir -- '{}' \;
+
 	rm "$HOME/.mozilla/firefox/xxxxxxxx.fly/prefs.js.backup."*
+
+	# https://unix.stackexchange.com/questions/92095/reset-atq-list-to-zero
+	sudo systemctl stop atd
+	echo 0 | sudo tee /var/spool/atd/.SEQ > /dev/null
+	sudo systemctl start atd
 }
 
 # basic daily stuff
