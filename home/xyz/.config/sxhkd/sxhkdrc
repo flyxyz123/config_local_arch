@@ -56,7 +56,7 @@ alt + n
 	dunstctl close
 
 alt + shift + n
-	echo 'notify-send -u critical Boiling\ Water!; bell' | at now + 12 minutes && notify-send "Successfully Scheduled"
+	alarm 12 'Boiling Water!'
 
 alt + r
 	xsel -ob | rev | xsel -ib
