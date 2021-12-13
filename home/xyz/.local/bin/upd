@@ -51,7 +51,6 @@ kg () {
 }
 
 misc () {
-	cfg -l submodule foreach git pull
 	"$EDITOR" +PlugUpgrade +PlugClean! +PlugUpdate +qa
 	tldr --update
 	sudo hardcode-fixer
