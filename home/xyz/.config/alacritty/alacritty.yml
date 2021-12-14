@@ -1,7 +1,8 @@
 cursor:
   vi_mode_style: Block
 
-# when set TERM use following code on windows, syntax is very bad
+# when set TERM use alacritty on windows, syntax is very bad
+# need to set xterm-256color if want ls show color when use ssh
 env:
   TERM: xterm-256color
 
