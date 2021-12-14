@@ -95,14 +95,14 @@ set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set encoding=utf-8
 
 " some file on win10 display as unix but is dos
-if has('win32')
-	set fileformats=dos
-	" windows 10 bug, need this to change cursor back to vertical bar after leaving neovim
-	" the number after ver seems no effects, maybe because neovim is exited
-	" https://github.com/alacritty/alacritty/issues/2839#issuecomment-766421840
-	" use of ! after autocmd see youtube video above, not fully understood
-	autocmd! VimLeave * set guicursor=a:ver25
-endif
+"if has('win32')
+"	set fileformats=dos
+"	" windows 10 bug, need this to change cursor back to vertical bar after leaving neovim
+"	" the number after ver seems no effects, maybe because neovim is exited
+"	" https://github.com/alacritty/alacritty/issues/2839#issuecomment-766421840
+"	" use of ! after autocmd see youtube video above, not fully understood
+"	autocmd! VimLeave * set guicursor=a:ver25
+"endif
 
 " don't generate those three types of files
 set nobackup
