@@ -1,0 +1,21 @@
+#!/bin/sh
+
+while read -r line; do
+	if [ -n "$paths" ]; then
+		paths="$paths
+$line"
+	else
+		paths="$line"
+	fi
+done
+dirs="$(echo "$paths" | tr '\n' '\0' | xargs -0 dirname | sort | uniq)"
+
+paths="$paths
+$dirs"
+while [ "$(echo "$dirs" | wc -l)" -ne 1 ]; do
+	dirs="$(echo "$dirs" | tr '\n' '\0' | xargs -0 dirname | sort | uniq)"
+	paths="$paths
+$dirs"
+done
+
+echo "$paths" | sort | uniq | grep -v '^\.$'

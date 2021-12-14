@@ -3,7 +3,7 @@
 
 # -rw-r--r-- == binary 110100100 == octal 644
 # https://stackoverflow.com/a/1796009
-$1 ls-tree -r --name-only --full-tree HEAD | awk -v a="$2/" '{printf("%s%s\n",a,$0)}' | tr '\n' '\0' | xargs -0 ls -ldA -- | awk '{
+$1 ls-tree -r --name-only --full-tree HEAD | dirnameall | awk -v a="$2/" '{printf("%s%s\n",a,$0)}' | tr '\n' '\0' | xargs -0 ls -ldA -- | awk '{
 	k=0
 	for(i=0;i<=8;i++)
 		k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i))
