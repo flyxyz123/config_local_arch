@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 
 # here `. ~/.bashrc` same as `source ~/.bashrc`, see `source filename` in `man bash`, and `. file` in `man dash`
 # `. file` is POSIX compliant, while `source file` is not
@@ -41,7 +41,6 @@ export MANPAGER='nvim -M +Man!'
 export MANSECT='1p:1:n:l:8:3p:3:0p:0:2:5:4:9:6:7'
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 #export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_QPA_PLATFORMTHEME=gtk2
 #export QT_STYLE_OVERRIDE=kvantum
