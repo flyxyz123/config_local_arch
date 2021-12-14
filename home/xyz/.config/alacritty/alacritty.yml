@@ -2,8 +2,8 @@ cursor:
   vi_mode_style: Block
 
 # when set TERM use following code on windows, syntax is very bad
-#env:
-#  TERM: alacritty
+env:
+  TERM: xterm-256color
 
 font:
 # for cataclysm dda game, use this font, kinda square font, recommended from web
