@@ -1,4 +1,5 @@
 // fixes
+// a lot: image upload from local
 //user_pref("privacy.resistFingerprinting", false);
 // douyu pay
 //user_pref("network.http.referer.XOriginPolicy", 0);
