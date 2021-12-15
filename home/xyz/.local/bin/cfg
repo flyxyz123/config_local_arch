@@ -14,6 +14,7 @@ while getopts clsmM opt; do
 			;;
 		m)		
 			sudo gitmetap "$cmd" "$work_tree_dir" "$meta_file"
+			$cmd diff
 			exit
 			;;
 		M)	
