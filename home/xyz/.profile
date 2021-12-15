@@ -1,11 +1,5 @@
 #!/bin/dash
 
-# here `. ~/.bashrc` same as `source ~/.bashrc`, see `source filename` in `man bash`, and `. file` in `man dash`
-# `. file` is POSIX compliant, while `source file` is not
-# https://github.com/koalaman/shellcheck/wiki/SC3046
-#[[ -f ~/.bashrc ]] && . ~/.bashrc
-[ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
-
 export XDG_CONFIG_HOME="$HOME/.config/"
 export XDG_CACHE_HOME="$HOME/.cache/"
 export XDG_DATA_HOME="$HOME/.local/share/"
@@ -41,10 +35,12 @@ export MANPAGER='nvim -M +Man!'
 export MANSECT='1p:1:n:l:8:3p:3:0p:0:2:5:4:9:6:7'
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export INPUTRC="$XDG_CONFIG_HOME/.inputrc"
 #export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_QPA_PLATFORMTHEME=gtk2
 #export QT_STYLE_OVERRIDE=kvantum
 export SXHKD_SHELL=sh
+export _ZO_ECHO=1
 # enable color for `tree` command, not forced
 export CLICOLOR=1
 # for pacdiff, without using aur neovim-drop-in or neovim-symlinks
@@ -81,6 +77,13 @@ export SCR_HEIGHT=900
 # correct but not sure if fits me
 #export GDK_SCALE=2
 #export GDK_DPI_SCALE=0.5
+
+# must source .bashrc after export _ZO_ECHO=1 and INPUTRC=..., else these two env will has no effect, don't know why
+# here `. ~/.bashrc` same as `source ~/.bashrc`, see `source filename` in `man bash`, and `. file` in `man dash`
+# `. file` is POSIX compliant, while `source file` is not
+# https://github.com/koalaman/shellcheck/wiki/SC3046
+#[[ -f ~/.bashrc ]] && . ~/.bashrc
+[ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
 
 # startx when login, should be put after environmental variables for .xinitrc to use
 if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
