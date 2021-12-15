@@ -8,14 +8,12 @@ $line"
 		paths="$line"
 	fi
 done
-dirs="$(echo "$paths" | tr '\n' '\0' | xargs -0 dirname | sort | uniq)"
 
-paths="$paths
+dirs="$paths"
+while [ "$dirs" != '.' ]; do
+	[ -n "$dirs" ] && paths="$paths
 $dirs"
-while [ "$(echo "$dirs" | wc -l)" -ne 1 ]; do
-	dirs="$(echo "$dirs" | tr '\n' '\0' | xargs -0 dirname | sort | uniq)"
-	paths="$paths
-$dirs"
+	dirs="$(echo "$dirs" | tr '\n' '\0' | xargs -0 dirname | awk '!a[$0]++')"
 done
 
-echo "$paths" | sort | uniq | grep -v '^\.$'
+echo "$paths" | awk '!a[$0]++' | grep -v '^\.$'
