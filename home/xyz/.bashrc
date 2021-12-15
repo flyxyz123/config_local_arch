@@ -86,11 +86,11 @@ alias za='zoxide add'
 eval "$(zoxide init bash --no-aliases)"
 
 z () {
-	__zoxide_z "$@" && l
+	__zoxide_z "$@" && l && echo "$PWD"
 }
 
 zi () {
-	__zoxide_zi "$@" && l
+	__zoxide_zi "$@" && l && echo "$PWD"
 }
 
 # steal from fzf: https://github.com/junegunn/fzf/blob/master/shell/key-bindings.bash

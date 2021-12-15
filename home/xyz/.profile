@@ -45,7 +45,6 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export QT_QPA_PLATFORMTHEME=gtk2
 #export QT_STYLE_OVERRIDE=kvantum
 export SXHKD_SHELL=sh
-export _ZO_ECHO=1
 # enable color for `tree` command, not forced
 export CLICOLOR=1
 # for pacdiff, without using aur neovim-drop-in or neovim-symlinks
