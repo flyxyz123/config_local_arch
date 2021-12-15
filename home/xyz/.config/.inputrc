@@ -19,8 +19,25 @@ set editing-mode vi
 $if mode=vi
 
 	set show-mode-in-prompt on
-	set vi-ins-mode-string \1\e[6 q\2
-	set vi-cmd-mode-string \1\e[2 q\2
+
+	# https://wiki.archlinux.org/title/readline#Different_cursor_shapes_for_each_mode
+	$if term=linux
+		# https://linuxgazette.net/137/anonymous.html
+		# https://unix.stackexchange.com/questions/115009/how-to-change-the-cursor-theme-in-cli
+		# https://www.kernel.org/doc/html/latest/admin-guide/vga-softcursor.html
+		# it seems linux tty has no vertical line, no nonblink nonblock cursor style?
+		# only nonblink style is software cursor, which is only nonblink block cursor with different colors
+		# maybe tput can be helpful? or change TERM?
+		# default, blink underscore, hardware cursor
+		set vi-ins-mode-string \1\e[?0c\2
+		# blink block, hardware cursor
+		set vi-cmd-mode-string \1\e[?6c\2
+	$else
+		# nonblink vertical line
+		set vi-ins-mode-string \1\e[6 q\2
+		# nonblink block
+		set vi-cmd-mode-string \1\e[2 q\2
+	$endif
 
 	#set keymap vi-command
 	# depreciated
