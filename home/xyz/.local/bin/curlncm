@@ -39,14 +39,14 @@ shift $((OPTIND-1))
 download_dir="${1:-"$PWD"}"
 [ -d "$download_dir" ] || mkdir -p "$download_dir"
 
-if [ -n "$ids" ]; then
+if [ "$ids" ]; then
 	# temporary solution, can improve by auto curl names
 	data="$(echo "$ids" | tr ',' '\n' | awk '{printf("%s\t%s\n",$0,"songname")}')"
 else
-	if [ -n "$rid" ]; then
+	if [ "$rid" ]; then
 		data="$(curl -s -G --data-urlencode id="$rid" -d limit="$dj_max" 'https://music.163.com/djradio' | grep 'songlist\|tt f-thide' | sed -e 's/.*songlist-\(.*\)" class.*/\1/g' -e 's/.*title="\(.*\)".*/\1/g' | paste -sd '\t\n' | sort | tr '/' '_')"
 	# can only curl featured 50 songs for the artist, can improve
-	elif [ -n "$aid" ]; then
+	elif [ "$aid" ]; then
 		data="$(curl -s -G --data-urlencode id="$aid" 'https://music.163.com/artist' | grep '\[{.*}\]' | sed -e 's/.*>\[{/\[{/' -e 's/}\]<.*/}\]/' | jq -r '.[]|[.id,.name]|@tsv' | sort | tr '/' '_')"
 	fi
 	# awk code not print separator at beginning and end steal from:

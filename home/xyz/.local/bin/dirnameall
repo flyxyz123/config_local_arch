@@ -1,7 +1,7 @@
 #!/bin/sh
 
 while read -r line; do
-	if [ -n "$paths" ]; then
+	if [ "$paths" ]; then
 		paths="$paths
 $line"
 	else
@@ -11,7 +11,7 @@ done
 
 dirs="$paths"
 while [ "$dirs" != '.' ]; do
-	[ -n "$dirs" ] && paths="$paths
+	[ "$dirs" ] && paths="$paths
 $dirs"
 	dirs="$(echo "$dirs" | tr '\n' '\0' | xargs -0 dirname | awk '!a[$0]++')"
 done
