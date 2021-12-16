@@ -88,14 +88,14 @@ eval "$(zoxide init bash --no-aliases)"
 z () {
 	if  __zoxide_z "$@"; then
 		l
-		#echo "$PWD"
+		echo "$PWD"
 	fi
 }
 
 zi () {
 	if __zoxide_zi "$@"; then
 		l
-		#echo "$PWD"
+		echo "$PWD"
 	fi
 }
 
