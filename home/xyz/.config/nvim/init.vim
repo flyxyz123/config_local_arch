@@ -57,7 +57,7 @@ augroup END
 
 " :h markdown, for vim default tpope/vim-markdown
 "let g:markdown_folding = 1
-let g:markdown_minlines = 1500
+let g:markdown_minlines = 500
 "let g:markdown_fenced_languages = ['python', 'sh', 'vim', 'c', 'cpp']
 
 " netrw-p preview vertial split
