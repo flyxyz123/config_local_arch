@@ -85,6 +85,7 @@ export SCR_HEIGHT=900
 [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
 
 # startx when login, should be put after environmental variables for .xinitrc to use
-if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
+# use `[ "$XDG_VTNR" ]` to avoid "-bash: [: : integer expression expected" warning/error message, when `sudo su - xyz` or ssh into a remote server, not sure if best practice or not
+if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	exec startx
 fi
