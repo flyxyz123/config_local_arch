@@ -1,7 +1,7 @@
 #!/bin/sh
 
 mi () {
-	make -B
+	make
 	sudo make install
 }
 
