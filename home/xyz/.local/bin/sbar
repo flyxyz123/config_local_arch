@@ -56,7 +56,6 @@ update_bat () {
 # modules that don't update on their own need to be run at the start for getting their initial value
 update_vol
 update_mic
-update_cap
 update_vpn
 
 display () { 
@@ -76,19 +75,16 @@ trap	"update_vpn;display"	"RTMIN+4"
 # where m = 34 + n
 
 while true; do
-	# next line of code seems make hotkeys that send kill signals more responsive? not fully understood
-	sleep 1 & wait && { 
-		# to update item ever n seconds with a offset of m
-		## [ $((sec % n)) -eq m ] && udpate_item
-		[ $((sec % 5 )) -eq 0 ] && update_time 	# update time every 5 seconds
-		[ $((sec % 5 )) -eq 0 ] && update_net
-		# mullvad like writing log when asking it about status
-		#[ $((sec % 5 )) -eq 0 ] && update_vpn
-		[ $((sec % 60)) -eq 0 ] && update_bat
-		#[ $((sec % 300)) -eq 1 ] && update_event
-
-		# how often the display updates ( 5 seconds )
-		[ $((sec % 5 )) -eq 0 ] && display
-		sec=$((sec + 1))
-	}
+	sleep 1 &
+	wait
+	[ $((sec % 5 )) -eq 0 ] && update_time 	# update time every 5 seconds
+	[ $((sec % 5 )) -eq 0 ] && update_net
+	# mullvad like writing log when asking it about status
+	#[ $((sec % 5 )) -eq 0 ] && update_vpn
+	update_cap
+	[ $((sec % 60)) -eq 0 ] && update_bat
+	#[ $((sec % 300)) -eq 1 ] && update_event
+	# how often the display updates ( 5 seconds )
+	[ $((sec % 5 )) -eq 0 ] && display
+	sec=$((sec + 1))
 done 

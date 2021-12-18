@@ -47,7 +47,6 @@ dunst &
 fcitx5 -d
 redshift &
 sbar &
-sxhkd &
 udiskie &
 # xorg-server 21.1.1-2 set correct dpi for my computer, but I choose to take the blue pill
 # Attention, don't use & at the end otherwise dwm status bar won't have proper dpi.
