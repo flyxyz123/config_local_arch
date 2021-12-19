@@ -7,7 +7,8 @@
 
 infofile="/tmp/recoinfo"
 recodir="$XDG_VIDEOS_DIR/recordings/"
-mkdir -p "$recodir"
+tmpdir="$recodir/tmp/"
+mkdir -p "$recodir" "$tmpdir"
 
 if [ -e "$infofile" ]; then
 	read -r pid tmpfile < "$infofile"
@@ -17,10 +18,10 @@ if [ -e "$infofile" ]; then
 	notify-send 'finish converting'
 	rm "$tmpfile" "$infofile"
 else
-	tmpfile="$(mktemp --suffix '.mkv')"
-	notify-send 'start recording'
+	tmpfile="$tmpdir/$(time.uuid).mkv"
+	notify-send 'prepare recording'
 	# arch wiki way, no audio, less cpu use during capturing (fast?), large file size, need convert afterward
-	xrectsel '%w %h %x %y' | xargs sh -c 'ffmpeg -y -loglevel quiet -f x11grab -framerate 25 -s "$2"x"$3" -i "$DISPLAY+$4,$5" -c:v ffvhuff "$1" & echo $!' shell "$tmpfile" | xargs -I {} printf '%s\t%s' '{}' "$tmpfile" > "$infofile"
+	xrectsel '%w %h %x %y' | xargs sh -c 'ffmpeg -y -loglevel quiet -f x11grab -framerate 25 -s "$2x$3" -i "$DISPLAY+$4,$5" -c:v ffvhuff "$1" & echo $!' shell "$tmpfile" | xargs -I {} printf '%s\t%s' '{}' "$tmpfile" > "$infofile"
 	# another way to get subshell ffmpeg child pid
 	#xrectsel '%w %h %x %y' | xargs sh -c 'ffmpeg -y -f x11grab -framerate 25 -s "$2"x"$3" -i "$DISPLAY+$4,$5" -c:v ffvhuff "$1"' shell "$tmpfile" &
 	#printf '%s\t%s' "$(ps -o pid= --ppid $!)" "$tmpfile" > "$infofile"
