@@ -1,0 +1,6 @@
+#!/bin/sh
+
+git clone "$1"
+cd "$(basename "$1" .git)" || exit
+git remote add upstream "$2"
+git checkout fly
