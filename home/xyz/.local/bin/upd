@@ -27,6 +27,8 @@ clean () {
 	sudo systemctl stop atd
 	echo 0 | sudo tee /var/spool/atd/.SEQ > /dev/null
 	sudo systemctl start atd
+
+	rm -rf "$XDG_VIDEOS_DIR/recordings/tmp/"
 }
 
 # basic daily stuff
@@ -55,6 +57,7 @@ misc () {
 	tldr --update
 	sudo hardcode-fixer
 	userjs
+	clean
 }
 
 ncm () {
