@@ -80,6 +80,7 @@
 755 xyz wheel //home/xyz/.local/bin/gitmetap
 755 xyz wheel //home/xyz/.local/bin/gitmetar
 755 xyz wheel //home/xyz/.local/bin/gitpu
+755 root root //home/xyz/.local/bin/gitsetup
 755 xyz wheel //home/xyz/.local/bin/lastarg
 755 xyz wheel //home/xyz/.local/bin/mmi
 755 xyz wheel //home/xyz/.local/bin/mpva
