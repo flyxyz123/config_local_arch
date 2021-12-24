@@ -2,7 +2,7 @@
 // a lot: image upload from local...
 //user_pref("privacy.resistFingerprinting", false);
 // douyu pay, bilibili stream watch and user space, pixiv some images not show
-//user_pref("network.http.referer.XOriginPolicy", 0);
+user_pref("network.http.referer.XOriginPolicy", 0);
 // baidu
 user_pref("security.ssl.require_safe_negotiation", false);
 
