@@ -77,7 +77,9 @@ pac () {
 	aurpacs="$(paru --noconfirm -aSyu | tee /dev/tty | grep '^Aur' | cut -d' ' -f3-)"
 	# part steal from aur comment
 	# sometimes "ERROR: Failure while downloading": https://github.com/neovim/neovim/issues/15709
-	rm -rf ~/.cache/paru/clone/neovim-nightly-bin/ && yes 1 | PARU_PAGER=cat paru --rebuild --redownload neovim-nightly-bin
+	# echo 1, printf 1 and yes 1 all works? not sure why
+	# aur neovim-nightly-bin has some issue on 12/26/2021? switch to community repo neovim temporary
+	#rm -rf ~/.cache/paru/clone/neovim-nightly-bin/ && echo 1 | PARU_PAGER=cat paru --rebuild --redownload neovim-nightly-bin
 	sudo pacman -Fy
 	# pacdiff default use pacman database, so no need `sudo -E` for find, but will be a little bit slower
 	log="$log
