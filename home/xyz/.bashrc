@@ -37,7 +37,7 @@ done
 unset cmd
 
 # same name
-alias absolutely-proprietary='absolutely-proprietary -f'
+alias absolutely-proprietary='echo n | absolutely-proprietary -f'
 alias alsamixer='alsamixer -V all'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
