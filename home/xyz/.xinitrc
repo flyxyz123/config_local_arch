@@ -36,11 +36,11 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-if [ -e "$XDG_PICTURES_DIR/wallpapers/wallpaper" ]; then
-	display -window root "$XDG_PICTURES_DIR/wallpapers/wallpaper" &
-else 
-	shufwall &
-fi
+#if [ -e "$XDG_PICTURES_DIR/wallpapers/wallpaper" ]; then
+#	display -window root "$XDG_PICTURES_DIR/wallpapers/wallpaper" &
+#else 
+#	shufwall &
+#fi
 
 #clipmenud &
 dunst &
