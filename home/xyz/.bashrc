@@ -31,7 +31,7 @@ esac
 PS1="\[$(tput setaf 1)\][\u@\h \W]\$ \[$(tput sgr0)\]"
 
 # https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
-for cmd in iotop nethogs hardcode-fixer ventoy du units_cur; do
+for cmd in iotop nethogs hardcode-fixer ventoy du units_cur fbgrab; do
 	alias $cmd="sudo $cmd"
 done
 unset cmd
@@ -47,7 +47,7 @@ alias radeontop='radeontop -c'
 alias rm='rm -I'
 alias sdcv='sdcv --color'
 alias shellcheck='shellcheck -x'
-alias tree='tree -a'
+alias tree='sudo -E tree -a'
 alias uname='uname -a'
 
 # different name
