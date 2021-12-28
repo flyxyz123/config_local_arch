@@ -34,6 +34,9 @@ PS1="\[$(tput setaf 1)\][\u@\h \W]\$ \[$(tput sgr0)\]"
 for cmd in iotop nethogs hardcode-fixer ventoy du units_cur fbgrab; do
 	alias $cmd="sudo $cmd"
 done
+for cmd in qbittorrent weechat; do
+	alias $cmd="mullvad connect -w; kill -RTMIN+4 $(cat "$XDG_CACHE_HOME/pidofbar"); $cmd"
+done
 unset cmd
 
 # same name
