@@ -56,7 +56,7 @@ misc () {
 	"$EDITOR" +PlugUpgrade +PlugClean! +PlugUpdate +qa
 	tldr --update
 	sudo hardcode-fixer
-	units_cur
+	sudo units_cur
 
 	userjs
 	clean
