@@ -28,9 +28,9 @@ update_net () {
 	net="$(bool < /sys/class/net/wlp6s0/operstate)"
 }
 
-update_vpn () {
-	vpn="$(mullvad status | awk '{print $3}' | bool)"
-}
+#update_vpn () {
+#	vpn="$(mullvad status | awk '{print $3}' | bool)"
+#}
 
 update_vol () { 
 	# $(NF-1) for both alsa and pulseaudio
@@ -56,10 +56,10 @@ update_bat () {
 # modules that don't update on their own need to be run at the start for getting their initial value
 update_vol
 update_mic
-update_vpn
+#update_vpn
 
 display () { 
-	xsetroot -name "$(echo "$time | N $net V $vpn | M $vol C $mic | $cap | $bat")"
+	xsetroot -name "$(echo "$time | N $net | M $vol C $mic | $cap | $bat")"
 }
 
 # SIGNALLING
@@ -69,7 +69,7 @@ trap	"update_vol;display"	"RTMIN+1"
 # xev can't read my toggle internet keyboard key, don't know what key to use in sxhkd to send signal
 #trap	"update_net;display"	"RTMIN+2"
 trap	"update_cap;display"	"RTMIN+3"
-trap	"update_vpn;display"	"RTMIN+4"
+#trap	"update_vpn;display"	"RTMIN+4"
 # to update it from external commands
 ## kill -m "$(cat "$XDG_CACHE_HOME/pidofbar")"
 # where m = 34 + n

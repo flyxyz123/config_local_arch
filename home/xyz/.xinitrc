@@ -45,6 +45,7 @@ export XMODIFIERS=@im=fcitx
 #clipmenud &
 dunst &
 fcitx5 -d
+mullvad connect
 redshift &
 sbar &
 udiskie &
