@@ -44,6 +44,7 @@ export SXHKD_SHELL=sh
 export CLICOLOR=1
 # for pacdiff, without using aur neovim-drop-in or neovim-symlinks
 export DIFFPROG='nvim -d'
+export MAKEFLAGS="-j$(nproc --all)"
 
 # use sudo find for some files or dirs that has no permission ex: ~/.cache/paru/clone/
 #export FZF_DEFAULT_COMMAND="fd --no-ignore --hidden --exclude .git"
