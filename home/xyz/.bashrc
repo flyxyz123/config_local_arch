@@ -48,7 +48,7 @@ alias absolutely-proprietary='echo n | absolutely-proprietary -f'
 alias alsamixer='alsamixer -V all'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
-alias info='info --vi-keys'
+#alias info='info --vi-keys'
 alias ls='ls --color=auto'
 alias radeontop='radeontop -c'
 alias rm='rm -I'
@@ -118,5 +118,12 @@ zqi_key () {
 bind -m vi-command -x '"\C-o":zqi_key'
 bind -m vi-insert -x '"\C-o":zqi_key'
 
+# more about bash completion see https://unix.stackexchange.com/a/529357/459013
+complete -c wh
+# https://unix.stackexchange.com/questions/216748/how-to-re-use-existing-completion-with-recent-bash-completion
+_completion_loader info
+eval "$(complete -p info | sed 's/\(.*\)info$/\1vinfo/')"
+_completion_loader git
+eval "$(complete -p git | sed 's/\(.*\)git$/\1cfg/')"
 # from complete-alias readme
 complete -F _complete_alias "${!BASH_ALIASES[@]}"
