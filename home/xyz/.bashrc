@@ -11,6 +11,7 @@ esac
 
 . /usr/share/fzf/completion.bash
 . /usr/share/fzf/key-bindings.bash
+. /usr/share/bash-complete-alias/complete_alias
 
 # default PS1
 #PS1='[\u@\h \W]\$ '
@@ -116,3 +117,6 @@ zqi_key () {
 }
 bind -m vi-command -x '"\C-o":zqi_key'
 bind -m vi-insert -x '"\C-o":zqi_key'
+
+# from complete-alias readme
+complete -F _complete_alias "${!BASH_ALIASES[@]}"
