@@ -77,7 +77,6 @@ alias v='$EDITOR'
 alias vc='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/cli_notes.md"'
 alias vq='$EDITOR "$XDG_DOCUMENTS_DIR/notes/others/questions_ideas_tips.md"'
 alias vvrc='$EDITOR +e\ \$MYVIMRC'
-alias wtr='mullvad-exclude curl v2.wttr.in?m'
 alias za='zoxide add'
 
 # almost never use

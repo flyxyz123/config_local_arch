@@ -1,0 +1,3 @@
+#!/bin/sh
+
+mullvad-exclude curl v2.wttr.in?m

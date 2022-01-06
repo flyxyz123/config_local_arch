@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# --hold must be before -e
+o alacritty --hold -e wtr
+o alacritty -e newsboat
+o alacritty -e weechat
+o telegram-desktop
