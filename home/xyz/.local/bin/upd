@@ -104,7 +104,6 @@ usb () {
 	git --git-dir="$XDG_DOCUMENTS_DIR/notes/.git/" --work-tree="$XDG_DOCUMENTS_DIR/notes/" push usb
 }
 
-
 if [ $# -eq 0 ]; then
 	fast
 else
