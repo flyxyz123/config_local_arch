@@ -111,15 +111,25 @@ zi () {
 zqi_key () {
 	# fzf uses printf '%q' to escape output, but attention %q is not POSIX
 	# well we use bash here so whatever
-	selected=$(printf '%q ' "$(zoxide query -i)")
-	READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$selected${READLINE_LINE:$READLINE_POINT}"
-	READLINE_POINT=$((READLINE_POINT+${#selected}))
+	selected="$(printf '%q' "$(zoxide query -i)")"
+	# if don't want to use bash builtin printf:
+	#selected=$(/usr/bin/printf '%q' "$(zoxide query -i)")
+	# no "''" if select nothing
+	if ! [ "$selected" = "''" ]; then
+	# another way:
+	#selected=$(zoxide query -i | tr '\n' '\0' | xargs -0 printf '%q')
+	#if [ "$selected" ]; then
+		READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}$selected ${READLINE_LINE:$READLINE_POINT}"
+		READLINE_POINT=$((READLINE_POINT+${#selected}+1))
+	fi
 }
 bind -m vi-command -x '"\C-o":zqi_key'
 bind -m vi-insert -x '"\C-o":zqi_key'
 
 # more about bash completion see https://unix.stackexchange.com/a/529357/459013
 complete -c wh
+# tldr-sh-client readme 
+complete -W "$(tldr 2>/dev/null -l -p all)" tldr
 # https://unix.stackexchange.com/questions/216748/how-to-re-use-existing-completion-with-recent-bash-completion
 _completion_loader info
 eval "$(complete -p info | sed 's/\(.*\)info$/\1vinfo/')"
