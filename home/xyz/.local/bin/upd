@@ -54,8 +54,7 @@ userjs () {
 
 misc () {
 	"$EDITOR" +PlugUpgrade +PlugClean! +PlugUpdate +qa
-	# wait for fixing `tldr -u` bug
-	#tldr --update
+	tldr --update
 	sudo hardcode-fixer
 	sudo units_cur
 
