@@ -135,5 +135,5 @@ _completion_loader info
 eval "$(complete -p info | sed 's/\(.*\)info$/\1vinfo/')"
 _completion_loader git
 eval "$(complete -p git | sed 's/\(.*\)git$/\1cfg/')"
-# from complete-alias readme
+# complete-alias readme
 complete -F _complete_alias "${!BASH_ALIASES[@]}"
