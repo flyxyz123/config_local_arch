@@ -47,10 +47,10 @@ userjs () {
 	"$HOME/.mozilla/firefox/xxxxxxxx.fly/updater.sh" -us
 }
 
-#kg () {
-#	curlkg -u649b9e82272a348b -- "$XDG_MUSIC_DIR/not_pure/lan_lan/kg/"
-#	curlkg -u64949d822c25328c -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/kg/"
-#}
+kg () {
+	curlkg -u649b9e82272a348b -- "$XDG_MUSIC_DIR/not_pure/lan_lan/kg/"
+	curlkg -u64949d822c25328c -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/kg/"
+}
 
 misc () {
 	"$EDITOR" +PlugUpgrade +PlugClean! +PlugUpdate +qa
@@ -62,15 +62,15 @@ misc () {
 	clean
 }
 
-#ncm () {
-#	curlncm -a48860966 -- "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/artist/"
-#	curlncm -a46703185 -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/artist/"
-#	curlncm -a30382647 -- "$XDG_MUSIC_DIR/not_pure/qi_tian_sakura/ncm/artist/"
-#
-#	curlncm -r793052426 -- "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/djradio/"
-#	curlncm -r792968433 -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/djradio/"
-#	curlncm -r792042397 -- "$XDG_MUSIC_DIR/not_pure/qi_tian_sakura/ncm/djradio/"
-#}
+ncm () {
+	curlncm -a48860966 -- "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/artist/"
+	curlncm -a46703185 -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/artist/"
+	curlncm -a30382647 -- "$XDG_MUSIC_DIR/not_pure/qi_tian_sakura/ncm/artist/"
+
+	curlncm -r793052426 -- "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/djradio/"
+	curlncm -r792968433 -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/djradio/"
+	curlncm -r792042397 -- "$XDG_MUSIC_DIR/not_pure/qi_tian_sakura/ncm/djradio/"
+}
 
 pac () {
 	pacpacs="$(sudo pacman --noconfirm -Syu | tee /dev/tty | grep '^Packages' | cut -d' ' -f3-)"
@@ -115,9 +115,9 @@ else
 			f)fast;;
 			g)gall;;
 			j)userjs;;
-			#k)kg;;
+			k)kg;;
 			m)misc;;
-			#n)ncm;;
+			n)ncm;;
 			p)pac;;
 			q)qb;;
 			r)refl;;
