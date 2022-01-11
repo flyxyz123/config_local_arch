@@ -81,6 +81,7 @@ trap	"update_vpn;display"	"RTMIN+4"
 
 # `mullvad status` write logs everytime it is called
 # so I use `mullvad status listen`, this implementation is kinda bloat, maybe there's better way
+# should be put after trap?
 sh -c '
 	mullvad status listen | while read -r line; do
 		kill -RTMIN+4 "$(cat "$XDG_CACHE_HOME/pidofbar")"
