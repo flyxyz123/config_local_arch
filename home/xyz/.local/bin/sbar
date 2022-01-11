@@ -3,6 +3,12 @@
 # modified to fit my own need
 
 # INIT
+vpn_fifo="$XDG_CACHE_HOME/sbar_vpn_fifo"
+if ! [ -e "$vpn_fifo" ]; then
+	mkfifo "$vpn_fifo"
+elif ! [ -p "$vpn_fifo" ]; then
+	exit 1
+fi
 printf '%s' "$$" > "$XDG_CACHE_HOME/pidofbar"
 sec=0
 
@@ -28,9 +34,9 @@ update_net () {
 	net="$(bool < /sys/class/net/wlp6s0/operstate)"
 }
 
-#update_vpn () {
-#	vpn="$(mullvad status | awk '{print $3}' | bool)"
-#}
+update_vpn () {
+	vpn="$( < "$vpn_fifo" awk '{print $3}' | bool)"
+}
 
 update_vol () { 
 	# $(NF-1) for both alsa and pulseaudio
@@ -53,14 +59,13 @@ update_bat () {
 #	[ "[]" = "$event" ] && event=""
 #}
 
+display () {
+	xsetroot -name "$time | N $net V $vpn | M $vol C $mic | $cap | $bat"
+}
+
 # modules that don't update on their own need to be run at the start for getting their initial value
 update_vol
 update_mic
-#update_vpn
-
-display () { 
-	xsetroot -name "$(echo "$time | N $net | M $vol C $mic | $cap | $bat")"
-}
 
 # SIGNALLING
 # trap	"<function>;display"	"RTMIN+n"
@@ -69,22 +74,29 @@ trap	"update_vol;display"	"RTMIN+1"
 # xev can't read my toggle internet keyboard key, don't know what key to use in sxhkd to send signal
 #trap	"update_net;display"	"RTMIN+2"
 trap	"update_cap;display"	"RTMIN+3"
-#trap	"update_vpn;display"	"RTMIN+4"
+trap	"update_vpn;display"	"RTMIN+4"
 # to update it from external commands
 ## kill -m "$(cat "$XDG_CACHE_HOME/pidofbar")"
 # where m = 34 + n
 
-while true; do
+# `mullvad status` write logs everytime it is called
+# so I use `mullvad status listen`, this implementation is kinda bloat, maybe there's better way
+sh -c '
+	mullvad status listen | while read -r line; do
+		kill -RTMIN+4 "$(cat "$XDG_CACHE_HOME/pidofbar")"
+		echo "$line" > "$1"
+	done &
+' shell "$vpn_fifo"
+
+while :; do
 	sleep 1 &
 	wait
 	[ $((sec % 5 )) -eq 0 ] && update_time 	# update time every 5 seconds
 	[ $((sec % 5 )) -eq 0 ] && update_net
-	# mullvad like writing log when asking it about status
-	#[ $((sec % 5 )) -eq 0 ] && update_vpn
 	update_cap
 	[ $((sec % 60)) -eq 0 ] && update_bat
 	#[ $((sec % 300)) -eq 1 ] && update_event
 	# how often the display updates ( 5 seconds )
 	[ $((sec % 5 )) -eq 0 ] && display
 	sec=$((sec + 1))
-done 
+done
