@@ -2,6 +2,7 @@
 
 o "$BROWSER" github.com/notifications mail.google.com
 # --hold must be before -e
+o alacritty --hold -e calcurse
 o alacritty --hold -e wtr
 o alacritty -e newsboat
 o alacritty -e weechat
