@@ -35,7 +35,7 @@ update_net () {
 }
 
 update_vpn () {
-	vpn="$( < "$vpn_fifo" awk '{print $3}' | bool)"
+	vpn="$(awk '{print $3}' "$vpn_fifo" | bool)"
 }
 
 update_vol () { 
