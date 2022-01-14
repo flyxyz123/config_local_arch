@@ -22,13 +22,14 @@ export HISTFILESIZE=10000
 export EDITOR=nvim
 export BROWSER=firefox
 
-export PAGER=less
 # -X seems can keep the output if exit less?
 # -F is useful when sdcv need user to manually select similar word, after selection if no -F less will not quit if one screen
 # but other situation seems less use -F as default?
 # steal from sdcv arch wiki
-export LESS='-FRX'
+export PAGER='less -FRX'
 export SDCV_PAGER="$PAGER"
+# CALCURSE_PAGER less can't use -F, else ? and > hotkey will only blink the text
+export CALCURSE_PAGER=less
 
 # not posix
 export MANPAGER='nvim -M +Man!'
