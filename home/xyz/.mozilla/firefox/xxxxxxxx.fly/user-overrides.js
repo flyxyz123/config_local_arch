@@ -9,7 +9,6 @@ user_pref("security.ssl.require_safe_negotiation", false);
 // fixes and issues unrelated to arkenfox user.js:
 // disable ublock origin:
 // baidu drive save to my drive not working
-// baidu drive message phone check not working
 // disable enhanced tracking protection:
 // google drive can't download
 
