@@ -67,7 +67,7 @@ alias ll='\ls --color=auto -lAh --group-directories-first'
 alias m=man
 alias p=pacman
 alias pu=paru
-alias qre='qrencode -t utf8i'
+alias qre='qrencode -t utf8i -m 1'
 alias s='sudo ' # https://askubuntu.com/a/22043
 alias se='sudo -E '
 alias spd='speedtest; librespeed-cli'
