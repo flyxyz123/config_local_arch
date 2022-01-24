@@ -108,6 +108,7 @@
 755 xyz wheel //home/xyz/.local/bin/wh
 755 xyz wheel //home/xyz/.local/bin/wtr
 755 xyz wheel //home/xyz/.local/bin/xmq
+777 xyz wheel //home/xyz/.local/bin/zoom
 755 xyz wheel //home/xyz/.local/share
 700 xyz wheel //home/xyz/.local/share/applications
 644 xyz wheel //home/xyz/.local/share/applications/file.desktop
