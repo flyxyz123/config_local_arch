@@ -57,6 +57,8 @@ misc () {
 	tldr --update
 	sudo hardcode-fixer
 	sudo units_cur
+	# temperory solution before find a way of using git submodule or subtree with `cfg -l`
+	git --git-dir=/home/xyz/.mozilla/firefox/xxxxxxxx.fly/chrome/firefox-csshacks/.git/ --work-tree=/home/xyz/.mozilla/firefox/xxxxxxxx.fly/chrome/firefox-csshacks/ pull
 
 	userjs
 	clean
