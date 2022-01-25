@@ -3,14 +3,23 @@
 # modified to fit my own need
 
 # INIT
+pid_file="$XDG_CACHE_HOME/pidofbar"
 vpn_fifo="$XDG_CACHE_HOME/sbar_vpn_fifo"
+sec=0
+
+# exit if sbar is already running, fix when startx in another tty, the other tty sbar not working
+# maybe try dwmblocks's approach of using `pidof -x sbar`, so can run different sbar in different tty
+# but then vpn_fifo becomes a problem too, not sure how to solve
+if ! [ -e "$pid_file" ] || ! ps -p "$(cat "$XDG_CACHE_HOME/pidofbar")"; then
+	printf '%s' "$$" > "$pid_file"
+else
+	exit
+fi
 if ! [ -e "$vpn_fifo" ]; then
 	mkfifo "$vpn_fifo"
 elif ! [ -p "$vpn_fifo" ]; then
 	exit 1
 fi
-printf '%s' "$$" > "$XDG_CACHE_HOME/pidofbar"
-sec=0
 
 bool () {
 	read str
@@ -84,10 +93,10 @@ trap	"update_vpn;display"	"RTMIN+4"
 # should be put after trap?
 sh -c '
 	mullvad status listen | while read -r line; do
-		kill -RTMIN+4 "$(cat "$XDG_CACHE_HOME/pidofbar")"
-		echo "$line" > "$1"
+		kill -RTMIN+4 "$(cat "$1")"
+		echo "$line" > "$2"
 	done &
-' shell "$vpn_fifo"
+' shell "$pid_file" "$vpn_fifo"
 
 while :; do
 	sleep 1 &
