@@ -51,7 +51,6 @@ alias grep='grep --color=auto'
 #alias info='info --vi-keys'
 alias ls='ls --color=auto'
 alias radeontop='radeontop -c'
-alias rem='rem -c+2'
 alias rm='rm -I'
 alias sdcv='sdcv --color'
 alias shellcheck='shellcheck -x'
@@ -69,6 +68,7 @@ alias m=man
 alias p=pacman
 alias pu=paru
 alias qre='qrencode -t utf8i -m 1'
+alias r='rem -c+2'
 alias s='sudo ' # https://askubuntu.com/a/22043
 alias se='sudo -E '
 alias spd='speedtest; librespeed-cli'
