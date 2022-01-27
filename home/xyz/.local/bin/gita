@@ -5,7 +5,7 @@ cmd=git
 
 while getopts cls f; do
 	case $f in
-		c|l|s) cmd="cfg -$f";;
+		l|s) cmd="cfg -$f";;
 		\?) exit 1;;
 	esac
 done
