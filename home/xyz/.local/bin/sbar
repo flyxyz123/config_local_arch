@@ -8,9 +8,9 @@ vpn_fifo="$XDG_CACHE_HOME/sbar_vpn_fifo"
 sec=0
 
 # exit if sbar is already running, fix when startx in another tty, the other tty sbar not working
-# maybe try dwmblocks's approach of using `pidof -x sbar`, so can run different sbar in different tty
+# maybe try dwmblocks's approach of using `kill $(pidof -x sbar)`, so can run different sbar in different tty
 # but then vpn_fifo becomes a problem too, not sure how to solve
-if ! [ -e "$pid_file" ] || ! ps -p "$(cat "$XDG_CACHE_HOME/pidofbar")"; then
+if ! [ -e "$pid_file" ] || ! pidof -qsx sbar -o "$$"; then
 	printf '%s' "$$" > "$pid_file"
 else
 	exit
