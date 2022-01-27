@@ -48,6 +48,7 @@ export CLICOLOR=1
 export DIFFPROG='nvim -d'
 export MAKEFLAGS="-j$(nproc --all)"
 export DOTREMINDERS="$HOME/programs/reminders/.reminders"
+export SDCV_HISTSIZE=10000
 
 # use sudo find for some files or dirs that has no permission ex: ~/.cache/paru/clone/
 #export FZF_DEFAULT_COMMAND="fd --no-ignore --hidden --exclude .git"
