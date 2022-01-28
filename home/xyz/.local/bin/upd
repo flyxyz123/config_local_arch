@@ -106,6 +106,7 @@ usb () {
 	cfg -l push usb
 	cfg -s push
 	git --git-dir="$XDG_DOCUMENTS_DIR/notes/.git/" --work-tree="$XDG_DOCUMENTS_DIR/notes/" push usb
+	git --git-dir="$HOME/programs/reminders/.git/" --work-tree="$HOME/programs/reminders/" push usb
 	# not sure if useful or not
 	sync
 }
