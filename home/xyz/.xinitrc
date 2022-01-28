@@ -47,6 +47,9 @@ dunst &
 fcitx5 -d
 redshift &
 sbar &
+# udiskie recommanded to auto start here in .xinitrc, see:
+# https://github.com/coldfix/udiskie/issues/93
+# https://github.com/coldfix/udiskie/issues/226
 udiskie &
 # xorg-server 21.1.1-2 set correct dpi for my computer, but I choose to take the blue pill
 # Attention, don't use & at the end otherwise dwm status bar won't have proper dpi.
