@@ -1,3 +1,26 @@
+// https://github.com/brookhong/Surfingkeys/wiki/Migrate-your-settings-from-0.9.74-to-1.0
+const {
+    aceVimMap,
+    mapkey,
+    imap,
+    imapkey,
+    getClickableElements,
+    vmapkey,
+    map,
+    unmap,
+    vunmap,
+    cmap,
+    addSearchAlias,
+    removeSearchAlias,
+    tabOpenLink,
+    readText,
+    Clipboard,
+    Front,
+    Hints,
+    Visual,
+    RUNTIME
+} = api;
+
 // old example config, may not work. also, I change ctrl-y to Ctrl-y
 // an example to create a new mapping `ctrl-y`
 //mapkey('<Ctrl-y>', 'Show me the money', function() {
