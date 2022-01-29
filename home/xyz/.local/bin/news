@@ -3,7 +3,7 @@
 o "$BROWSER" github.com/notifications mail.google.com
 # --hold must be before -e
 # full window: -w156, am and pm in one line: -w114
-o alacritty --hold -e rem -c+2 -w114
+o alacritty --hold -e rem -c+2 -@ -w114
 o alacritty --hold -e wtr
 o alacritty -e newsboat
 o alacritty -e weechat
