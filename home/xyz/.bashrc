@@ -61,6 +61,7 @@ alias uname='uname -a'
 # /dev/ttyACM0 can be in config file, or as environmantal variable, see /usr/share/doc/adafruit-ampy/README.md
 alias ap='sudo ampy -p /dev/ttyACM0'
 alias c=cfg
+alias d='\sdcv --color'
 alias g=git
 alias l='\ls --color=auto -A --group-directories-first'
 alias ll='\ls --color=auto -lAh --group-directories-first'
