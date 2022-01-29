@@ -49,6 +49,8 @@ unmap('<Alt-s>');
 // I tried to run the source code as temp extension in about:debugging or with web-ext cli tool but no luck
 // update: surfingkeys 1.0 is out, but it integrate neovim in another way, and firefox is not supported? 
 // https://github.com/brookhong/Surfingkeys/issues/1542#:~:text=side%20is%20not-,necessary,-now%2C%20please%20help
+// some more links:
+// https://github.com/brookhong/Surfingkeys/tree/master/src/nvim/server
 settings.useNeovim = true;
 
 // disable all insert mode hotkeys except Ctrl-i for future neovim integration
