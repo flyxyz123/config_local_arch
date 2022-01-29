@@ -21,38 +21,35 @@ export HISTFILESIZE=10000
 
 export EDITOR=nvim
 export BROWSER=firefox
-
 # -X seems can keep the output if exit less?
 # -F is useful when sdcv need user to manually select similar word, after selection if no -F less will not quit if one screen
 # but other situation seems less use -F as default?
 # steal from sdcv arch wiki
 export PAGER='less -FRX'
+
 export SDCV_PAGER="$PAGER"
+export SDCV_HISTSIZE=10000
 # CALCURSE_PAGER less can't use -F, else ? and > hotkey will only blink the text
 export CALCURSE_PAGER=less
-
 # not posix
 export MANPAGER='nvim -M +Man!'
 export MANSECT='1p:1:n:l:8:3p:3:0p:0:2:5:4:9:6:7'
-
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export INPUTRC="$XDG_CONFIG_HOME/.inputrc"
 #export QT_QPA_PLATFORMTHEME=qt5ct
 #export QT_QPA_PLATFORMTHEME=gtk2
 export QT_QPA_PLATFORMTHEME=qt6ct
 #export QT_STYLE_OVERRIDE=kvantum
-export SXHKD_SHELL=sh
+#export SXHKD_SHELL=sh
 # enable color for `tree` command, not forced
 export CLICOLOR=1
 # for pacdiff, without using aur neovim-drop-in or neovim-symlinks
 export DIFFPROG='nvim -d'
 export MAKEFLAGS="-j$(nproc --all)"
 export DOTREMINDERS="$HOME/programs/reminders/.reminders"
-export SDCV_HISTSIZE=10000
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-
 # use sudo find for some files or dirs that has no permission ex: ~/.cache/paru/clone/
 #export FZF_DEFAULT_COMMAND="fd --no-ignore --hidden --exclude .git"
 #export FZF_CTRL_T_COMMAND="fd --absolute-path --no-ignore --hidden --exclude .git"
@@ -66,15 +63,15 @@ export FZF_CTRL_T_COMMAND='sudo find "$PWD" -mindepth 1 -path "*/\.git" -prune -
 #export FZF_CTRL_T_COMMAND="sudo find ~+ -path '*/\.git' -prune -o -print"
 export FZF_ALT_C_COMMAND="sudo find . -mindepth 1 -path '*/\.git' -prune -o -type d -print"
 
+export SCR_WIDTH=1600
+export SCR_HEIGHT=900
+
 # for clipmenu
 # set clipmenud to store clipboard only, don't store selection (primary)
 #export CM_SELECTIONS="clipboard"
 # X11, copy / close program / paste to another program, if 0 will paste nothing
 #export CM_OWN_CLIPBOARD=1
 #export CM_MAX_CLIPS=8
-
-export SCR_WIDTH=1600
-export SCR_HEIGHT=900
 
 # GDK_SCALE and GDK_DPI_SCALE should be use at the same time
 # more see bookmarks about dpi
