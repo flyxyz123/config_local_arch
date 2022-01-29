@@ -1,24 +1,26 @@
 // https://github.com/brookhong/Surfingkeys/wiki/Migrate-your-settings-from-0.9.74-to-1.0
 const {
-    aceVimMap,
-    mapkey,
-    imap,
-    imapkey,
-    getClickableElements,
-    vmapkey,
-    map,
-    unmap,
-    vunmap,
-    cmap,
-    addSearchAlias,
-    removeSearchAlias,
-    tabOpenLink,
-    readText,
-    Clipboard,
-    Front,
-    Hints,
-    Visual,
-    RUNTIME
+	aceVimMap,
+	mapkey,
+	imap,
+	imapkey,
+	getClickableElements,
+	vmapkey,
+	map,
+	unmap,
+	vunmap,
+	cmap,
+	addSearchAlias,
+	removeSearchAlias,
+	tabOpenLink,
+	readText,
+	Clipboard,
+	Front,
+	Hints,
+	Visual,
+	RUNTIME,
+
+	iunmap,
 } = api;
 
 // old example config, may not work. also, I change ctrl-y to Ctrl-y
@@ -45,9 +47,11 @@ unmap('<Alt-s>');
 // currently seems no good solution but to use another hotkey, I choose Ctrl+,
 // current surfingkeys version 0.9.74 is outdated and doesn't contain firenvim integration, wait for author to update
 // I tried to run the source code as temp extension in about:debugging or with web-ext cli tool but no luck
+// update: surfingkeys 1.0 is out, but it integrate neovim in another way, and firefox is not supported? 
+// https://github.com/brookhong/Surfingkeys/issues/1542#:~:text=side%20is%20not-,necessary,-now%2C%20please%20help
 settings.useNeovim = true;
 
-// disable all insert mode hotkeys except Ctrl-i for future firenvim integration
+// disable all insert mode hotkeys except Ctrl-i for future neovim integration
 //iunmap('<Ctrl-i>');
 iunmap('<Alt-b>');
 iunmap('<Alt-d>');
