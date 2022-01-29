@@ -66,15 +66,17 @@ iunmap('<Ctrl-u>');
 // disable emoj
 iunmap(':');
 
-mapkey('n','Find next then center cursor', function(){
-	Visual.next(false);
-	Visual.feedkeys('zz');
-});
-
-mapkey('N','Find previous then center cursor', function(){
-	Visual.next(true);
-	Visual.feedkeys('zz');
-});
+// following code of map n to nzz not working in 1.0
+// I guess it may because Visual.next and Visual.feedkeys is not supported in new api, see below source code permalink
+// https://github.com/brookhong/Surfingkeys/blob/3d1de8cab8584209cc6fec3ed7025e8ebab476d8/src/content_scripts/common/api.js#L774-L776
+//mapkey('n','Find next then center cursor', function(){
+//	Visual.next(false);
+//	Visual.feedkeys('zz');
+//});
+//mapkey('N','Find previous then center cursor', function(){
+//	Visual.next(true);
+//	Visual.feedkeys('zz');
+//});
 
 // with firefox RFP enabled in user.js, smooth scroll and gg/G do not work, firefox RFP's feature
 settings.smoothScroll = false;
