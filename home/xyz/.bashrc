@@ -51,11 +51,14 @@ alias grep='grep --color=auto'
 #alias info='info --vi-keys'
 alias ls='ls --color=auto'
 alias radeontop='radeontop -c'
+alias rem='rem -@'
+alias remind='remind -@'
 alias rm='rm -I'
 alias sdcv='sdcv --color'
 alias shellcheck='shellcheck -x'
 alias tree='sudo -E tree -a'
 alias uname='uname -a'
+alias watch='watch -c'
 
 # different name
 # /dev/ttyACM0 can be in config file, or as environmantal variable, see /usr/share/doc/adafruit-ampy/README.md
@@ -69,7 +72,7 @@ alias m=man
 alias p=pacman
 alias pu=paru
 alias qre='qrencode -t utf8i -m 1'
-alias r='rem -c+2'
+alias r='rem -c+2 -@'
 alias s='sudo ' # https://askubuntu.com/a/22043
 alias se='sudo -E '
 alias spd='speedtest; librespeed-cli'
