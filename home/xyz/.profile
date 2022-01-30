@@ -30,7 +30,7 @@ export PAGER='less -FRX'
 export SDCV_PAGER="$PAGER"
 export SDCV_HISTSIZE=10000
 # CALCURSE_PAGER less can't use -F, else ? and > hotkey will only blink the text
-export CALCURSE_PAGER=less
+#export CALCURSE_PAGER=less
 # not posix
 export MANPAGER='nvim -M +Man!'
 export MANSECT='1p:1:n:l:8:3p:3:0p:0:2:5:4:9:6:7'
