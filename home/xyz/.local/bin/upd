@@ -99,7 +99,7 @@ qb () {
 }
 
 refl () {
-	sudo reflector --save /etc/pacman.d/mirrorlist --latest 200 --sort rate
+	sudo reflector --verbose --save /etc/pacman.d/mirrorlist --score 50 --fastest 45
 }
 
 usb () {
