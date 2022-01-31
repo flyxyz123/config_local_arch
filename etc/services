@@ -11458,5 +11458,6 @@ nusrp           49001/tcp
 nusdp-disc      49001/udp
 inspider        49150/tcp
 # my services
+jackett         9117/tcp
 searx           49152/tcp
 qrcp            49153/tcp
