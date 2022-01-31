@@ -32,7 +32,7 @@ esac
 PS1="\[$(tput setaf 1)\][\u@\h \W]\$ \[$(tput sgr0)\]"
 
 # https://github.com/LukeSmithxyz/voidrice/blob/master/.config/shell/aliasrc
-for cmd in iotop nethogs hardcode-fixer ventoy du units_cur fbgrab powertop; do
+for cmd in iotop nethogs hardcode-fixer ventoy du units_cur fbgrab powertop nft; do
 	alias $cmd="sudo $cmd"
 done
 #for cmd in weechat; do
