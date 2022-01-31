@@ -1,0 +1,11 @@
+{
+    "fqdn": "",
+    "interface": "wlp6s0",
+    "port": 49153,
+    "keepAlive": false,
+    "path": "",
+    "secure": false,
+    "tls-key": "",
+    "tls-cert": "",
+    "output": ""
+}
