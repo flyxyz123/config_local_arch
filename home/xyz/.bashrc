@@ -35,12 +35,9 @@ PS1="\[$(tput setaf 1)\][\u@\h \W]\$ \[$(tput sgr0)\]"
 for cmd in iotop nethogs hardcode-fixer ventoy du units_cur fbgrab powertop nft rpi-imager; do
 	alias $cmd="sudo $cmd"
 done
-#for cmd in weechat; do
-#	alias $cmd="mullvad connect -w; kill -RTMIN+4 $(cat "$XDG_CACHE_HOME/pidofbar"); $cmd"
-#done
-#for cmd in qbittorrent telegram-desktop; do
-#	alias $cmd="mullvad connect -w; kill -RTMIN+4 $(cat "$XDG_CACHE_HOME/pidofbar"); o $cmd"
-#done
+for cmd in pacdiff 'tree -a'; do
+	alias ${cmd%% *}="sudo -E $cmd"
+done
 unset cmd
 
 # same name
@@ -56,7 +53,6 @@ alias remind='remind -@'
 alias rm='rm -I'
 alias sdcv='sdcv --color'
 alias shellcheck='shellcheck -x'
-alias tree='sudo -E tree -a'
 alias uname='uname -a'
 alias watch='watch -c'
 
