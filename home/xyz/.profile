@@ -82,6 +82,8 @@ export SCR_HEIGHT=900
 #export GDK_SCALE=2
 #export GDK_DPI_SCALE=0.5
 
+playerctld daemon
+
 # must source .bashrc after export _ZO_ECHO=1 and INPUTRC=..., else these two env will has no effect, don't know why
 # here `. ~/.bashrc` same as `source ~/.bashrc`, see `source filename` in `man bash`, and `. file` in `man dash`
 # `. file` is POSIX compliant, while `source file` is not
