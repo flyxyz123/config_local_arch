@@ -27,6 +27,9 @@ user_pref("extensions.pocket.enabled", false);
 user_pref("extensions.screenshots.disabled", true);
 // allow popup
 user_pref("dom.disable_open_during_load", false);
+// middle-click enabling auto-scrolling
+user_pref("general.autoScroll", true);
+
 
 // old about:config and settings, for perfsCleaner.sh
 // use extensions on more sites
