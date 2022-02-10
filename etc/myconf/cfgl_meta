@@ -9,7 +9,6 @@
 644 root root //etc/NetworkManager/NetworkManager.conf
 644 root root //etc/nftables.conf
 644 root root //etc/pacman.conf
-644 root root //etc/services
 440 root root //etc/sudoers
 755 root root //etc/systemd
 644 root root //etc/systemd/resolved.conf
