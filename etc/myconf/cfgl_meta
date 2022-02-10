@@ -114,7 +114,6 @@
 755 xyz wheel //home/xyz/.local/bin/upd
 755 xyz wheel //home/xyz/.local/bin/vinfo
 755 xyz wheel //home/xyz/.local/bin/wh
-755 xyz wheel //home/xyz/.local/bin/wtr
 755 xyz wheel //home/xyz/.local/bin/xmq
 777 xyz wheel //home/xyz/.local/bin/zoom
 755 xyz wheel //home/xyz/.local/share
