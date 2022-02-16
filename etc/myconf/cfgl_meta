@@ -2,6 +2,7 @@
 755 root root //etc/bitlbee
 644 root root //etc/bitlbee/bitlbee.conf
 644 root root //etc/chrony.conf
+644 root root //etc/locale.conf
 644 root root //etc/locale.gen
 755 root root //etc/myconf
 644 root root //etc/myconf/cfgl_meta
