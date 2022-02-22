@@ -32,13 +32,6 @@ update_bat () {
 	bat="$(cat /sys/class/power_supply/BAT1/capacity)%"
 }
 
-# For calcurse users, refer https://github.com/pystardust/automeet
-#update_event () { 
-#	event="$(calcurse -n | sed 1d | \
-#		sed -E "s_^ *\[(.*):(.*)\] ([^\t]*)\t?.*_[\1h \2m->\3]_")" 
-#	[ "[]" = "$event" ] && event=""
-#}
-
 display () {
 	xsetroot -name "$time | N $net V $vpn | M $vol C $mic | $cap | $bat"
 }
@@ -56,7 +49,7 @@ trap	"update_vol;display"	"RTMIN+1"
 trap	"update_net;display"	"RTMIN+2"
 trap	"update_cap;display"	"RTMIN+3"
 # to update it from external commands
-## kill -m "$(cat "$XDG_CACHE_HOME/pidofbar")"
+## kill -m $(pidof -x sbar)
 # where m = 34 + n
 
 while :; do
@@ -66,7 +59,6 @@ while :; do
 	[ $((sec % 60)) -eq 0 ] && update_net
 	update_cap
 	[ $((sec % 60)) -eq 0 ] && update_bat
-	#[ $((sec % 300)) -eq 1 ] && update_event
 	# how often the display updates ( 5 seconds )
 	[ $((sec % 5 )) -eq 0 ] && display
 	sec=$((sec + 1))
