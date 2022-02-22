@@ -1,6 +1,6 @@
 {
     "fqdn": "",
-    "interface": "wlp6s0",
+    "interface": "enp2s0",
     "port": 49153,
     "keepAlive": false,
     "path": "",

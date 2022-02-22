@@ -1,34 +1,8 @@
 #!/bin/sh
-# steal from pystardust, GPL3 license: https://github.com/pystardust/sbar
-# modified to fit my own need
+# modified from pystardust, GPLv3 license: https://github.com/pystardust/sbar
 
 # INIT
-pid_file="$XDG_CACHE_HOME/pidofbar"
-vpn_fifo="$XDG_CACHE_HOME/sbar_vpn_fifo"
 sec=0
-
-# exit if sbar is already running, fix when startx in another tty, the other tty sbar not working
-# maybe try dwmblocks's approach of using `kill $(pidof -x sbar)`, so can run different sbar in different tty
-# but then vpn_fifo becomes a problem too, not sure how to solve
-if ! [ -e "$pid_file" ] || ! pidof -qsx sbar -o "$$"; then
-	printf '%s' "$$" > "$pid_file"
-else
-	exit
-fi
-if ! [ -e "$vpn_fifo" ]; then
-	mkfifo "$vpn_fifo"
-elif ! [ -p "$vpn_fifo" ]; then
-	exit 1
-fi
-
-bool () {
-	read str
-	if [ "$str" = "on" ] || [ "$str" = "up" ] || [ "$str" = "Connected" ]; then
-		echo 1
-	else
-		echo 0
-	fi
-}
 
 # MODULES
 update_time () { 
@@ -40,11 +14,8 @@ update_cap () {
 }
 
 update_net () { 
-	net="$(bool < /sys/class/net/wlp6s0/operstate)"
-}
-
-update_vpn () {
-	vpn="$(awk '{print $3}' "$vpn_fifo" | bool)"
+	net="$(if nmcli -t --fields type,state device | grep -q '\(ethernet\|wifi\):connected'; then echo 1; else echo 0; fi)"
+	vpn="$(if nmcli -t --fields type,state device | grep -q 'tun:connected'; then echo 1; else echo 0; fi)"
 }
 
 update_vol () { 
@@ -54,7 +25,7 @@ update_vol () {
 
 update_mic () { 
 	# $(NF-1) for both alsa and pulseaudio
-	mic="$(amixer get Capture | awk -F'[][]' 'END{print $(NF-1)}' | bool)"
+	mic="$(amixer get Capture | awk -F '[][]' 'END{print ($(NF-1)=="on")?1:0}')"
 }
 
 update_bat () { 
@@ -73,6 +44,7 @@ display () {
 }
 
 # modules that don't update on their own need to be run at the start for getting their initial value
+update_net
 update_vol
 update_mic
 
@@ -81,28 +53,17 @@ update_mic
 trap	"update_mic;display" 	"RTMIN"
 trap	"update_vol;display"	"RTMIN+1"
 # xev can't read my toggle internet keyboard key, don't know what key to use in sxhkd to send signal
-#trap	"update_net;display"	"RTMIN+2"
+trap	"update_net;display"	"RTMIN+2"
 trap	"update_cap;display"	"RTMIN+3"
-trap	"update_vpn;display"	"RTMIN+4"
 # to update it from external commands
 ## kill -m "$(cat "$XDG_CACHE_HOME/pidofbar")"
 # where m = 34 + n
-
-# `mullvad status` write logs everytime it is called
-# so I use `mullvad status listen`, this implementation is kinda bloat, maybe there's better way
-# should be put after trap?
-sh -c '
-	mullvad status listen | while read -r line; do
-		kill -RTMIN+4 "$(cat "$1")"
-		echo "$line" > "$2"
-	done &
-' shell "$pid_file" "$vpn_fifo"
 
 while :; do
 	sleep 1 &
 	wait
 	[ $((sec % 5 )) -eq 0 ] && update_time 	# update time every 5 seconds
-	[ $((sec % 5 )) -eq 0 ] && update_net
+	[ $((sec % 60)) -eq 0 ] && update_net
 	update_cap
 	[ $((sec % 60)) -eq 0 ] && update_bat
 	#[ $((sec % 300)) -eq 1 ] && update_event
