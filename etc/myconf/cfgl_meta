@@ -9,6 +9,7 @@
 755 root root //etc/NetworkManager
 755 root root //etc/NetworkManager/dispatcher.d
 755 root root //etc/NetworkManager/dispatcher.d/70-wifi-wired-exclusive
+755 root root //etc/NetworkManager/dispatcher.d/90-sbar
 644 root root //etc/NetworkManager/NetworkManager.conf
 644 root root //etc/nftables.conf
 644 root root //etc/pacman.conf
