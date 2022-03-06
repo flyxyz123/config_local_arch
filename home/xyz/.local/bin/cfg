@@ -1,6 +1,6 @@
 #!/bin/sh
 
-while getopts clsmM opt; do
+while getopts lsmM opt; do
 	case $opt in
 		#c)		
 		#	work_tree_dir="$HOME"
