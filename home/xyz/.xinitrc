@@ -39,7 +39,6 @@ fi
 #fi
 
 #clipmenud &
-dunst &
 fcitx5 -d
 redshift &
 sbar &
