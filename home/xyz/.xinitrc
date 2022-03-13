@@ -57,4 +57,5 @@ udiskie &
 xset r rate 250 30
 # https://dianne.skoll.ca/wiki/Remind_FAQ#How_can_I_generate_popup_windows_to_warn_me_of_timed_reminders.3F
 rem -z -k'notify-send -u critical "reminder" %s &' &
+alacritty &
 exec dwm
