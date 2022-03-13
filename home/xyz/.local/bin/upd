@@ -10,7 +10,6 @@ all () {
 	gall
 }
 
-# not in all
 clean () {
 	nsxiv -c
 	# my ways
@@ -117,7 +116,6 @@ else
 	while getopts acfgjkmnpqru opt; do
 		case $opt in
 			a)all;;
-			# not in all
 			c)clean;;
 			f)fast;;
 			g)gall;;
