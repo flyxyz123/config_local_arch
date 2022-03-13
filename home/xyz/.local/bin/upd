@@ -28,6 +28,8 @@ clean () {
 	sudo systemctl start atd
 
 	rm -rf "$XDG_VIDEOS_DIR/recordings/tmp/"
+
+	sudo pacman -Sc --noconfirm
 }
 
 # basic daily stuff
