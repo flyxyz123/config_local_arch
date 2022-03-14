@@ -75,6 +75,7 @@
 700 xyz wheel //home/xyz/.config/weechat
 600 xyz wheel //home/xyz/.config/weechat/irc.conf
 600 xyz wheel //home/xyz/.config/weechat/matrix.conf
+600 xyz wheel //home/xyz/.config/weechat/trigger.conf
 600 xyz wheel //home/xyz/.config/weechat/weechat.conf
 755 xyz wheel //home/xyz/.config/yt-dlp
 644 xyz wheel //home/xyz/.config/yt-dlp/config
