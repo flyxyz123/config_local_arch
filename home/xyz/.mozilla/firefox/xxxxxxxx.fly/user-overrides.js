@@ -25,8 +25,8 @@ user_pref("dom.security.https_only_mode_pbm", true);
 //user_pref("browser.urlbar.suggest.searches", true);
 user_pref("extensions.pocket.enabled", false);
 user_pref("extensions.screenshots.disabled", true);
-// allow popup
-user_pref("dom.disable_open_during_load", false);
+// popup allow "keydown" event, for surfingkeys f hotkey open link in another tab, ex: searx (preference "Results on new tabs" set to on)
+user_pref("dom.popup_allowed_events", "click dblclick mousedown pointerdown keydown");
 // middle-click enabling auto-scrolling
 user_pref("general.autoScroll", true);
 
