@@ -16,8 +16,8 @@ export XDG_VIDEOS_DIR
 
 PATH="$(find "$HOME/.local/bin" -type d -exec printf '%s:' '{}' \+)$PATH"
 export PATH
-export HISTSIZE=10000
-export HISTFILESIZE=10000
+export HISTSIZE=15000
+export HISTFILESIZE=15000
 
 export EDITOR=nvim
 export BROWSER=firefox
