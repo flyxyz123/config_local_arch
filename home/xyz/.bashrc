@@ -76,6 +76,7 @@ alias sv=sudoedit
 alias sy=systemctl
 alias tp='sudo tio /dev/ttyACM0'
 alias v='$EDITOR'
+alias va='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/arch_install.md"'
 alias vc='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/cli_notes.md"'
 alias vq='$EDITOR "$XDG_DOCUMENTS_DIR/notes/others/questions_ideas_tips.md"'
 alias vr='$EDITOR "$DOTREMINDERS"'
