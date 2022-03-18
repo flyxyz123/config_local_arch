@@ -27,6 +27,7 @@
 644 root root //etc/wildmidi/wildmidi.cfg
 755 root root //etc/X11
 755 root root //etc/X11/xorg.conf.d
+644 root root //etc/X11/xorg.conf.d/20-radeon.conf
 755 root root //home
 700 xyz wheel //home/xyz
 644 xyz wheel //home/xyz/.bashrc
