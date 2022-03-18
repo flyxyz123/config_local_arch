@@ -66,6 +66,7 @@ alias l='\ls --color=auto -A --group-directories-first'
 alias ll='\ls --color=auto -lAh --group-directories-first'
 alias m=man
 alias p=pacman
+alias pt=pactree
 alias pu=paru
 alias qre='qrencode -t utf8i -m 1'
 alias r='rem -c+2 -@'

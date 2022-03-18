@@ -2,7 +2,8 @@
 --external-downloader aria2c
 
 # workaround youtube throttle
---throttled-rate 100K
+# mar 17 2022 if use this command download is very slow, not sure why
+#--throttled-rate 100K
 # player_client=android,web seems become default since 2021.07.21 version
 #--extractor-args youtube:player_client=android
 
