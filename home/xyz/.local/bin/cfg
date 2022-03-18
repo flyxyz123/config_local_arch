@@ -10,7 +10,7 @@ while getopts lsmM opt; do
 		l|s)	
 			work_tree_dir=/
 			meta_file="/etc/myconf/cfg${opt}_meta"
-			cmd="sudo git --git-dir=/etc/.cfg$opt/ --work-tree=/"
+			cmd="sudo -E git --git-dir=/etc/.cfg$opt/ --work-tree=/"
 			;;
 		m)		
 			sudo gitmetap "$cmd" "$work_tree_dir" "$meta_file"
