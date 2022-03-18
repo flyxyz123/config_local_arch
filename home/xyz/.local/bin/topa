@@ -1,6 +1,8 @@
 #!/bin/sh
 
 o alacritty -e htop
-o alacritty -e radeontop -c
+#o alacritty -e radeontop -c
 o alacritty -e sudo iotop
 o alacritty -e sudo nethogs
+o alacritty -e sudo intel_gpu_top
+o alacritty -e nvtop
