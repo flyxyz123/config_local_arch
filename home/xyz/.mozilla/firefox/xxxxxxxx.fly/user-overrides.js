@@ -1,5 +1,5 @@
 // fixes
-// a lot: image upload from local, image check not robot
+// a lot: image upload from local, image check not robot, disable surfingkey alt-s hotkey
 //user_pref("privacy.resistFingerprinting", false);
 // douyu pay, bilibili stream watch and user space, pixiv some images not show
 user_pref("network.http.referer.XOriginPolicy", 0);

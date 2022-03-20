@@ -35,11 +35,11 @@ const {
 //settings.blacklistPattern = /.*youtube\.com.*|.*mail\.google\.com.*/i;
 
 //unmap('<Ctrl-j>');
-map('<Ctrl-Alt-h>','<Ctrl-h>');
+map(';h','<Ctrl-h>');
 unmap('<Ctrl-h>');
 // ctrl-alt-s not working now (12/09/2021), not sure why, maybe arkenfox user.js problem?
-//map('<Ctrl-Alt-s>','<Alt-s>');
-//unmap('<Alt-s>');
+map(';s','<Alt-s>');
+unmap('<Alt-s>');
 
 // on firefox, firenvim default Ctrl-e will be overwirted by github issue hotkey, see:
 // https://github.com/glacambre/firenvim/issues/1046
