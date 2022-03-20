@@ -10,7 +10,7 @@ font:
 # for cataclysm dda game, use this font, kinda square font, recommended from web
 #  normal:
 #    family: White Rabbit
-  size: 9.0
+  size: 8.0
 
 window:
   dynamic_padding: true
