@@ -87,6 +87,7 @@
 755 xyz wheel //home/xyz/.local/bin
 755 xyz wheel //home/xyz/.local/bin/alacritty
 755 xyz wheel //home/xyz/.local/bin/alarm
+755 xyz wheel //home/xyz/.local/bin/backlight
 755 xyz wheel //home/xyz/.local/bin/bell
 755 xyz wheel //home/xyz/.local/bin/ccgsl
 755 xyz wheel //home/xyz/.local/bin/cfg
