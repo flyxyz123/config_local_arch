@@ -37,7 +37,8 @@ const {
 //unmap('<Ctrl-j>');
 map(';h','<Ctrl-h>');
 unmap('<Ctrl-h>');
-// remap alt-s not working now (12/09/2021), not sure why, maybe arkenfox user.js problem?
+// alt-s not working, seems because arkenfox user.js enabled resist finger printing
+// remap alt-s also not working, see issue in github
 map(';s','<Alt-s>');
 unmap('<Alt-s>');
 
