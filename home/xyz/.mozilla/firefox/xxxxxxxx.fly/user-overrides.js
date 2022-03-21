@@ -31,6 +31,10 @@ user_pref("dom.popup_allowed_events", "click dblclick mousedown pointerdown keyd
 user_pref("general.autoScroll", true);
 // disable DNS over https, to prevent DNS leak when using VPN
 user_pref("network.trr.mode", 5);
+// 0: normal, 1: compact, 2: touch
+user_pref("browser.uidensity", 1);
+// change content process limit, default: 8?
+//user_pref("dom.ipc.processCount", 4);
 
 // old about:config and settings, for perfsCleaner.sh
 // use extensions on more sites
