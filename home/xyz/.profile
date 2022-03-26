@@ -50,9 +50,6 @@ export DOTREMINDERS="$HOME/programs/reminders/.reminders"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-#export LIBVA_DRIVER_NAME=vdpau
-export LIBVA_DRIVER_NAME=nvidia
-export VDPAU_DRIVER=nvidia
 # use sudo find for some files or dirs that has no permission ex: ~/.cache/paru/clone/
 #export FZF_DEFAULT_COMMAND="fd --no-ignore --hidden --exclude .git"
 #export FZF_CTRL_T_COMMAND="fd --absolute-path --no-ignore --hidden --exclude .git"
