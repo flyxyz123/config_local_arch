@@ -7,6 +7,8 @@
 755 root root //etc/.cfgl/info
 644 root root //etc/.cfgl/info/sparse-checkout
 644 root root //etc/chrony.conf
+755 root root //etc/default
+644 root root //etc/default/grub
 644 root root //etc/locale.conf
 644 root root //etc/locale.gen
 755 root root //etc/myconf
@@ -58,6 +60,8 @@
 644 xyz wheel //home/xyz/.config/Mullvad VPN/gui_settings.json
 755 xyz wheel //home/xyz/.config/myconf
 644 xyz wheel //home/xyz/.config/myconf/gallery_urls
+644 xyz wheel //home/xyz/.config/myconf/pacman_Qqme
+644 xyz wheel //home/xyz/.config/myconf/pacman_Qqne
 644 xyz wheel //home/xyz/.config/myconf/surfingkeys_config.js
 755 xyz wheel //home/xyz/.config/newsboat
 644 xyz wheel //home/xyz/.config/newsboat/config
