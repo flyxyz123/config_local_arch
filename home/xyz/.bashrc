@@ -44,6 +44,7 @@ unset cmd
 alias absolutely-proprietary='echo n | absolutely-proprietary -f'
 alias alsamixer='alsamixer -V all'
 alias diff='diff --color=auto'
+alias glmark2='glmark2 --fullscreen --annotate'
 alias grep='grep --color=auto'
 #alias info='info --vi-keys'
 alias ls='ls --color=auto'
@@ -54,6 +55,7 @@ alias rm='rm -I'
 alias sdcv='sdcv --color'
 alias shellcheck='shellcheck -x'
 alias uname='uname -a'
+alias vkmark='vkmark --fullscreen'
 alias watch='watch -c'
 
 # different name
@@ -61,6 +63,7 @@ alias watch='watch -c'
 alias ap='sudo ampy -p /dev/ttyACM0'
 alias c=cfg
 alias d='\sdcv --color'
+alias e='$PAGER'
 alias g=git
 alias l='\ls --color=auto -A --group-directories-first'
 alias ll='\ls --color=auto -lAh --group-directories-first'
