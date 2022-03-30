@@ -22,7 +22,8 @@ while getopts Aabd:f:h:su: opt; do
 	esac
 done
 if [ -z "$format" ]; then
-	vformat="[height<=?$height][fps<=?$fps][vcodec!^=?vp9][vcodec!^=?av01]"
+	#vformat="[height<=?$height][fps<=?$fps][vcodec!^=?vp9][vcodec!^=?av01]"
+	vformat="[height<=?$height][fps<=?$fps][vcodec!^=?av01]"
 	# usually get .mp4 video + .webm audio on youtube, yt-dlp needs to merge them to .mkv
 	# it used to cause problem, but I forget
 	format="bestvideo$vformat+bestaudio/best$vformat"
