@@ -74,11 +74,9 @@ export SCR_HEIGHT=1080
 #export CM_MAX_CLIPS=8
 
 # GDK_SCALE and GDK_DPI_SCALE should be use at the same time
+# GDK_SCALE is recommended to be an integer
+# GDK_DPI_SCALE=1/GDK_SCALE
 # more see bookmarks about dpi
-# not sure if correct
-#export GDK_SCALE=1.36
-#export GDK_DPI_SCALE=0.73
-# correct but not sure if fits me
 #export GDK_SCALE=2
 #export GDK_DPI_SCALE=0.5
 
