@@ -32,14 +32,19 @@ update_bat () {
 	bat="$(cat /sys/class/power_supply/BAT0/capacity)%"
 }
 
+update_gpu () {
+	gpu="$(envycontrol --status | awk 'END{print toupper(substr($NF,0,1))}')"
+}
+
 display () {
-	xsetroot -name "$time | N $net V $vpn | M $vol C $mic | $bat"
+	xsetroot -name "$time | N $net V $vpn | M $vol C $mic | $gpu | $bat"
 }
 
 # modules that don't update on their own need to be run at the start for getting their initial value
 update_net
 update_vol
 update_mic
+update_gpu
 
 # SIGNALLING
 # trap	"<function>;display"	"RTMIN+n"
