@@ -33,7 +33,7 @@ update_bat () {
 }
 
 update_gpu () {
-	gpu="$(envycontrol --status | awk 'END{print toupper(substr($NF,0,1))}')"
+	gpu="$(envycontrol -q | awk 'END{print toupper(substr($NF,0,1))}')"
 }
 
 display () {

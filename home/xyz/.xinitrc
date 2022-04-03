@@ -51,7 +51,7 @@ udiskie &
 xset r rate 250 30
 # https://dianne.skoll.ca/wiki/Remind_FAQ#How_can_I_generate_popup_windows_to_warn_me_of_timed_reminders.3F
 rem -z -k'notify-send -u critical "reminder" %s &' &
-if [ "$(envycontrol --status)" = 'Current graphics mode is: nvidia' ]; then
+if [ "$(envycontrol -q)" = 'Current graphics mode is: nvidia' ]; then
 	# my testing shows this seems no need?
 	xrandr --setprovideroutputsource modesetting NVIDIA-0
 	xrandr --auto
