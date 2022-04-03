@@ -56,7 +56,7 @@ alias sdcv='sdcv --color'
 alias shellcheck='shellcheck -x'
 alias uname='uname -a'
 alias vkmark='vkmark --fullscreen'
-alias watch='watch -c'
+alias watch='watch -c '
 
 # different name
 # /dev/ttyACM0 can be in config file, or as environmantal variable, see /usr/share/doc/adafruit-ampy/README.md
