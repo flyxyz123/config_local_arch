@@ -28,7 +28,7 @@ user_pref("extensions.screenshots.disabled", true);
 // popup allow "keydown" event, for surfingkeys f hotkey open link in another tab, ex: searx (preference "Results on new tabs" set to on)
 user_pref("dom.popup_allowed_events", "click dblclick mousedown pointerdown keydown");
 // middle-click enabling auto-scrolling
-user_pref("general.autoScroll", true);
+//user_pref("general.autoScroll", true);
 // disable DNS over https, to prevent DNS leak when using VPN
 user_pref("network.trr.mode", 5);
 // 0: normal, 1: compact, 2: touch
