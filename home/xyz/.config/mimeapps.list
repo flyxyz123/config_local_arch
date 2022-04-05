@@ -5,7 +5,7 @@ image/gif=nsxiv.desktop;
 image/jpeg=nsxiv.desktop;
 image/png=nsxiv.desktop;
 inode/directory=file.desktop;
-x-scheme-handler/tg=userapp-Telegram Desktop-1MFXF1.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-T5YTJ1.desktop
 x-scheme-handler/zoommtg=ZoomFirejail.desktop
 x-scheme-handler/zoomus=ZoomFirejail.desktop
 x-scheme-handler/tel=ZoomFirejail.desktop
@@ -13,4 +13,4 @@ x-scheme-handler/callto=ZoomFirejail.desktop
 x-scheme-handler/zoomphonecall=ZoomFirejail.desktop
 
 [Added Associations]
-x-scheme-handler/tg=userapp-Telegram Desktop-1MFXF1.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-T5YTJ1.desktop;
