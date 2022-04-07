@@ -36,9 +36,9 @@ export MANPAGER='nvim -M +Man!'
 export MANSECT='1p:1:n:l:8:3p:3:0p:0:2:5:4:9:6:7'
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export INPUTRC="$XDG_CONFIG_HOME/.inputrc"
-#export QT_QPA_PLATFORMTHEME=qt5ct
-#export QT_QPA_PLATFORMTHEME=gtk2
-export QT_QPA_PLATFORMTHEME=qt6ct
+# Thanks to https://github.com/trialuser02/qt6gtk2/pull/5
+# Now qt5 with aur qt5-styleplugins and qt6 with aur qt6gtk2 makes qt5 and qt6 appearance universal!
+export QT_QPA_PLATFORMTHEME=gtk2
 #export QT_STYLE_OVERRIDE=kvantum
 #export SXHKD_SHELL=sh
 # enable color for `tree` command, not forced
