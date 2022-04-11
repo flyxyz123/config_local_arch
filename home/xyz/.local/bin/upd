@@ -4,8 +4,8 @@ all () {
 	fast
 	usb
 	qb
-	kg
-	ncm
+	#kg
+	#ncm
 	refl
 	gall
 }
