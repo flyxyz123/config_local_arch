@@ -35,6 +35,8 @@ user_pref("network.trr.mode", 5);
 user_pref("browser.uidensity", 1);
 // change content process limit, default: 8?
 //user_pref("dom.ipc.processCount", 4);
+// block all video and audio autoplay
+user_pref("media.autoplay.default", 5);
 
 // old about:config and settings, for perfsCleaner.sh
 // use extensions on more sites
