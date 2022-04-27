@@ -1,4 +1,6 @@
 #!/bin/sh
+# my For loop
+# I can't find good one character name :(
 
 while getopts t: opt; do
 	case $opt in
