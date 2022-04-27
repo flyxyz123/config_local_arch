@@ -1,0 +1,23 @@
+#!/bin/sh
+
+while getopts t: opt; do
+	case $opt in
+		t) time="$OPTARG";;
+		\?) exit 1;;
+	esac
+done
+shift $((OPTIND-1))
+
+while :; do
+	# suggested by https://github.com/koalaman/shellcheck/wiki/SC2294
+	"$@"
+	sleep "${time:-1}"
+done
+
+# tests?
+#f ls -lah -- -l
+#f printf 'echo 1; echo 2' 
+#f printf 'haha %d lala' 10
+
+# tips
+#f eval 'echo 1; echo 2' 
