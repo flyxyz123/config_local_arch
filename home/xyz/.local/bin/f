@@ -1,6 +1,7 @@
 #!/bin/sh
 # my For loop
 # I can't find good one character name :(
+# maybe rename it to loop
 
 while getopts t: opt; do
 	case $opt in
