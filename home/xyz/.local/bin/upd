@@ -7,7 +7,7 @@ all () {
 	#kg
 	#ncm
 	refl
-	gall
+	#gall
 }
 
 clean () {
