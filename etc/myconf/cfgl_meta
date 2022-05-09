@@ -101,6 +101,7 @@
 755 xyz wheel //home/xyz/.local/bin/curlkg
 755 xyz wheel //home/xyz/.local/bin/curlncm
 755 xyz wheel //home/xyz/.local/bin/curlqb
+755 xyz wheel //home/xyz/.local/bin/dateft
 755 xyz wheel //home/xyz/.local/bin/dirnameall
 755 xyz wheel //home/xyz/.local/bin/gita
 755 xyz wheel //home/xyz/.local/bin/gitfork
