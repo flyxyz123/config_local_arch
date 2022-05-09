@@ -6,10 +6,11 @@ while getopts cfF:t:T: opt; do
 		c) tz_from="Asia/Shanghai";;
 		f) tz_from="$(tzselect)";;
 		F) tz_from="$OPTARG";;
+		# one extra ',' at the end will not let `for tz in ...` loop one extra time?
 		t)	for i in $(seq "$OPTARG"); do
-				tz_to="$tz_to,$(tzselect)"
+				tz_to="$(tzselect),$tz_to"
 			done;;
-		T) tz_to="$OPTARG";;
+		T) tz_to="$OPTARG,$tz_to";;
 		\?) exit 1;;
 	esac
 done
