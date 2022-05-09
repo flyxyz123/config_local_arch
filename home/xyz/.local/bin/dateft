@@ -1,0 +1,30 @@
+#!/bin/sh
+# DATE From To
+
+while getopts cfF:t:T: opt; do
+	case $opt in
+		c) tz_from="Asia/Shanghai";;
+		f) tz_from="$(tzselect)";;
+		F) tz_from="$OPTARG";;
+		t)	for i in $(seq "$OPTARG"); do
+				tz_to="$tz_to,$(tzselect)"
+			done;;
+		T) tz_to="$OPTARG";;
+		\?) exit 1;;
+	esac
+done
+shift $((OPTIND-1))
+
+time_from="TZ=\"${tz_from:-$(readlink /etc/localtime | sed 's#.*/\(.*/.*\)$#\1#')}\" ${1:-now}"
+
+date -d "$time_from"
+TZ="Asia/Shanghai" date -d "$time_from"
+date -d "$time_from" -u 
+date -d "$time_from" +%s
+if [ "$tz_from" ] && [ "$tz_from" != "Asia/Shanghai" ]; then
+	TZ="$tz_from" date -d "$time_from"
+fi
+IFS=',' 
+for tz in $tz_to; do
+	TZ="$tz" date -d "$time_from"
+done
