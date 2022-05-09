@@ -18,9 +18,9 @@ while :; do
 done
 
 # tests?
-#f ls -lah -- -l
-#f printf 'echo 1; echo 2' 
-#f printf 'haha %d lala' 10
+#loop ls -lah -- -l
+#loop printf 'echo 1; echo 2' 
+#loop printf 'haha %d lala' 10
 
 # tips
-#f eval 'echo 1; echo 2' 
+#loop eval 'echo 1; echo 2' 
