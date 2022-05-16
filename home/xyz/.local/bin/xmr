@@ -1,0 +1,4 @@
+#!/bin/sh
+
+pidof -q monerod || alacritty -e monerod
+monero-wallet-cli --config-file="$HOME/.bitmonero/monero-wallet-cli.conf"
