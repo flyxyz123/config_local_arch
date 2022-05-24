@@ -22,9 +22,7 @@ date -d "$time_from"
 TZ="Asia/Shanghai" date -d "$time_from"
 date -d "$time_from" -u 
 date -d "$time_from" +%s
-if [ "$tz_from" ] && [ "$tz_from" != "Asia/Shanghai" ]; then
-	TZ="$tz_from" date -d "$time_from"
-fi
+[ "$tz_from" ] && [ "$tz_from" != "Asia/Shanghai" ] && TZ="$tz_from" date -d "$time_from"
 IFS=',' 
 for tz in $tz_to; do
 	TZ="$tz" date -d "$time_from"
