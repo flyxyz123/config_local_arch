@@ -49,8 +49,8 @@ userjs () {
 }
 
 kg () {
-	curlkg -u649b9e82272a348b -- "$XDG_MUSIC_DIR/not_pure/lan_lan/kg/"
-	#curlkg -u64949d822c25328c -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/kg/"
+	curlkg -u649b9e82272a348b -- "$XDG_MUSIC_DIR/lan_lan/kg/"
+	#curlkg -u64949d822c25328c -- "$XDG_MUSIC_DIR/cheng_ruan/kg/"
 }
 
 misc () {
@@ -68,13 +68,13 @@ misc () {
 }
 
 ncm () {
-	curlncm -a48860966 -- "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/artist/"
-	#curlncm -a46703185 -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/artist/"
-	curlncm -a30382647 -- "$XDG_MUSIC_DIR/not_pure/qi_tian_sakura/ncm/artist/"
+	curlncm -a48860966 -- "$XDG_MUSIC_DIR/lan_lan/ncm/artist/"
+	#curlncm -a46703185 -- "$XDG_MUSIC_DIR/cheng_ruan/ncm/artist/"
+	curlncm -a30382647 -- "$XDG_MUSIC_DIR/qi_tian_sakura/ncm/artist/"
 
-	curlncm -r793052426 -- "$XDG_MUSIC_DIR/not_pure/lan_lan/ncm/djradio/"
-	#curlncm -r792968433 -- "$XDG_MUSIC_DIR/not_pure/cheng_ruan/ncm/djradio/"
-	curlncm -r792042397 -- "$XDG_MUSIC_DIR/not_pure/qi_tian_sakura/ncm/djradio/"
+	curlncm -r793052426 -- "$XDG_MUSIC_DIR/lan_lan/ncm/djradio/"
+	#curlncm -r792968433 -- "$XDG_MUSIC_DIR/cheng_ruan/ncm/djradio/"
+	curlncm -r792042397 -- "$XDG_MUSIC_DIR/qi_tian_sakura/ncm/djradio/"
 }
 
 pac () {
