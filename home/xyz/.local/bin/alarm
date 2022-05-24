@@ -1,6 +1,8 @@
 #!/bin/sh
 
-printf 'notify-send -u critical "%s"; bell' "${2:-alarm}" | at now + "$1" minutes && notify-send "Successfully Scheduled"
+if printf 'notify-send -u critical "%s"; bell' "${2:-alarm}" | at now + "${1:-0}" minutes; then
+	[ "$1" ] && notify-send "Successfully Scheduled"
+fi
 
 # at used to not like string like 'Boiling Water!', don't know why now it works, if see similar issue, use folllowing codes
 #at now + "$1" minutes << EOF && notify-send 'Successfully Scheduled'
