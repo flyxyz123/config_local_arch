@@ -137,5 +137,4 @@ else
 		esac
 	done
 fi
-
-printf '%s' "$log"
+printf '%s' "$log" | tee "$XDG_DOCUMENTS_DIR/log/upd.log"
