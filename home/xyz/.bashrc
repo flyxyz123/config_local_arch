@@ -79,6 +79,7 @@ alias spd='speedtest; librespeed-cli'
 alias sv=sudoedit
 alias sy=systemctl
 alias tp='sudo tio /dev/ttyACM0'
+alias u='upd; poweroff'
 alias v='$EDITOR'
 alias va='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/arch_install.md"'
 alias vc='$EDITOR "$XDG_DOCUMENTS_DIR/notes/computer/cli_notes.md"'
