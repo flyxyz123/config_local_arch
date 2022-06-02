@@ -109,7 +109,7 @@ usb () {
 	git --git-dir="$XDG_DOCUMENTS_DIR/notes/.git/" --work-tree="$XDG_DOCUMENTS_DIR/notes/" push usb
 	git --git-dir="$HOME/programs/reminders/.git/" --work-tree="$HOME/programs/reminders/" push usb
 
-	rsync -avPR --delete ~/archive ~/documents ~/downloads ~/music ~/pictures ~/programs ~/test ~/videos ~/.local/share/stardict/dic ~/.local/share/qBittorrent ~/.local/share/sdcv_history ~/.cache/nsxiv ~/.config/qBittorrent ~/.bitmonero/wallets /run/media/xyz/BAKDRI/
+	rsync -avPR --delete ~/archive ~/documents ~/downloads ~/music ~/pictures ~/programs ~/test ~/videos ~/.local/share/stardict/dic ~/.local/share/qBittorrent ~/.local/share/sdcv_history ~/.cache/nsxiv ~/.config/qBittorrent ~/.bitmonero/wallets ~/.password-store /run/media/xyz/BAKDRI/
 	monero-blockchain-export --output-file /run/media/xyz/BAKDRI/archive/monero/blockchain.raw
 
 	# not sure if useful or not
