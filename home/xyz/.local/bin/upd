@@ -110,7 +110,9 @@ usb () {
 	git --git-dir="$XDG_DOCUMENTS_DIR/notes/.git/" --work-tree="$XDG_DOCUMENTS_DIR/notes/" push usb
 	git --git-dir="$HOME/programs/reminders/.git/" --work-tree="$HOME/programs/reminders/" push usb
 
-	rsync -avPR --delete ~/archive ~/documents ~/downloads ~/music ~/pictures ~/programs ~/test ~/videos ~/.local/share/stardict/dic ~/.local/share/qBittorrent ~/.local/share/sdcv_history ~/.cache/nsxiv ~/.config/qBittorrent ~/.bitmonero/wallets ~/.password-store /run/media/xyz/BAKDRI
+	#rsync -navPR --delete ~/archive ~/documents ~/downloads ~/music ~/pictures ~/programs ~/test ~/videos ~/.local/share/stardict/dic ~/.local/share/qBittorrent ~/.local/share/sdcv_history ~/.cache/nsxiv ~/.config/qBittorrent ~/.bitmonero/wallets ~/.password-store /run/media/xyz/BAKDRI
+	# --files-from make -a not imply -r, so need to specify explicitly
+	rsync -avPRr --delete --files-from="$XDG_CONFIG_HOME/myconf/upd_rsync_files" / /run/media/xyz/BAKDRI
 
 	# not sure if useful or not
 	sync
