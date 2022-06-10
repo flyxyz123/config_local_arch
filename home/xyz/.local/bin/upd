@@ -2,12 +2,13 @@
 
 all () {
 	fast
-	usb
 	qb
 	#kg
 	#ncm
 	refl
 	#gall
+	usb
+	xmr
 }
 
 clean () {
@@ -109,9 +110,14 @@ usb () {
 	git --git-dir="$XDG_DOCUMENTS_DIR/notes/.git/" --work-tree="$XDG_DOCUMENTS_DIR/notes/" push usb
 	git --git-dir="$HOME/programs/reminders/.git/" --work-tree="$HOME/programs/reminders/" push usb
 
-	rsync -avPR --delete ~/archive ~/documents ~/downloads ~/music ~/pictures ~/programs ~/test ~/videos ~/.local/share/stardict/dic ~/.local/share/qBittorrent ~/.local/share/sdcv_history ~/.cache/nsxiv ~/.config/qBittorrent ~/.bitmonero/wallets ~/.password-store /run/media/xyz/BAKDRI/
-	monero-blockchain-export --output-file /run/media/xyz/BAKDRI/archive/monero/blockchain.raw
+	rsync -avPR --delete ~/archive ~/documents ~/downloads ~/music ~/pictures ~/programs ~/test ~/videos ~/.local/share/stardict/dic ~/.local/share/qBittorrent ~/.local/share/sdcv_history ~/.cache/nsxiv ~/.config/qBittorrent ~/.bitmonero/wallets ~/.password-store /run/media/xyz/BAKDRI
 
+	# not sure if useful or not
+	sync
+}
+
+xmr () {
+	monero-blockchain-export --output-file /run/media/xyz/BAKDRI/archive/monero/blockchain.raw
 	# not sure if useful or not
 	sync
 }
@@ -119,7 +125,7 @@ usb () {
 if [ $# -eq 0 ]; then
 	fast
 else
-	while getopts acfgjkmnpqru opt; do
+	while getopts acfgjkmnpqrux opt; do
 		case $opt in
 			a)all;;
 			c)clean;;
@@ -133,6 +139,7 @@ else
 			q)qb;;
 			r)refl;;
 			u)usb;;
+			x)xmr;;
 			\?)exit 1;;
 		esac
 	done
