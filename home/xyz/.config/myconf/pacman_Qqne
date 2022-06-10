@@ -4,6 +4,7 @@ arc-gtk-theme
 arduino-cli
 aria2
 atomicparsley
+atool
 autoconf
 automake
 base
@@ -21,7 +22,6 @@ clang
 clinfo
 cmake
 cpupower
-cuda
 dash
 dmenu
 dos2unix
@@ -63,11 +63,13 @@ gsl
 gtk2fontsel
 gtk4
 gzip
+hdparm
 hunspell-en_us
 hyperfine
 ifplugd
 ifuse
 intel-gpu-tools
+intel-media-sdk
 intel-ucode
 ioping
 java-commons-lang
@@ -79,11 +81,9 @@ libgoom2
 libmgba
 libmpcdec
 libmythes
-libopenmpt
 libreoffice-fresh
 libsidplayfp
 libtool
-libva-intel-driver
 libva-mesa-driver
 libva-utils
 libvdpau-va-gl
@@ -97,9 +97,10 @@ lxappearance
 m4
 make
 man-pages
+memtest86+
 mesa-utils
 mesa-vdpau
-mitmproxy
+monero
 moreutils
 mpv
 mpv-mpris
@@ -130,6 +131,8 @@ pacman-contrib
 pandoc
 pandoc-crossref
 papirus-icon-theme
+pass
+pass-otp
 patch
 pdftk
 pkgconf
@@ -141,6 +144,7 @@ posix-xsi
 powertop
 pstoedit
 python-levenshtein
+python-markdown-it-py
 python-matplotlib
 python-mutagen
 python-opencv
@@ -154,9 +158,11 @@ python-pyusb
 python-tqdm
 python-websockets
 python-wheel
+qbittorrent
 qmmp
 qrencode
 qt5-doc
+qt5ct
 qt6-doc
 qt6-tools
 qt6ct
@@ -168,6 +174,7 @@ rustup
 sdcv
 sed
 shellcheck
+smartmontools
 solaar
 songrec
 speedtest-cli
@@ -199,13 +206,16 @@ texlive-pstricks
 texlive-publishers
 texlive-science
 tmux
+traceroute
 tree
 ttf-liberation
+typespeed
 udiskie
 units
 unzip
 usbutils
 vdpauinfo
+vkmark
 vulkan-intel
 vulkan-tools
 w3m
@@ -220,6 +230,7 @@ xdg-user-dirs
 xdg-utils
 xf86-video-intel
 xorg-server
+xorg-xcursorgen
 xorg-xdpyinfo
 xorg-xev
 xorg-xinit
@@ -232,6 +243,7 @@ yt-dlp
 zathura
 zathura-pdf-mupdf
 zathura-ps
+zbar
 zig
 zip
 zoxide
