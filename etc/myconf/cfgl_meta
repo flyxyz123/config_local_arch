@@ -66,6 +66,7 @@
 644 xyz wheel //home/xyz/.config/myconf/pacman_Qqme
 644 xyz wheel //home/xyz/.config/myconf/pacman_Qqne
 644 xyz wheel //home/xyz/.config/myconf/surfingkeys_config.js
+644 xyz wheel //home/xyz/.config/myconf/upd_rsync_files
 755 xyz wheel //home/xyz/.config/newsboat
 644 xyz wheel //home/xyz/.config/newsboat/config
 600 xyz wheel //home/xyz/.config/newsboat/urls
