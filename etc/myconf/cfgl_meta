@@ -153,5 +153,7 @@
 644 xyz wheel //home/xyz/.mozilla/firefox/xxxxxxxx.fly/chrome/userChrome.css
 644 xyz wheel //home/xyz/.mozilla/firefox/xxxxxxxx.fly/user-overrides.js
 644 xyz wheel //home/xyz/.profile
+700 xyz wheel //home/xyz/.ssh
+644 xyz wheel //home/xyz/.ssh/config
 644 xyz wheel //home/xyz/.xinitrc
 644 xyz wheel //home/xyz/.Xresources
