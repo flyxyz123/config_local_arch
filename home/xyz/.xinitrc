@@ -62,5 +62,5 @@ if [ "$(envycontrol -q)" = 'Current graphics mode is: nvidia' ]; then
 	xrandr --dpi 96
 fi
 sbar &
-alacritty &
+alacritty --hold -e rate xmr &
 exec dwm
