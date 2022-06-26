@@ -15,7 +15,7 @@ update_time () {
 
 update_net () { 
 	net="$(if nmcli -t --fields type,state device | grep -q '\(ethernet\|wifi\):connected'; then echo 1; else echo 0; fi)"
-	vpn="$(if nmcli -t --fields type,state device | grep -q 'tun:connected'; then echo 1; else echo 0; fi)"
+	vpn="$(if nmcli -t --fields type,state device | grep -q '\(tun\|wireguard\):connected'; then echo 1; else echo 0; fi)"
 }
 
 update_vol () { 
