@@ -37,6 +37,11 @@ user_pref("browser.uidensity", 1);
 //user_pref("dom.ipc.processCount", 4);
 // block all video and audio autoplay
 user_pref("media.autoplay.default", 5);
+// hardware video acceleration
+// https://wiki.archlinux.org/title/Firefox#Hardware_video_acceleration
+user_pref("gfx.webrender.all", true);
+// will be default to true for firefox 103
+user_pref("media.ffmpeg.vaapi.enabled", true);
 
 // old about:config and settings, for perfsCleaner.sh
 // use extensions on more sites
