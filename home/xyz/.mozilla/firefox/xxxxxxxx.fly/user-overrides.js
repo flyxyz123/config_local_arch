@@ -13,8 +13,7 @@ user_pref("security.ssl.require_safe_negotiation", false);
 // disable enhanced tracking protection:
 // google drive can't download
 
-// http://kb.mozillazine.org/Network.cookie.lifetimePolicy
-user_pref("network.cookie.lifetimePolicy", 0);
+user_pref("privacy.clearOnShutdown.cookies", false);
 // enable search engine in location bar
 user_pref("keyword.enabled", true); 
 // enable https-only mode in private windows only
