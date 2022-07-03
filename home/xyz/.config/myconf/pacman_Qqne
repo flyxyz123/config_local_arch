@@ -3,8 +3,9 @@ alsa-utils
 arc-gtk-theme
 arduino-cli
 aria2
+asp
 atomicparsley
-atool
+aurpublish
 autoconf
 automake
 base
@@ -23,10 +24,13 @@ clinfo
 cmake
 cpupower
 dash
+devtools
+dfu-util
 dmenu
 dos2unix
 doxygen
 dunst
+dwm_fly-git
 ebook-tools
 element-desktop
 enca
@@ -53,6 +57,8 @@ fwupd
 fzf
 gawk
 gcc
+geoip
+geoip-database-extra
 gettext
 gimp
 git
@@ -105,6 +111,7 @@ moreutils
 mpv
 mpv-mpris
 mupdf-tools
+namcap
 nawk
 neovim
 nethogs
@@ -135,6 +142,7 @@ pass
 pass-otp
 patch
 pdftk
+piper
 pkgconf
 playerctl
 posix-c-development
@@ -182,6 +190,7 @@ splix
 sqlitebrowser
 sshpass
 strace
+stress
 subversion
 sudo
 sysbench
@@ -212,9 +221,11 @@ ttf-liberation
 typespeed
 udiskie
 units
+unrar
 unzip
 usbutils
 vdpauinfo
+vidir2-git
 vkmark
 vulkan-intel
 vulkan-tools
@@ -226,6 +237,7 @@ weechat-matrix
 wget
 which
 wildmidi
+xcross-git
 xdg-user-dirs
 xdg-utils
 xf86-video-intel

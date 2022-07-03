@@ -2,6 +2,7 @@ absolutely-proprietary
 adafruit-ampy
 adplug
 asap
+atool-git
 auto-cpufreq
 bash-complete-alias
 bitlbee
@@ -10,14 +11,13 @@ czkawka-gui-bin
 dashbinsh
 drawio-desktop-bin
 duolibre
-dwm_fly-git
 envycontrol
 f3
 fcitx5-pinyin-chinese-idiom
 fcitx5-pinyin-moegirl
 fcitx5-pinyin-sougou
 fcitx5-pinyin-zhwiktionary
-ffmpeg-full-git
+ffmpeg-git
 gallery-dl
 gladtex2
 glmark2
@@ -53,6 +53,13 @@ redshift-minimal
 rpi-imager-bin
 searxng-git
 st
+stardict-dictd-moby-thesaurus
+stardict-langdao-ce-gb
+stardict-langdao-ec-gb
+stardict-mdbg-cc-cedict
+stardict-oxford-gb-formated
+stardict-urban
+stardict-wikt-en-all
 stardict-wordnet
 tio-git
 tldr-sh
