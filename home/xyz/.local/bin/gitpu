@@ -8,7 +8,7 @@ if [ -z "$1" ]; then
 	git merge --no-edit master
 	git push
 else
-	for dir ; do
+	for dir; do
 		git -C "$dir" checkout master 
 		git -C "$dir" pull upstream master
 		git -C "$dir" push
