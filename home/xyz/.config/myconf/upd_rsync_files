@@ -1,6 +1,7 @@
 home/xyz/.bitmonero/wallets
 home/xyz/.cache/nsxiv
 home/xyz/.config/qBittorrent
+home/xyz/.config/qmmp/qmmp.conf
 home/xyz/.local/share/qBittorrent
 home/xyz/.local/share/sdcv_history
 home/xyz/.password-store
