@@ -3,8 +3,8 @@
 all () {
 	fast
 	qb
-	#kg
-	#ncm
+	kg
+	ncm
 	refl
 	#gall
 	usb
@@ -71,11 +71,11 @@ misc () {
 ncm () {
 	curlncm -a48860966 -- "$XDG_MUSIC_DIR/lan_lan/ncm/artist/"
 	#curlncm -a46703185 -- "$XDG_MUSIC_DIR/cheng_ruan/ncm/artist/"
-	curlncm -a30382647 -- "$XDG_MUSIC_DIR/qi_tian_sakura/ncm/artist/"
+	#curlncm -a30382647 -- "$XDG_MUSIC_DIR/qi_tian_sakura/ncm/artist/"
 
 	curlncm -r793052426 -- "$XDG_MUSIC_DIR/lan_lan/ncm/djradio/"
 	#curlncm -r792968433 -- "$XDG_MUSIC_DIR/cheng_ruan/ncm/djradio/"
-	curlncm -r792042397 -- "$XDG_MUSIC_DIR/qi_tian_sakura/ncm/djradio/"
+	#curlncm -r792042397 -- "$XDG_MUSIC_DIR/qi_tian_sakura/ncm/djradio/"
 }
 
 pac () {
