@@ -13,11 +13,3 @@ while :; do
 	"$@"
 	sleep "${time:-1}"
 done
-
-# tests?
-#loop ls -lah -- -l
-#loop printf 'echo 1; echo 2' 
-#loop printf 'haha %d lala' 10
-
-# tips
-#loop eval 'echo 1; echo 2' 

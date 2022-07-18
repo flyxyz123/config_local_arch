@@ -25,6 +25,3 @@ else
 		shift
 	done
 fi
-
-# for test
-#rm -rf ~/test/A\ A/; mkdir -p ~/test/A\ A/; cp -r ~/test/0t/ ~/test/A\ A/1t/; mvln ~/test/A\ A/1t/* ~/test/A\ A/; tree ~/test/A\ A/

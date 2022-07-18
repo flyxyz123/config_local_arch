@@ -9,6 +9,3 @@
 # -exec can't replace -execdir here, can write a -exec version
 
 find "$@" -depth -execdir sh -c 'dest="$(echo "$1" | tr -d "\047" | sed -E -e "s/([[:lower:]])([[:upper:]])/\1_\2/g" | tr "[:upper:] " "[:lower:]_" | tr -s "[:punct:]" | sed -E -e "s#/-#/#g" -e "s/_([[:punct:]])/\1/g" -e "s/([[:punct:]])_/\1/g" | tr -s "[:punct:]")"; [ -e "$dest" ] || mv -v -- "$1" "$dest"' shell '{}' \;
-
-# for test
-#mkdir -p ~/test/A\ A/; rm -rf ~/test/A\ A/1t/; cp -r ~/test/0t/ ~/test/A\ A/1t/; time mvtr ~/test/A\ A/1t/; tree ~/test/A\ A/1t/
