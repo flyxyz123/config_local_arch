@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # https://github.com/MithicSpirit/dotfiles/blob/master/.local/bin/alacritty
-/usr/bin/alacritty msg create-window "$@" || /usr/bin/alacritty "$@"
+/bin/alacritty msg create-window "$@" || /bin/alacritty "$@"

@@ -124,7 +124,7 @@ zqi_key () {
 	# well we use bash here so whatever
 	selected="$(printf '%q' "$(zoxide query -i)")"
 	# if don't want to use bash builtin printf:
-	#selected=$(/usr/bin/printf '%q' "$(zoxide query -i)")
+	#selected=$(/bin/printf '%q' "$(zoxide query -i)")
 	# no "''" if select nothing
 	if ! [ "$selected" = "''" ]; then
 	# another way:
