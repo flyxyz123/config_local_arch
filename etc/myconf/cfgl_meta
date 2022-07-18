@@ -128,6 +128,7 @@
 755 xyz wheel //home/xyz/.local/bin/reco
 755 xyz wheel //home/xyz/.local/bin/sbar
 755 xyz wheel //home/xyz/.local/bin/shufwall
+755 xyz wheel //home/xyz/.local/bin/ta
 755 xyz wheel //home/xyz/.local/bin/time.uuid
 755 xyz wheel //home/xyz/.local/bin/topa
 755 xyz wheel //home/xyz/.local/bin/upd
