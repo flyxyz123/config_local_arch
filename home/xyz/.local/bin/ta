@@ -1,0 +1,4 @@
+#!/bin/sh
+
+time -p "$@"
+o alarm 0 'Command Finished' "$(/bin/printf '%q ' "$@")"
