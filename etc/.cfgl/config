@@ -15,5 +15,5 @@
 	remote = origin
 	merge = refs/heads/master
 [remote "usb"]
-	url = /run/media/xyz/BAKDRI/git_repos/config_local_arch
+	url = /run/media/xyz/bd0/git_repos/config_local_arch
 	fetch = +refs/heads/*:refs/remotes/usb/*
