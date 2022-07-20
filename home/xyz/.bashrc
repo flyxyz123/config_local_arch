@@ -61,6 +61,7 @@ alias watch='watch -c '
 # different name
 # /dev/ttyACM0 can be in config file, or as environmantal variable, see /usr/share/doc/adafruit-ampy/README.md
 alias ap='sudo ampy -p /dev/ttyACM0'
+alias b='lsblk -T=KNAME -o KNAME,FSTYPE,FSVER,LABEL,UUID,FSAVAIL,FSUSE%,MOUNTPOINTS'
 alias c=cfg
 alias d='\sdcv --color'
 alias e='$PAGER'
