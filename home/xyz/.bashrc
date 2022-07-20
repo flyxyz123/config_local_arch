@@ -73,7 +73,8 @@ alias pt=pactree
 alias pu=paru
 alias qre='qrencode -t utf8i -m 1'
 alias r='rem -c+2 -@'
-alias s='sudo ' # https://askubuntu.com/a/22043
+# https://askubuntu.com/a/22043
+alias s='sudo '
 alias se='sudo -E '
 alias spd='speedtest; librespeed-cli'
 alias sv=sudoedit
