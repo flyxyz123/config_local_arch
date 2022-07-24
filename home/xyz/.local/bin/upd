@@ -31,6 +31,7 @@ clean () {
 	rm -rf "$XDG_VIDEOS_DIR/recordings/tmp/"
 
 	sudo pacman -Sc --noconfirm
+	paru -aSc --noconfirm
 }
 
 # basic daily stuff
