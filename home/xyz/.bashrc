@@ -65,6 +65,8 @@ alias b='lsblk -T=KNAME -o KNAME,FSTYPE,FSVER,LABEL,UUID,FSAVAIL,FSUSE%,MOUNTPOI
 alias c=cfg
 alias d='\sdcv --color'
 alias e='$PAGER'
+# https://superuser.com/a/1202867
+alias fdu="sudo find . -maxdepth 1 -execdir du -sh '{}' \+ | sort -h"
 alias g=git
 alias l='\ls --color=auto -A --group-directories-first'
 alias ll='\ls --color=auto -lAh --group-directories-first'
